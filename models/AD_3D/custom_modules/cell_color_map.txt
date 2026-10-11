@@ -1,0 +1,12 @@
+# cell_color_map.txt
+# Format: exact_cell_type_name = color
+# color may be 'rgb(R,G,B)' or a CSS color name (e.g. 'gold', 'purple')
+# Example entries:
+
+s.aurenus = rgb(212,175,55)
+# gold-ish for s.aurenus
+s.epidermis = rgb(128,0,128)
+# purple for s.epidermis
+
+# Add additional mappings below
+# mycelltype = red

@@ -1,0 +1,43 @@
+{
+  "runs_verified": 1000,
+  "samples_per_run": [
+    25
+  ],
+  "time_spans_minutes": [
+    [
+      0.0,
+      1440.0
+    ]
+  ],
+  "max_archived_score_error": 0.0,
+  "best_run": {
+    "run_id": "791",
+    "degradation_rate": "0.8",
+    "aipc_saturation": "3.0",
+    "vhh_saturation": "0.06444444444444444",
+    "N": 25,
+    "A0": 1350.0,
+    "E0": 3000.0,
+    "A_end": 1308.0,
+    "E_end": 3076.0,
+    "D_A": 0.0,
+    "D_E": 0.0,
+    "T_A": 0.0,
+    "T_E": 0.0,
+    "V_A": 0.006975308641975093,
+    "V_E": 0.0033333333333332867,
+    "pos_steps_A": 226.0,
+    "neg_steps_E": 240.0,
+    "P": 0.00515432098765419,
+    "Score": 0.9948721098044034
+  },
+  "weights": [
+    1,
+    1,
+    0.5,
+    1,
+    1,
+    0.5
+  ],
+  "note": "Verification reuses the original scoring function; it is a consistency check, not independent biological validation."
+}

@@ -1,0 +1,15 @@
+S.aurenus,AMP,increases,necrosis,0.01,0.25,1,0
+S.aurenus,sebum,increases,cycle entry,0.02,0.3,1,0
+S.aurenus,EPS,increases,cell-cell adhesion,9.8,0.01,2,0
+S.aurenus,EPS,decreases,migration speed,0.0025,0.01,2,0
+S.aurenus,AIP_sa,increases,migration speed,3,1e-4,4,0
+S.aurenus,AIP_sa,increases,toxin secretion,0.01,3e-5,3,0
+S.aurenus,AIP_sa,increases,AIP_sa secretion,0.006,3e-5,3,0
+T_cell,toxin,increases,Th2_cytokine secretion,10,1e-5,3,0
+keratinocyte,Th2_cytokine,decreases,AMP secretion,0.02,0.05,2,0
+engr.S.epidermis,sebum,increases,cycle entry,0.02,0.3,1,0
+engr.S.epidermis,AMP,increases,necrosis,0.01,0.25,1,0
+S.aurenus,AIP_C,decreases,AIP_sa secretion,0,1e-3,3,0
+engr.S.epidermis,AIP_sa,increases,AIP_C secretion,0.78,1e-5,4,0
+engr.S.epidermis,AIP_sa,increases,vHH secretion,0.12,1e-5,4,0
+S.aurenus,AIP_C,decreases,toxin secretion,0,1e-3,4,0

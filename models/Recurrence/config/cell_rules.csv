@@ -1,0 +1,22 @@
+S.aurenus,AMP,increases,necrosis,0.01,0.25,1,0
+S.epidermis,AMP,increases,necrosis,0.012,0.25,1,0
+S.hominis,AMP,increases,necrosis,0.01,0.25,1,0
+other commensals,AMP,increases,necrosis,0.012,0.25,1,0
+S.aurenus,sebum,increases,cycle entry,0.002,0.1,1,0
+S.epidermis,sebum,increases,cycle entry,0.002,0.1,1,0
+S.hominis,sebum,increases,cycle entry,0.002,0.1,1,0
+other commensals,sebum,increases,cycle entry,0.0012,0.1,1,0
+S.aurenus,EPS,increases,cell-cell adhesion,0.98,0.02,2,0
+S.aurenus,EPS,decreases,migration speed,0.0025,0.02,2,0
+S.aurenus,AIP_sa,increases,migration speed,0.1,1e-4,4,0
+S.aurenus,AIP_sa,increases,toxin secretion,0.01,3e-5,3,0
+S.aurenus,AIP_se,decreases,AIP_sa secretion,0.0003,0.1,2,0
+S.aurenus,bacteriocin,increases,necrosis,0.008,0.05,2,0
+S.aurenus,AIP_C,decreases,AIP_sa secretion,0,0.001,3,0
+engr_S.epidermis,AIP_sa,increases,AIP_C secretion,0.78,1e-5,4,0
+engr_S.epidermis,AIP_sa,increases,vHH secretion,0.12,1e-5,4,0
+engr_S.epidermis,AMP,increases,necrosis,0.0115,0.25,1,0
+engr_S.epidermis,sebum,increases,cycle entry,0.002,0.1,1,0
+S.epidermis,AIP_se,increases,AIP_se secretion,0.005,0.1,3,0
+S.aurenus,AIP_sa,increases,AIP_sa secretion,0.006,3e-5,3,0
+S.aurenus,AIP_C,decreases,toxin secretion,0,0.001,4,0

@@ -1,0 +1,1766 @@
+<PhysiCell_settings version="devel-version">
+
+    <domain>
+        <x_min>-100.0</x_min>
+        <x_max>100.0</x_max>
+        <y_min>-100.0</y_min>
+        <y_max>100.0</y_max>
+        <z_min>-10.0</z_min>
+        <z_max>10.0</z_max>
+        <dx>4.0</dx>
+        <dy>4.0</dy>
+        <dz>20.0</dz>
+        <use_2D>true</use_2D>
+    </domain>
+
+    <overall>
+        <max_time units="min">5760.0</max_time>
+        <time_units>min</time_units>
+        <space_units>micron</space_units>
+        <dt_diffusion units="min">0.01</dt_diffusion>
+        <dt_mechanics units="min">0.1</dt_mechanics>
+        <dt_phenotype units="min">6</dt_phenotype>
+    </overall>
+
+    <parallel>
+        <omp_num_threads>62</omp_num_threads>
+    </parallel>
+
+    <save>
+        <folder>output/Treatment</folder>
+        <full_data>
+            <interval units="min">30</interval>
+            <enable>true</enable>
+        </full_data>
+        <SVG>
+            <interval units="min">30</interval>
+            <enable>true</enable>
+            <plot_substrate enabled="true" limits="true">
+                <substrate>Th2_cytokine</substrate>
+                <colormap>YlOrRd</colormap>
+                <min_conc>0.11</min_conc>
+                <max_conc>0.17</max_conc>
+            </plot_substrate>
+        </SVG>
+        <legacy_data>
+            <enable>false</enable>
+        </legacy_data>
+    </save>
+
+    <options>
+        <legacy_random_points_on_sphere_in_divide>false</legacy_random_points_on_sphere_in_divide>
+        <virtual_wall_at_domain_edge>true</virtual_wall_at_domain_edge>
+        <disable_automated_spring_adhesions>false</disable_automated_spring_adhesions>
+        <random_seed>0</random_seed>
+    </options>
+
+    <user_parameters>
+        <AMP_baseline_rate type="double" units="1/min" description="AMP baseline production rate per minute">0.005</AMP_baseline_rate>
+        <Cytokine_baseline_rate type="double" units="1/min" description="Th2 cytokine baseline production rate per minute">0.01</Cytokine_baseline_rate>
+        <toxin_to_cytokine_rate type="double" units="1/min" description="toxin-&gt;cytokine production coefficient (per toxin concentration)">0.01</toxin_to_cytokine_rate>
+        <cytokine_to_AMP_degradation_rate type="double" units="1/min" description="cytokine-&gt;AMP degradation coefficient (per cytokine concentration)">0.02</cytokine_to_AMP_degradation_rate>
+        <k_bind_amp type="double" units="1/(concentration*min)" description="AMP binding/immobilization rate per EPS concentration">0.5</k_bind_amp>
+        <k_bind_bac type="double" units="1/(concentration*min)" description="Bacteriocin binding/immobilization rate per EPS concentration">0.5</k_bind_bac>
+        <max_fraction_removed type="double" units="dimensionless" description="Maximum fraction of substrate removable per timestep by EPS (to ensure stability)">0.9</max_fraction_removed>
+        <vHH_to_cytokine_degradation_rate type="double" units="1/min" description="vHH-&gt;cytokine degradation coefficient (per vHH concentration)">0.6</vHH_to_cytokine_degradation_rate>
+        <removal_volume_threshold type="double" units="micron^3" description="dead cell volume below which the cell is removed">1.0</removal_volume_threshold>
+        <immediate_remove_small_microbes type="bool" units="none" description="if true, remove any dead cell immediately (ignores volume threshold)">true</immediate_remove_small_microbes>
+    </user_parameters>
+
+    <microenvironment_setup>
+        <variable name="sebum" units="dimensionless" ID="0">
+            <physical_parameter_set>
+                <diffusion_coefficient units="micron^2/min">50</diffusion_coefficient>
+                <decay_rate units="1/min">0.01</decay_rate>
+            </physical_parameter_set>
+            <initial_condition units="dimensionless">1</initial_condition>
+            <Dirichlet_boundary_condition units="dimensionless" enabled="False">0.0</Dirichlet_boundary_condition>
+            <Dirichlet_options>
+                <boundary_value ID="xmin" enabled="False" />
+                <boundary_value ID="xmax" enabled="False" />
+                <boundary_value ID="ymin" enabled="False" />
+                <boundary_value ID="ymax" enabled="False" />
+                <boundary_value ID="zmin" enabled="False" />
+                <boundary_value ID="zmax" enabled="False" />
+            </Dirichlet_options>
+        </variable>
+        <variable name="AMP" units="dimensionless" ID="1">
+            <physical_parameter_set>
+                <diffusion_coefficient units="micron^2/min">174</diffusion_coefficient>
+                <decay_rate units="1/min">0.07</decay_rate>
+            </physical_parameter_set>
+            <initial_condition units="dimensionless">0.02360</initial_condition>
+            <Dirichlet_boundary_condition units="dimensionless" enabled="False">0</Dirichlet_boundary_condition>
+            <Dirichlet_options>
+                <boundary_value ID="xmin" enabled="False">0</boundary_value>
+                <boundary_value ID="xmax" enabled="False">0</boundary_value>
+                <boundary_value ID="ymin" enabled="False">0</boundary_value>
+                <boundary_value ID="ymax" enabled="False">0</boundary_value>
+                <boundary_value ID="zmin" enabled="False">0</boundary_value>
+                <boundary_value ID="zmax" enabled="False">0</boundary_value>
+            </Dirichlet_options>
+        </variable>
+        <variable name="Th2_cytokine" units="dimensionless" ID="2">
+            <physical_parameter_set>
+                <diffusion_coefficient units="micron^2/min">600</diffusion_coefficient>
+                <decay_rate units="1/min">0.06</decay_rate>
+            </physical_parameter_set>
+            <initial_condition units="dimensionless">0.17</initial_condition>
+            <Dirichlet_boundary_condition units="dimensionless" enabled="False">0</Dirichlet_boundary_condition>
+            <Dirichlet_options>
+                <boundary_value ID="xmin" enabled="False">0</boundary_value>
+                <boundary_value ID="xmax" enabled="False">0</boundary_value>
+                <boundary_value ID="ymin" enabled="False">0</boundary_value>
+                <boundary_value ID="ymax" enabled="False">0</boundary_value>
+                <boundary_value ID="zmin" enabled="False">0</boundary_value>
+                <boundary_value ID="zmax" enabled="False">0</boundary_value>
+            </Dirichlet_options>
+        </variable>
+        <variable name="AIP_sa" units="dimensionless" ID="3">
+            <physical_parameter_set>
+                <diffusion_coefficient units="micron^2/min">1000</diffusion_coefficient>
+                <decay_rate units="1/min">0.2</decay_rate>
+            </physical_parameter_set>
+            <initial_condition units="dimensionless">6e-4</initial_condition>
+            <Dirichlet_boundary_condition units="dimensionless" enabled="False">0.0</Dirichlet_boundary_condition>
+            <Dirichlet_options>
+                <boundary_value ID="xmin" enabled="False" />
+                <boundary_value ID="xmax" enabled="False" />
+                <boundary_value ID="ymin" enabled="False" />
+                <boundary_value ID="ymax" enabled="False" />
+                <boundary_value ID="zmin" enabled="False" />
+                <boundary_value ID="zmax" enabled="False" />
+            </Dirichlet_options>
+        </variable>
+        <variable name="AIP_se" units="dimensionless" ID="4">
+            <physical_parameter_set>
+                <diffusion_coefficient units="micron^2/min">1000</diffusion_coefficient>
+                <decay_rate units="1/min">0.2</decay_rate>
+            </physical_parameter_set>
+            <initial_condition units="dimensionless">1.5e-5</initial_condition>
+            <Dirichlet_boundary_condition units="dimensionless" enabled="False">0.0</Dirichlet_boundary_condition>
+            <Dirichlet_options>
+                <boundary_value ID="xmin" enabled="False" />
+                <boundary_value ID="xmax" enabled="False" />
+                <boundary_value ID="ymin" enabled="False" />
+                <boundary_value ID="ymax" enabled="False" />
+                <boundary_value ID="zmin" enabled="False" />
+                <boundary_value ID="zmax" enabled="False" />
+            </Dirichlet_options>
+        </variable>
+        <variable name="bacteriocin" units="dimensionless" ID="5">
+            <physical_parameter_set>
+                <diffusion_coefficient units="micron^2/min">500</diffusion_coefficient>
+                <decay_rate units="1/min">0.1</decay_rate>
+            </physical_parameter_set>
+            <initial_condition units="dimensionless">2.5e-5</initial_condition>
+            <Dirichlet_boundary_condition units="dimensionless" enabled="False">0.0</Dirichlet_boundary_condition>
+            <Dirichlet_options>
+                <boundary_value ID="xmin" enabled="False" />
+                <boundary_value ID="xmax" enabled="False" />
+                <boundary_value ID="ymin" enabled="False" />
+                <boundary_value ID="ymax" enabled="False" />
+                <boundary_value ID="zmin" enabled="False" />
+                <boundary_value ID="zmax" enabled="False" />
+            </Dirichlet_options>
+        </variable>
+        <variable name="EPS" units="dimensionless" ID="6">
+            <physical_parameter_set>
+                <diffusion_coefficient units="micron^2/min">1</diffusion_coefficient>
+                <decay_rate units="1/min">0.005</decay_rate>
+            </physical_parameter_set>
+            <initial_condition units="dimensionless">0.003</initial_condition>
+            <Dirichlet_boundary_condition units="dimensionless" enabled="False">0.0</Dirichlet_boundary_condition>
+            <Dirichlet_options>
+                <boundary_value ID="xmin" enabled="False" />
+                <boundary_value ID="xmax" enabled="False" />
+                <boundary_value ID="ymin" enabled="False" />
+                <boundary_value ID="ymax" enabled="False" />
+                <boundary_value ID="zmin" enabled="False" />
+                <boundary_value ID="zmax" enabled="False" />
+            </Dirichlet_options>
+        </variable>
+        <variable name="AMP_bound" units="dimensionless" ID="7">
+            <physical_parameter_set>
+                <diffusion_coefficient units="micron^2/min">0</diffusion_coefficient>
+                <decay_rate units="1/min">0.0</decay_rate>
+            </physical_parameter_set>
+            <initial_condition units="dimensionless">0.1</initial_condition>
+            <Dirichlet_boundary_condition units="dimensionless" enabled="False">0.0</Dirichlet_boundary_condition>
+            <Dirichlet_options>
+                <boundary_value ID="xmin" enabled="False" />
+                <boundary_value ID="xmax" enabled="False" />
+                <boundary_value ID="ymin" enabled="False" />
+                <boundary_value ID="ymax" enabled="False" />
+                <boundary_value ID="zmin" enabled="False" />
+                <boundary_value ID="zmax" enabled="False" />
+            </Dirichlet_options>
+        </variable>
+        <variable name="bacteriocin_bound" units="dimensionless" ID="8">
+            <physical_parameter_set>
+                <diffusion_coefficient units="micron^2/min">0</diffusion_coefficient>
+                <decay_rate units="1/min">0.0</decay_rate>
+            </physical_parameter_set>
+            <initial_condition units="dimensionless">0.0006</initial_condition>
+            <Dirichlet_boundary_condition units="dimensionless" enabled="False">0.0</Dirichlet_boundary_condition>
+            <Dirichlet_options>
+                <boundary_value ID="xmin" enabled="False" />
+                <boundary_value ID="xmax" enabled="False" />
+                <boundary_value ID="ymin" enabled="False" />
+                <boundary_value ID="ymax" enabled="False" />
+                <boundary_value ID="zmin" enabled="False" />
+                <boundary_value ID="zmax" enabled="False" />
+            </Dirichlet_options>
+        </variable>
+        <variable name="toxin" units="dimensionless" ID="9">
+            <physical_parameter_set>
+                <diffusion_coefficient units="micron^2/min">600</diffusion_coefficient>
+                <decay_rate units="1/min">0.05</decay_rate>
+            </physical_parameter_set>
+            <initial_condition units="dimensionless">0.5</initial_condition>
+            <Dirichlet_boundary_condition units="dimensionless" enabled="False">0.0</Dirichlet_boundary_condition>
+            <Dirichlet_options>
+                <boundary_value ID="xmin" enabled="False" />
+                <boundary_value ID="xmax" enabled="False" />
+                <boundary_value ID="ymin" enabled="False" />
+                <boundary_value ID="ymax" enabled="False" />
+                <boundary_value ID="zmin" enabled="False" />
+                <boundary_value ID="zmax" enabled="False" />
+            </Dirichlet_options>
+        </variable>
+        <variable name="AIP_C" units="dimensionless" ID="10">
+            <physical_parameter_set>
+                <diffusion_coefficient units="micron^2/min">1000</diffusion_coefficient>
+                <decay_rate units="1/min">0.2</decay_rate>
+            </physical_parameter_set>
+            <initial_condition units="dimensionless">0</initial_condition>
+            <Dirichlet_boundary_condition units="dimensionless" enabled="False">0.0</Dirichlet_boundary_condition>
+            <Dirichlet_options>
+                <boundary_value ID="xmin" enabled="False" />
+                <boundary_value ID="xmax" enabled="False" />
+                <boundary_value ID="ymin" enabled="False" />
+                <boundary_value ID="ymax" enabled="False" />
+                <boundary_value ID="zmin" enabled="False" />
+                <boundary_value ID="zmax" enabled="False" />
+            </Dirichlet_options>
+        </variable>
+        <variable name="vHH" units="dimensionless" ID="11">
+            <physical_parameter_set>
+                <diffusion_coefficient units="micron^2/min">800</diffusion_coefficient>
+                <decay_rate units="1/min">0.019</decay_rate>
+            </physical_parameter_set>
+            <initial_condition units="dimensionless">0.0</initial_condition>
+            <Dirichlet_boundary_condition units="dimensionless" enabled="False">0.0</Dirichlet_boundary_condition>
+            <Dirichlet_options>
+                <boundary_value ID="xmin" enabled="False" />
+                <boundary_value ID="xmax" enabled="False" />
+                <boundary_value ID="ymin" enabled="False" />
+                <boundary_value ID="ymax" enabled="False" />
+                <boundary_value ID="zmin" enabled="False" />
+                <boundary_value ID="zmax" enabled="False" />
+            </Dirichlet_options>
+        </variable>
+        <options>
+            <calculate_gradients>true</calculate_gradients>
+            <track_internalized_substrates_in_each_agent>true</track_internalized_substrates_in_each_agent>
+            <initial_condition type="matlab" enabled="false">
+                <filename>./config/initial.mat</filename>
+            </initial_condition>
+            <dirichlet_nodes type="matlab" enabled="false">
+                <filename>./config/dirichlet.mat</filename>
+            </dirichlet_nodes>
+        </options>
+    </microenvironment_setup>
+
+    <cell_definitions>
+        <cell_definition name="S.aurenus" ID="0">
+            <phenotype>
+                <cycle code="5" name="live">
+                    <phase_transition_rates units="1/min">
+                        <rate start_index="0" end_index="0" fixed_duration="false">0.000083</rate>
+                    </phase_transition_rates>
+                    <standard_asymmetric_division enabled="False">
+                        <asymmetric_division_probability name="S.aurenus" units="dimensionless">1.0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="sebocyte" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="S.epidermis" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="S.hominis" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="other commensals" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="engr_S.epidermis" units="dimensionless">0</asymmetric_division_probability>
+                    </standard_asymmetric_division>
+                </cycle>
+                <death>
+                    <model code="100" name="apoptosis">
+                        <death_rate units="1/min">0</death_rate>
+                        <phase_durations units="min">
+                            <duration index="0" fixed_duration="true">516</duration>
+                        </phase_durations>
+                        <parameters>
+                            <unlysed_fluid_change_rate units="1/min">0.05</unlysed_fluid_change_rate>
+                            <lysed_fluid_change_rate units="1/min">0</lysed_fluid_change_rate>
+                            <cytoplasmic_biomass_change_rate units="1/min">1.66667e-02</cytoplasmic_biomass_change_rate>
+                            <nuclear_biomass_change_rate units="1/min">5.83333e-03</nuclear_biomass_change_rate>
+                            <calcification_rate units="1/min">0</calcification_rate>
+                            <relative_rupture_volume units="dimensionless">2.0</relative_rupture_volume>
+                        </parameters>
+                    </model>
+                    <model code="101" name="necrosis">
+                        <death_rate units="1/min">1e-5</death_rate>
+                        <phase_durations units="min">
+                            <duration index="0" fixed_duration="true">0</duration>
+                            <duration index="1" fixed_duration="true">86400</duration>
+                        </phase_durations>
+                        <parameters>
+                            <unlysed_fluid_change_rate units="1/min">1.11667e-2</unlysed_fluid_change_rate>
+                            <lysed_fluid_change_rate units="1/min">8.33333e-4</lysed_fluid_change_rate>
+                            <cytoplasmic_biomass_change_rate units="1/min">5.33333e-3</cytoplasmic_biomass_change_rate>
+                            <nuclear_biomass_change_rate units="1/min">0</nuclear_biomass_change_rate>
+                            <calcification_rate units="1/min">0</calcification_rate>
+                            <relative_rupture_volume units="dimensionless">2.0</relative_rupture_volume>
+                        </parameters>
+                    </model>
+                </death>
+                <volume>
+                    <total units="micron^3">8</total>
+                    <fluid_fraction units="dimensionless">0.75</fluid_fraction>
+                    <nuclear units="micron^3">0.05</nuclear>
+                    <fluid_change_rate units="1/min">0.05</fluid_change_rate>
+                    <cytoplasmic_biomass_change_rate units="1/min">0.0045</cytoplasmic_biomass_change_rate>
+                    <nuclear_biomass_change_rate units="1/min">0</nuclear_biomass_change_rate>
+                    <calcified_fraction units="dimensionless">0</calcified_fraction>
+                    <calcification_rate units="1/min">0</calcification_rate>
+                    <relative_rupture_volume units="dimensionless">2.0</relative_rupture_volume>
+                </volume>
+                <mechanics>
+                    <cell_cell_adhesion_strength units="micron/min">0.18</cell_cell_adhesion_strength>
+                    <cell_cell_repulsion_strength units="micron/min">5</cell_cell_repulsion_strength>
+                    <relative_maximum_adhesion_distance units="dimensionless">1.5</relative_maximum_adhesion_distance>
+                    <cell_adhesion_affinities>
+                        <cell_adhesion_affinity name="S.aurenus">1</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="sebocyte">1.0</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="S.epidermis">1</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="S.hominis">1</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="other commensals">1</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="engr_S.epidermis">1</cell_adhesion_affinity>
+                    </cell_adhesion_affinities>
+                    <options>
+                        <set_relative_equilibrium_distance enabled="false" units="dimensionless">1.8</set_relative_equilibrium_distance>
+                        <set_absolute_equilibrium_distance enabled="false" units="micron">15.12</set_absolute_equilibrium_distance>
+                    </options>
+                    <attachment_elastic_constant units="1/min">0.01</attachment_elastic_constant>
+                    <attachment_rate units="1/min">0.0</attachment_rate>
+                    <detachment_rate units="1/min">0.0</detachment_rate>
+                    <maximum_number_of_attachments>12</maximum_number_of_attachments>
+                </mechanics>
+                <motility>
+                    <speed units="micron/min">0.01</speed>
+                    <persistence_time units="min">15</persistence_time>
+                    <migration_bias units="dimensionless">0</migration_bias>
+                    <options>
+                        <enabled>true</enabled>
+                        <use_2D>true</use_2D>
+                        <chemotaxis>
+                            <enabled>false</enabled>
+                            <substrate>sebum</substrate>
+                            <direction>1</direction>
+                        </chemotaxis>
+                        <advanced_chemotaxis>
+                            <enabled>false</enabled>
+                            <normalize_each_gradient>false</normalize_each_gradient>
+                            <chemotactic_sensitivities>
+                                <chemotactic_sensitivity substrate="sebum">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AMP">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="Th2_cytokine">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AIP_sa">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AIP_se">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="bacteriocin">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="EPS">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AMP_bound">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="bacteriocin_bound">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="toxin">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AIP_C">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="vHH">0.0</chemotactic_sensitivity>
+                            </chemotactic_sensitivities>
+                        </advanced_chemotaxis>
+                    </options>
+                </motility>
+                <secretion>
+                    <substrate name="sebum">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">1e-3</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AMP">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="Th2_cytokine">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AIP_sa">
+                        <secretion_rate units="1/min">6e-4</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AIP_se">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="bacteriocin">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="EPS">
+                        <secretion_rate units="1/min">3e-3</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AMP_bound">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">0.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="bacteriocin_bound">
+                        <secretion_rate units="1/min" />
+                        <secretion_target units="substrate density">0.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="toxin">
+                        <secretion_rate units="1/min">1e-3</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AIP_C">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="vHH">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                </secretion>
+                <cell_interactions>
+                    <apoptotic_phagocytosis_rate units="1/min">0</apoptotic_phagocytosis_rate>
+                    <necrotic_phagocytosis_rate units="1/min">0</necrotic_phagocytosis_rate>
+                    <other_dead_phagocytosis_rate units="1/min">0</other_dead_phagocytosis_rate>
+                    <live_phagocytosis_rates>
+                        <phagocytosis_rate name="S.aurenus" units="1/min">0</phagocytosis_rate>
+                        <phagocytosis_rate name="sebocyte" units="1/min">0.0</phagocytosis_rate>
+                        <phagocytosis_rate name="S.epidermis" units="1/min">0</phagocytosis_rate>
+                        <phagocytosis_rate name="S.hominis" units="1/min">0</phagocytosis_rate>
+                        <phagocytosis_rate name="other commensals" units="1/min">0</phagocytosis_rate>
+                        <phagocytosis_rate name="engr_S.epidermis" units="1/min">0</phagocytosis_rate>
+                    </live_phagocytosis_rates>
+                    <attack_rates>
+                        <attack_rate name="S.aurenus" units="1/min">0</attack_rate>
+                        <attack_rate name="sebocyte" units="1/min">0.0</attack_rate>
+                        <attack_rate name="S.epidermis" units="1/min">0</attack_rate>
+                        <attack_rate name="S.hominis" units="1/min">0</attack_rate>
+                        <attack_rate name="other commensals" units="1/min">0</attack_rate>
+                        <attack_rate name="engr_S.epidermis" units="1/min">0</attack_rate>
+                    </attack_rates>
+                    <attack_damage_rate units="1/min">1</attack_damage_rate>
+                    <attack_duration units="min">0.1</attack_duration>
+                    <fusion_rates>
+                        <fusion_rate name="S.aurenus" units="1/min">0</fusion_rate>
+                        <fusion_rate name="sebocyte" units="1/min">0.0</fusion_rate>
+                        <fusion_rate name="S.epidermis" units="1/min">0</fusion_rate>
+                        <fusion_rate name="S.hominis" units="1/min">0</fusion_rate>
+                        <fusion_rate name="other commensals" units="1/min">0</fusion_rate>
+                        <fusion_rate name="engr_S.epidermis" units="1/min">0</fusion_rate>
+                    </fusion_rates>
+                </cell_interactions>
+                <cell_transformations>
+                    <transformation_rates>
+                        <transformation_rate name="S.aurenus" units="1/min">0</transformation_rate>
+                        <transformation_rate name="sebocyte" units="1/min">0.0</transformation_rate>
+                        <transformation_rate name="S.epidermis" units="1/min">0</transformation_rate>
+                        <transformation_rate name="S.hominis" units="1/min">0</transformation_rate>
+                        <transformation_rate name="other commensals" units="1/min">0</transformation_rate>
+                        <transformation_rate name="engr_S.epidermis" units="1/min">0</transformation_rate>
+                    </transformation_rates>
+                </cell_transformations>
+                <cell_integrity>
+                    <damage_rate units="1/min">0.0</damage_rate>
+                    <damage_repair_rate units="1/min">0.0</damage_repair_rate>
+                </cell_integrity>
+            </phenotype>
+            <custom_data>
+                <sample conserved="false" units="dimensionless" description="">1.0</sample>
+            </custom_data>
+            <initial_parameter_distributions enabled="false">
+                <distribution enabled="false" type="Log10Normal" check_base="true">
+                    <behavior>Volume</behavior>
+                    <mu>4</mu>
+                    <sigma>2</sigma>
+                    <upper_bound>100000</upper_bound>
+                </distribution>
+                <distribution enabled="false" type="LogUniform" check_base="true">
+                    <behavior>apoptosis</behavior>
+                    <min>1e-6</min>
+                    <max>1e-2</max>
+                </distribution>
+            </initial_parameter_distributions>
+        </cell_definition>
+        <cell_definition name="sebocyte" ID="1">
+            <phenotype>
+                <cycle code="7" name="cycling quiescent">
+                    <phase_transition_rates units="1/min">
+                        <rate start_index="0" end_index="1" fixed_duration="false">0</rate>
+                        <rate start_index="1" end_index="0" fixed_duration="true">1.07527e-3</rate>
+                    </phase_transition_rates>
+                    <standard_asymmetric_division enabled="False">
+                        <asymmetric_division_probability name="S.aurenus" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="sebocyte" units="dimensionless">1.0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="S.epidermis" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="S.hominis" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="other commensals" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="engr_S.epidermis" units="dimensionless">0</asymmetric_division_probability>
+                    </standard_asymmetric_division>
+                </cycle>
+                <death>
+                    <model code="100" name="apoptosis">
+                        <death_rate units="1/min">1e-6</death_rate>
+                        <phase_transition_rates units="1/min">
+                            <rate start_index="0" end_index="1" fixed_duration="false">0.001938</rate>
+                        </phase_transition_rates>
+                        <parameters>
+                            <unlysed_fluid_change_rate units="1/min">0.05</unlysed_fluid_change_rate>
+                            <lysed_fluid_change_rate units="1/min">0</lysed_fluid_change_rate>
+                            <cytoplasmic_biomass_change_rate units="1/min">1.66667e-02</cytoplasmic_biomass_change_rate>
+                            <nuclear_biomass_change_rate units="1/min">5.83333e-03</nuclear_biomass_change_rate>
+                            <calcification_rate units="1/min">0</calcification_rate>
+                            <relative_rupture_volume units="dimensionless">2.0</relative_rupture_volume>
+                        </parameters>
+                    </model>
+                    <model code="101" name="necrosis">
+                        <death_rate units="1/min">0.0</death_rate>
+                        <phase_transition_rates units="1/min">
+                            <rate start_index="0" end_index="1" fixed_duration="false">9000000000.0</rate>
+                            <rate start_index="1" end_index="2" fixed_duration="true">1.15741e-05</rate>
+                        </phase_transition_rates>
+                        <parameters>
+                            <unlysed_fluid_change_rate units="1/min">1.11667e-02</unlysed_fluid_change_rate>
+                            <lysed_fluid_change_rate units="1/min">8.33333e-4</lysed_fluid_change_rate>
+                            <cytoplasmic_biomass_change_rate units="1/min">5.33333e-05</cytoplasmic_biomass_change_rate>
+                            <nuclear_biomass_change_rate units="1/min">2.16667e-4</nuclear_biomass_change_rate>
+                            <calcification_rate units="1/min">7e-05</calcification_rate>
+                            <relative_rupture_volume units="dimensionless">2.0</relative_rupture_volume>
+                        </parameters>
+                    </model>
+                </death>
+                <volume>
+                    <total units="micron^3">8000</total>
+                    <fluid_fraction units="dimensionless">0.75</fluid_fraction>
+                    <nuclear units="micron^3">540</nuclear>
+                    <fluid_change_rate units="1/min">0.05</fluid_change_rate>
+                    <cytoplasmic_biomass_change_rate units="1/min">0.0045</cytoplasmic_biomass_change_rate>
+                    <nuclear_biomass_change_rate units="1/min">0.0055</nuclear_biomass_change_rate>
+                    <calcified_fraction units="dimensionless">0.0</calcified_fraction>
+                    <calcification_rate units="1/min">0.0</calcification_rate>
+                    <relative_rupture_volume units="dimensionless">2</relative_rupture_volume>
+                </volume>
+                <mechanics>
+                    <cell_cell_adhesion_strength units="micron/min">1</cell_cell_adhesion_strength>
+                    <cell_cell_repulsion_strength units="micron/min">8</cell_cell_repulsion_strength>
+                    <relative_maximum_adhesion_distance units="dimensionless">1.4</relative_maximum_adhesion_distance>
+                    <cell_adhesion_affinities>
+                        <cell_adhesion_affinity name="S.aurenus">1.0</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="sebocyte">1.0</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="S.epidermis">1.0</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="S.hominis">1.0</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="other commensals">1.0</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="engr_S.epidermis">1.0</cell_adhesion_affinity>
+                    </cell_adhesion_affinities>
+                    <options>
+                        <set_relative_equilibrium_distance enabled="false" units="dimensionless">1.8</set_relative_equilibrium_distance>
+                        <set_absolute_equilibrium_distance enabled="false" units="micron">15.12</set_absolute_equilibrium_distance>
+                    </options>
+                    <attachment_elastic_constant units="1/min">0.01</attachment_elastic_constant>
+                    <attachment_rate units="1/min">0.0</attachment_rate>
+                    <detachment_rate units="1/min">0.0</detachment_rate>
+                    <maximum_number_of_attachments>12</maximum_number_of_attachments>
+                </mechanics>
+                <motility>
+                    <speed units="micron/min">1.0</speed>
+                    <persistence_time units="min">5.0</persistence_time>
+                    <migration_bias units="dimensionless">0.5</migration_bias>
+                    <options>
+                        <enabled>false</enabled>
+                        <use_2D>true</use_2D>
+                        <chemotaxis>
+                            <enabled>false</enabled>
+                            <substrate>sebum</substrate>
+                            <direction>1</direction>
+                        </chemotaxis>
+                        <advanced_chemotaxis>
+                            <enabled>false</enabled>
+                            <normalize_each_gradient>false</normalize_each_gradient>
+                            <chemotactic_sensitivities>
+                                <chemotactic_sensitivity substrate="sebum">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AMP">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="Th2_cytokine">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AIP_sa">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AIP_se">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="bacteriocin">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="EPS">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AMP_bound">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="bacteriocin_bound">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="toxin">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AIP_C">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="vHH">0.0</chemotactic_sensitivity>
+                            </chemotactic_sensitivities>
+                        </advanced_chemotaxis>
+                    </options>
+                </motility>
+                <secretion>
+                    <substrate name="sebum">
+                        <secretion_rate units="1/min">0.1</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AMP">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="Th2_cytokine">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AIP_sa">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AIP_se">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="bacteriocin">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="EPS">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AMP_bound">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">0.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="bacteriocin_bound">
+                        <secretion_rate units="1/min" />
+                        <secretion_target units="substrate density">0.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="toxin">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AIP_C">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="vHH">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                </secretion>
+                <cell_interactions>
+                    <apoptotic_phagocytosis_rate units="1/min">0.0</apoptotic_phagocytosis_rate>
+                    <necrotic_phagocytosis_rate units="1/min">0.0</necrotic_phagocytosis_rate>
+                    <other_dead_phagocytosis_rate units="1/min">0.0</other_dead_phagocytosis_rate>
+                    <live_phagocytosis_rates>
+                        <phagocytosis_rate name="S.aurenus" units="1/min">0.0</phagocytosis_rate>
+                        <phagocytosis_rate name="sebocyte" units="1/min">0.0</phagocytosis_rate>
+                        <phagocytosis_rate name="S.epidermis" units="1/min">0.0</phagocytosis_rate>
+                        <phagocytosis_rate name="S.hominis" units="1/min">0.0</phagocytosis_rate>
+                        <phagocytosis_rate name="other commensals" units="1/min">0.0</phagocytosis_rate>
+                        <phagocytosis_rate name="engr_S.epidermis" units="1/min">0.0</phagocytosis_rate>
+                    </live_phagocytosis_rates>
+                    <attack_rates>
+                        <attack_rate name="S.aurenus" units="1/min">0.0</attack_rate>
+                        <attack_rate name="sebocyte" units="1/min">0.0</attack_rate>
+                        <attack_rate name="S.epidermis" units="1/min">0.0</attack_rate>
+                        <attack_rate name="S.hominis" units="1/min">0.0</attack_rate>
+                        <attack_rate name="other commensals" units="1/min">0.0</attack_rate>
+                        <attack_rate name="engr_S.epidermis" units="1/min">0.0</attack_rate>
+                    </attack_rates>
+                    <attack_damage_rate units="1/min">1.0</attack_damage_rate>
+                    <attack_duration units="min">0.1</attack_duration>
+                    <fusion_rates>
+                        <fusion_rate name="S.aurenus" units="1/min">0.0</fusion_rate>
+                        <fusion_rate name="sebocyte" units="1/min">0.0</fusion_rate>
+                        <fusion_rate name="S.epidermis" units="1/min">0.0</fusion_rate>
+                        <fusion_rate name="S.hominis" units="1/min">0.0</fusion_rate>
+                        <fusion_rate name="other commensals" units="1/min">0.0</fusion_rate>
+                        <fusion_rate name="engr_S.epidermis" units="1/min">0.0</fusion_rate>
+                    </fusion_rates>
+                </cell_interactions>
+                <cell_transformations>
+                    <transformation_rates>
+                        <transformation_rate name="S.aurenus" units="1/min">0.0</transformation_rate>
+                        <transformation_rate name="sebocyte" units="1/min">0.0</transformation_rate>
+                        <transformation_rate name="S.epidermis" units="1/min">0.0</transformation_rate>
+                        <transformation_rate name="S.hominis" units="1/min">0.0</transformation_rate>
+                        <transformation_rate name="other commensals" units="1/min">0.0</transformation_rate>
+                        <transformation_rate name="engr_S.epidermis" units="1/min">0.0</transformation_rate>
+                    </transformation_rates>
+                </cell_transformations>
+                <cell_integrity>
+                    <damage_rate units="1/min">0.0</damage_rate>
+                    <damage_repair_rate units="1/min">0.0</damage_repair_rate>
+                </cell_integrity>
+            </phenotype>
+            <custom_data>
+                <sample conserved="false" units="dimensionless" description="">0.0</sample>
+            </custom_data>
+            <initial_parameter_distributions enabled="false">
+          </initial_parameter_distributions>
+        </cell_definition>
+        <cell_definition name="S.epidermis" ID="2">
+            <phenotype>
+                <cycle code="5" name="live">
+                    <phase_durations units="min">
+                        <duration index="0" fixed_duration="false">14990.250375</duration>
+                    </phase_durations>
+                    <standard_asymmetric_division enabled="False">
+                        <asymmetric_division_probability name="S.aurenus" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="sebocyte" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="S.epidermis" units="dimensionless">1.0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="S.hominis" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="other commensals" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="engr_S.epidermis" units="dimensionless">0</asymmetric_division_probability>
+                    </standard_asymmetric_division>
+                </cycle>
+                <death>
+                    <model code="100" name="apoptosis">
+                        <death_rate units="1/min">0</death_rate>
+                        <phase_durations units="min">
+                            <duration index="0" fixed_duration="true">516</duration>
+                        </phase_durations>
+                        <parameters>
+                            <unlysed_fluid_change_rate units="1/min">0.05</unlysed_fluid_change_rate>
+                            <lysed_fluid_change_rate units="1/min">0</lysed_fluid_change_rate>
+                            <cytoplasmic_biomass_change_rate units="1/min">1.66667e-02</cytoplasmic_biomass_change_rate>
+                            <nuclear_biomass_change_rate units="1/min">5.83333e-03</nuclear_biomass_change_rate>
+                            <calcification_rate units="1/min">0</calcification_rate>
+                            <relative_rupture_volume units="dimensionless">2.0</relative_rupture_volume>
+                        </parameters>
+                    </model>
+                    <model code="101" name="necrosis">
+                        <death_rate units="1/min">1e-5</death_rate>
+                        <phase_durations units="min">
+                            <duration index="0" fixed_duration="true">0</duration>
+                            <duration index="1" fixed_duration="true">86400</duration>
+                        </phase_durations>
+                        <parameters>
+                            <unlysed_fluid_change_rate units="1/min">1.11667e-2</unlysed_fluid_change_rate>
+                            <lysed_fluid_change_rate units="1/min">8.33333e-4</lysed_fluid_change_rate>
+                            <cytoplasmic_biomass_change_rate units="1/min">5.33333e-3</cytoplasmic_biomass_change_rate>
+                            <nuclear_biomass_change_rate units="1/min">0</nuclear_biomass_change_rate>
+                            <calcification_rate units="1/min">0</calcification_rate>
+                            <relative_rupture_volume units="dimensionless">2.0</relative_rupture_volume>
+                        </parameters>
+                    </model>
+                </death>
+                <volume>
+                    <total units="micron^3">6</total>
+                    <fluid_fraction units="dimensionless">0.75</fluid_fraction>
+                    <nuclear units="micron^3">0.05</nuclear>
+                    <fluid_change_rate units="1/min">0.05</fluid_change_rate>
+                    <cytoplasmic_biomass_change_rate units="1/min">0.0045</cytoplasmic_biomass_change_rate>
+                    <nuclear_biomass_change_rate units="1/min">0</nuclear_biomass_change_rate>
+                    <calcified_fraction units="dimensionless">0</calcified_fraction>
+                    <calcification_rate units="1/min">0</calcification_rate>
+                    <relative_rupture_volume units="dimensionless">2.0</relative_rupture_volume>
+                </volume>
+                <mechanics>
+                    <cell_cell_adhesion_strength units="micron/min">0.15</cell_cell_adhesion_strength>
+                    <cell_cell_repulsion_strength units="micron/min">6</cell_cell_repulsion_strength>
+                    <relative_maximum_adhesion_distance units="dimensionless">1.5</relative_maximum_adhesion_distance>
+                    <cell_adhesion_affinities>
+                        <cell_adhesion_affinity name="S.aurenus">1</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="sebocyte">1.0</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="S.epidermis">1</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="S.hominis">1</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="other commensals">1</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="engr_S.epidermis">1</cell_adhesion_affinity>
+                    </cell_adhesion_affinities>
+                    <options>
+                        <set_relative_equilibrium_distance enabled="false" units="dimensionless">1.8</set_relative_equilibrium_distance>
+                        <set_absolute_equilibrium_distance enabled="false" units="micron">15.12</set_absolute_equilibrium_distance>
+                    </options>
+                    <attachment_elastic_constant units="1/min">0.01</attachment_elastic_constant>
+                    <attachment_rate units="1/min">0.0</attachment_rate>
+                    <detachment_rate units="1/min">0.0</detachment_rate>
+                    <maximum_number_of_attachments>12</maximum_number_of_attachments>
+                </mechanics>
+                <motility>
+                    <speed units="micron/min">1</speed>
+                    <persistence_time units="min">1</persistence_time>
+                    <migration_bias units="dimensionless">0.5</migration_bias>
+                    <options>
+                        <enabled>false</enabled>
+                        <use_2D>true</use_2D>
+                        <chemotaxis>
+                            <enabled>false</enabled>
+                            <substrate>sebum</substrate>
+                            <direction>1</direction>
+                        </chemotaxis>
+                        <advanced_chemotaxis>
+                            <enabled>false</enabled>
+                            <normalize_each_gradient>false</normalize_each_gradient>
+                            <chemotactic_sensitivities>
+                                <chemotactic_sensitivity substrate="sebum">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AMP">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="Th2_cytokine">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AIP_sa">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AIP_se">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="bacteriocin">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="EPS">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AMP_bound">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="bacteriocin_bound">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="toxin">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AIP_C">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="vHH">0.0</chemotactic_sensitivity>
+                            </chemotactic_sensitivities>
+                        </advanced_chemotaxis>
+                    </options>
+                </motility>
+                <secretion>
+                    <substrate name="sebum">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">8e-4</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AMP">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="Th2_cytokine">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AIP_sa">
+                        <secretion_rate units="1/min">0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AIP_se">
+                        <secretion_rate units="1/min">5e-4</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="bacteriocin">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="EPS">
+                        <secretion_rate units="1/min">0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AMP_bound">
+                        <secretion_rate units="1/min" />
+                        <secretion_target units="substrate density">0.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="bacteriocin_bound">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">0.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="toxin">
+                        <secretion_rate units="1/min">0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AIP_C">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="vHH">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                </secretion>
+                <cell_interactions>
+                    <apoptotic_phagocytosis_rate units="1/min">0</apoptotic_phagocytosis_rate>
+                    <necrotic_phagocytosis_rate units="1/min">0</necrotic_phagocytosis_rate>
+                    <other_dead_phagocytosis_rate units="1/min">0</other_dead_phagocytosis_rate>
+                    <live_phagocytosis_rates>
+                        <phagocytosis_rate name="S.aurenus" units="1/min">0</phagocytosis_rate>
+                        <phagocytosis_rate name="sebocyte" units="1/min">0.0</phagocytosis_rate>
+                        <phagocytosis_rate name="S.epidermis" units="1/min">0</phagocytosis_rate>
+                        <phagocytosis_rate name="S.hominis" units="1/min">0</phagocytosis_rate>
+                        <phagocytosis_rate name="other commensals" units="1/min">0</phagocytosis_rate>
+                        <phagocytosis_rate name="engr_S.epidermis" units="1/min">0</phagocytosis_rate>
+                    </live_phagocytosis_rates>
+                    <attack_rates>
+                        <attack_rate name="S.aurenus" units="1/min">0</attack_rate>
+                        <attack_rate name="sebocyte" units="1/min">0.0</attack_rate>
+                        <attack_rate name="S.epidermis" units="1/min">0</attack_rate>
+                        <attack_rate name="S.hominis" units="1/min">0</attack_rate>
+                        <attack_rate name="other commensals" units="1/min">0</attack_rate>
+                        <attack_rate name="engr_S.epidermis" units="1/min">0</attack_rate>
+                    </attack_rates>
+                    <attack_damage_rate units="1/min">1</attack_damage_rate>
+                    <attack_duration units="min">0.1</attack_duration>
+                    <fusion_rates>
+                        <fusion_rate name="S.aurenus" units="1/min">0</fusion_rate>
+                        <fusion_rate name="sebocyte" units="1/min">0.0</fusion_rate>
+                        <fusion_rate name="S.epidermis" units="1/min">0</fusion_rate>
+                        <fusion_rate name="S.hominis" units="1/min">0</fusion_rate>
+                        <fusion_rate name="other commensals" units="1/min">0</fusion_rate>
+                        <fusion_rate name="engr_S.epidermis" units="1/min">0</fusion_rate>
+                    </fusion_rates>
+                </cell_interactions>
+                <cell_transformations>
+                    <transformation_rates>
+                        <transformation_rate name="S.aurenus" units="1/min">0</transformation_rate>
+                        <transformation_rate name="sebocyte" units="1/min">0.0</transformation_rate>
+                        <transformation_rate name="S.epidermis" units="1/min">0</transformation_rate>
+                        <transformation_rate name="S.hominis" units="1/min">0</transformation_rate>
+                        <transformation_rate name="other commensals" units="1/min">0</transformation_rate>
+                        <transformation_rate name="engr_S.epidermis" units="1/min">0</transformation_rate>
+                    </transformation_rates>
+                </cell_transformations>
+                <cell_integrity>
+                    <damage_rate units="1/min">0.0</damage_rate>
+                    <damage_repair_rate units="1/min">0.0</damage_repair_rate>
+                </cell_integrity>
+            </phenotype>
+            <custom_data>
+                <sample conserved="false" units="dimensionless" description="">1.0</sample>
+            </custom_data>
+            <initial_parameter_distributions enabled="false">
+                <distribution enabled="false" type="Log10Normal" check_base="true">
+                    <behavior>Volume</behavior>
+                    <mu>4</mu>
+                    <sigma>2</sigma>
+                    <upper_bound>100000</upper_bound>
+                </distribution>
+                <distribution enabled="false" type="LogUniform" check_base="true">
+                    <behavior>apoptosis</behavior>
+                    <min>1e-6</min>
+                    <max>1e-2</max>
+                </distribution>
+            </initial_parameter_distributions>
+        </cell_definition>
+        <cell_definition name="S.hominis" ID="3">
+            <phenotype>
+                <cycle code="5" name="live">
+                    <phase_durations units="min">
+                        <duration index="0" fixed_duration="false">17980.561151</duration>
+                    </phase_durations>
+                    <standard_asymmetric_division enabled="False">
+                        <asymmetric_division_probability name="S.aurenus" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="sebocyte" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="S.epidermis" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="S.hominis" units="dimensionless">1.0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="other commensals" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="engr_S.epidermis" units="dimensionless">0</asymmetric_division_probability>
+                    </standard_asymmetric_division>
+                </cycle>
+                <death>
+                    <model code="100" name="apoptosis">
+                        <death_rate units="1/min">0</death_rate>
+                        <phase_durations units="min">
+                            <duration index="0" fixed_duration="true">516</duration>
+                        </phase_durations>
+                        <parameters>
+                            <unlysed_fluid_change_rate units="1/min">0.05</unlysed_fluid_change_rate>
+                            <lysed_fluid_change_rate units="1/min">0</lysed_fluid_change_rate>
+                            <cytoplasmic_biomass_change_rate units="1/min">1.66667e-02</cytoplasmic_biomass_change_rate>
+                            <nuclear_biomass_change_rate units="1/min">5.83333e-03</nuclear_biomass_change_rate>
+                            <calcification_rate units="1/min">0</calcification_rate>
+                            <relative_rupture_volume units="dimensionless">2.0</relative_rupture_volume>
+                        </parameters>
+                    </model>
+                    <model code="101" name="necrosis">
+                        <death_rate units="1/min">1e-5</death_rate>
+                        <phase_durations units="min">
+                            <duration index="0" fixed_duration="true">0</duration>
+                            <duration index="1" fixed_duration="true">86400</duration>
+                        </phase_durations>
+                        <parameters>
+                            <unlysed_fluid_change_rate units="1/min">1.11667e-2</unlysed_fluid_change_rate>
+                            <lysed_fluid_change_rate units="1/min">8.33333e-4</lysed_fluid_change_rate>
+                            <cytoplasmic_biomass_change_rate units="1/min">5.33333e-3</cytoplasmic_biomass_change_rate>
+                            <nuclear_biomass_change_rate units="1/min">0</nuclear_biomass_change_rate>
+                            <calcification_rate units="1/min">0</calcification_rate>
+                            <relative_rupture_volume units="dimensionless">2.0</relative_rupture_volume>
+                        </parameters>
+                    </model>
+                </death>
+                <volume>
+                    <total units="micron^3">6</total>
+                    <fluid_fraction units="dimensionless">0.75</fluid_fraction>
+                    <nuclear units="micron^3">0.05</nuclear>
+                    <fluid_change_rate units="1/min">0.05</fluid_change_rate>
+                    <cytoplasmic_biomass_change_rate units="1/min">0.0045</cytoplasmic_biomass_change_rate>
+                    <nuclear_biomass_change_rate units="1/min">0</nuclear_biomass_change_rate>
+                    <calcified_fraction units="dimensionless">0</calcified_fraction>
+                    <calcification_rate units="1/min">0</calcification_rate>
+                    <relative_rupture_volume units="dimensionless">2.0</relative_rupture_volume>
+                </volume>
+                <mechanics>
+                    <cell_cell_adhesion_strength units="micron/min">0.15</cell_cell_adhesion_strength>
+                    <cell_cell_repulsion_strength units="micron/min">5</cell_cell_repulsion_strength>
+                    <relative_maximum_adhesion_distance units="dimensionless">1.25</relative_maximum_adhesion_distance>
+                    <cell_adhesion_affinities>
+                        <cell_adhesion_affinity name="S.aurenus">1</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="sebocyte">1.0</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="S.epidermis">1</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="S.hominis">1</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="other commensals">1</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="engr_S.epidermis">1</cell_adhesion_affinity>
+                    </cell_adhesion_affinities>
+                    <options>
+                        <set_relative_equilibrium_distance enabled="false" units="dimensionless">1.8</set_relative_equilibrium_distance>
+                        <set_absolute_equilibrium_distance enabled="false" units="micron">15.12</set_absolute_equilibrium_distance>
+                    </options>
+                    <attachment_elastic_constant units="1/min">0.01</attachment_elastic_constant>
+                    <attachment_rate units="1/min">0.0</attachment_rate>
+                    <detachment_rate units="1/min">0.0</detachment_rate>
+                    <maximum_number_of_attachments>12</maximum_number_of_attachments>
+                </mechanics>
+                <motility>
+                    <speed units="micron/min">1</speed>
+                    <persistence_time units="min">1</persistence_time>
+                    <migration_bias units="dimensionless">0.5</migration_bias>
+                    <options>
+                        <enabled>false</enabled>
+                        <use_2D>true</use_2D>
+                        <chemotaxis>
+                            <enabled>false</enabled>
+                            <substrate>sebum</substrate>
+                            <direction>1</direction>
+                        </chemotaxis>
+                        <advanced_chemotaxis>
+                            <enabled>false</enabled>
+                            <normalize_each_gradient>false</normalize_each_gradient>
+                            <chemotactic_sensitivities>
+                                <chemotactic_sensitivity substrate="sebum">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AMP">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="Th2_cytokine">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AIP_sa">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AIP_se">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="bacteriocin">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="EPS">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AMP_bound">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="bacteriocin_bound">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="toxin">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AIP_C">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="vHH">0.0</chemotactic_sensitivity>
+                            </chemotactic_sensitivities>
+                        </advanced_chemotaxis>
+                    </options>
+                </motility>
+                <secretion>
+                    <substrate name="sebum">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">8e-4</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AMP">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="Th2_cytokine">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AIP_sa">
+                        <secretion_rate units="1/min">0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AIP_se">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="bacteriocin">
+                        <secretion_rate units="1/min">1e-3</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="EPS">
+                        <secretion_rate units="1/min">0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AMP_bound">
+                        <secretion_rate units="1/min" />
+                        <secretion_target units="substrate density">0.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="bacteriocin_bound">
+                        <secretion_rate units="1/min" />
+                        <secretion_target units="substrate density">0.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="toxin">
+                        <secretion_rate units="1/min">0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AIP_C">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="vHH">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                </secretion>
+                <cell_interactions>
+                    <apoptotic_phagocytosis_rate units="1/min">0</apoptotic_phagocytosis_rate>
+                    <necrotic_phagocytosis_rate units="1/min">0</necrotic_phagocytosis_rate>
+                    <other_dead_phagocytosis_rate units="1/min">0</other_dead_phagocytosis_rate>
+                    <live_phagocytosis_rates>
+                        <phagocytosis_rate name="S.aurenus" units="1/min">0</phagocytosis_rate>
+                        <phagocytosis_rate name="sebocyte" units="1/min">0.0</phagocytosis_rate>
+                        <phagocytosis_rate name="S.epidermis" units="1/min">0</phagocytosis_rate>
+                        <phagocytosis_rate name="S.hominis" units="1/min">0</phagocytosis_rate>
+                        <phagocytosis_rate name="other commensals" units="1/min">0</phagocytosis_rate>
+                        <phagocytosis_rate name="engr_S.epidermis" units="1/min">0</phagocytosis_rate>
+                    </live_phagocytosis_rates>
+                    <attack_rates>
+                        <attack_rate name="S.aurenus" units="1/min">0</attack_rate>
+                        <attack_rate name="sebocyte" units="1/min">0.0</attack_rate>
+                        <attack_rate name="S.epidermis" units="1/min">0</attack_rate>
+                        <attack_rate name="S.hominis" units="1/min">0</attack_rate>
+                        <attack_rate name="other commensals" units="1/min">0</attack_rate>
+                        <attack_rate name="engr_S.epidermis" units="1/min">0</attack_rate>
+                    </attack_rates>
+                    <attack_damage_rate units="1/min">1</attack_damage_rate>
+                    <attack_duration units="min">0.1</attack_duration>
+                    <fusion_rates>
+                        <fusion_rate name="S.aurenus" units="1/min">0</fusion_rate>
+                        <fusion_rate name="sebocyte" units="1/min">0.0</fusion_rate>
+                        <fusion_rate name="S.epidermis" units="1/min">0</fusion_rate>
+                        <fusion_rate name="S.hominis" units="1/min">0</fusion_rate>
+                        <fusion_rate name="other commensals" units="1/min">0</fusion_rate>
+                        <fusion_rate name="engr_S.epidermis" units="1/min">0</fusion_rate>
+                    </fusion_rates>
+                </cell_interactions>
+                <cell_transformations>
+                    <transformation_rates>
+                        <transformation_rate name="S.aurenus" units="1/min">0</transformation_rate>
+                        <transformation_rate name="sebocyte" units="1/min">0.0</transformation_rate>
+                        <transformation_rate name="S.epidermis" units="1/min">0</transformation_rate>
+                        <transformation_rate name="S.hominis" units="1/min">0</transformation_rate>
+                        <transformation_rate name="other commensals" units="1/min">0</transformation_rate>
+                        <transformation_rate name="engr_S.epidermis" units="1/min">0</transformation_rate>
+                    </transformation_rates>
+                </cell_transformations>
+                <cell_integrity>
+                    <damage_rate units="1/min">0.0</damage_rate>
+                    <damage_repair_rate units="1/min">0.0</damage_repair_rate>
+                </cell_integrity>
+            </phenotype>
+            <custom_data>
+                <sample conserved="false" units="dimensionless" description="">1.0</sample>
+            </custom_data>
+            <initial_parameter_distributions enabled="false">
+                <distribution enabled="false" type="Log10Normal" check_base="true">
+                    <behavior>Volume</behavior>
+                    <mu>4</mu>
+                    <sigma>2</sigma>
+                    <upper_bound>100000</upper_bound>
+                </distribution>
+                <distribution enabled="false" type="LogUniform" check_base="true">
+                    <behavior>apoptosis</behavior>
+                    <min>1e-6</min>
+                    <max>1e-2</max>
+                </distribution>
+            </initial_parameter_distributions>
+        </cell_definition>
+        <cell_definition name="other commensals" ID="4">
+            <phenotype>
+                <cycle code="5" name="live">
+                    <phase_durations units="min">
+                        <duration index="0" fixed_duration="false">35970.122302</duration>
+                    </phase_durations>
+                    <standard_asymmetric_division enabled="False">
+                        <asymmetric_division_probability name="S.aurenus" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="sebocyte" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="S.epidermis" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="S.hominis" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="other commensals" units="dimensionless">1.0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="engr_S.epidermis" units="dimensionless">0</asymmetric_division_probability>
+                    </standard_asymmetric_division>
+                </cycle>
+                <death>
+                    <model code="100" name="apoptosis">
+                        <death_rate units="1/min">0</death_rate>
+                        <phase_durations units="min">
+                            <duration index="0" fixed_duration="true">516</duration>
+                        </phase_durations>
+                        <parameters>
+                            <unlysed_fluid_change_rate units="1/min">0.05</unlysed_fluid_change_rate>
+                            <lysed_fluid_change_rate units="1/min">0</lysed_fluid_change_rate>
+                            <cytoplasmic_biomass_change_rate units="1/min">1.66667e-02</cytoplasmic_biomass_change_rate>
+                            <nuclear_biomass_change_rate units="1/min">5.83333e-03</nuclear_biomass_change_rate>
+                            <calcification_rate units="1/min">0</calcification_rate>
+                            <relative_rupture_volume units="dimensionless">2.0</relative_rupture_volume>
+                        </parameters>
+                    </model>
+                    <model code="101" name="necrosis">
+                        <death_rate units="1/min">1e-5</death_rate>
+                        <phase_durations units="min">
+                            <duration index="0" fixed_duration="true">0</duration>
+                            <duration index="1" fixed_duration="true">86400</duration>
+                        </phase_durations>
+                        <parameters>
+                            <unlysed_fluid_change_rate units="1/min">1.11667e-2</unlysed_fluid_change_rate>
+                            <lysed_fluid_change_rate units="1/min">8.33333e-4</lysed_fluid_change_rate>
+                            <cytoplasmic_biomass_change_rate units="1/min">5.33333e-3</cytoplasmic_biomass_change_rate>
+                            <nuclear_biomass_change_rate units="1/min">0</nuclear_biomass_change_rate>
+                            <calcification_rate units="1/min">0</calcification_rate>
+                            <relative_rupture_volume units="dimensionless">2.0</relative_rupture_volume>
+                        </parameters>
+                    </model>
+                </death>
+                <volume>
+                    <total units="micron^3">7</total>
+                    <fluid_fraction units="dimensionless">0.75</fluid_fraction>
+                    <nuclear units="micron^3">0.05</nuclear>
+                    <fluid_change_rate units="1/min">0.05</fluid_change_rate>
+                    <cytoplasmic_biomass_change_rate units="1/min">0.0045</cytoplasmic_biomass_change_rate>
+                    <nuclear_biomass_change_rate units="1/min">0</nuclear_biomass_change_rate>
+                    <calcified_fraction units="dimensionless">0</calcified_fraction>
+                    <calcification_rate units="1/min">0</calcification_rate>
+                    <relative_rupture_volume units="dimensionless">2.0</relative_rupture_volume>
+                </volume>
+                <mechanics>
+                    <cell_cell_adhesion_strength units="micron/min">0.1</cell_cell_adhesion_strength>
+                    <cell_cell_repulsion_strength units="micron/min">5</cell_cell_repulsion_strength>
+                    <relative_maximum_adhesion_distance units="dimensionless">1.25</relative_maximum_adhesion_distance>
+                    <cell_adhesion_affinities>
+                        <cell_adhesion_affinity name="S.aurenus">1</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="sebocyte">1.0</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="S.epidermis">1</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="S.hominis">1</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="other commensals">1</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="engr_S.epidermis">1</cell_adhesion_affinity>
+                    </cell_adhesion_affinities>
+                    <options>
+                        <set_relative_equilibrium_distance enabled="false" units="dimensionless">1.8</set_relative_equilibrium_distance>
+                        <set_absolute_equilibrium_distance enabled="false" units="micron">15.12</set_absolute_equilibrium_distance>
+                    </options>
+                    <attachment_elastic_constant units="1/min">0.01</attachment_elastic_constant>
+                    <attachment_rate units="1/min">0.0</attachment_rate>
+                    <detachment_rate units="1/min">0.0</detachment_rate>
+                    <maximum_number_of_attachments>12</maximum_number_of_attachments>
+                </mechanics>
+                <motility>
+                    <speed units="micron/min">1</speed>
+                    <persistence_time units="min">1</persistence_time>
+                    <migration_bias units="dimensionless">0.5</migration_bias>
+                    <options>
+                        <enabled>false</enabled>
+                        <use_2D>true</use_2D>
+                        <chemotaxis>
+                            <enabled>false</enabled>
+                            <substrate>sebum</substrate>
+                            <direction>1</direction>
+                        </chemotaxis>
+                        <advanced_chemotaxis>
+                            <enabled>false</enabled>
+                            <normalize_each_gradient>false</normalize_each_gradient>
+                            <chemotactic_sensitivities>
+                                <chemotactic_sensitivity substrate="sebum">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AMP">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="Th2_cytokine">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AIP_sa">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AIP_se">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="bacteriocin">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="EPS">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AMP_bound">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="bacteriocin_bound">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="toxin">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AIP_C">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="vHH">0.0</chemotactic_sensitivity>
+                            </chemotactic_sensitivities>
+                        </advanced_chemotaxis>
+                    </options>
+                </motility>
+                <secretion>
+                    <substrate name="sebum">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">5e-4</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AMP">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="Th2_cytokine">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AIP_sa">
+                        <secretion_rate units="1/min">0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AIP_se">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="bacteriocin">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="EPS">
+                        <secretion_rate units="1/min">0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AMP_bound">
+                        <secretion_rate units="1/min" />
+                        <secretion_target units="substrate density">0.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="bacteriocin_bound">
+                        <secretion_rate units="1/min" />
+                        <secretion_target units="substrate density">0.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="toxin">
+                        <secretion_rate units="1/min">0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AIP_C">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="vHH">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                </secretion>
+                <cell_interactions>
+                    <apoptotic_phagocytosis_rate units="1/min">0</apoptotic_phagocytosis_rate>
+                    <necrotic_phagocytosis_rate units="1/min">0</necrotic_phagocytosis_rate>
+                    <other_dead_phagocytosis_rate units="1/min">0</other_dead_phagocytosis_rate>
+                    <live_phagocytosis_rates>
+                        <phagocytosis_rate name="S.aurenus" units="1/min">0</phagocytosis_rate>
+                        <phagocytosis_rate name="sebocyte" units="1/min">0.0</phagocytosis_rate>
+                        <phagocytosis_rate name="S.epidermis" units="1/min">0</phagocytosis_rate>
+                        <phagocytosis_rate name="S.hominis" units="1/min">0</phagocytosis_rate>
+                        <phagocytosis_rate name="other commensals" units="1/min">0</phagocytosis_rate>
+                        <phagocytosis_rate name="engr_S.epidermis" units="1/min">0</phagocytosis_rate>
+                    </live_phagocytosis_rates>
+                    <attack_rates>
+                        <attack_rate name="S.aurenus" units="1/min">0</attack_rate>
+                        <attack_rate name="sebocyte" units="1/min">0.0</attack_rate>
+                        <attack_rate name="S.epidermis" units="1/min">0</attack_rate>
+                        <attack_rate name="S.hominis" units="1/min">0</attack_rate>
+                        <attack_rate name="other commensals" units="1/min">0</attack_rate>
+                        <attack_rate name="engr_S.epidermis" units="1/min">0</attack_rate>
+                    </attack_rates>
+                    <attack_damage_rate units="1/min">1</attack_damage_rate>
+                    <attack_duration units="min">0.1</attack_duration>
+                    <fusion_rates>
+                        <fusion_rate name="S.aurenus" units="1/min">0</fusion_rate>
+                        <fusion_rate name="sebocyte" units="1/min">0.0</fusion_rate>
+                        <fusion_rate name="S.epidermis" units="1/min">0</fusion_rate>
+                        <fusion_rate name="S.hominis" units="1/min">0</fusion_rate>
+                        <fusion_rate name="other commensals" units="1/min">0</fusion_rate>
+                        <fusion_rate name="engr_S.epidermis" units="1/min">0</fusion_rate>
+                    </fusion_rates>
+                </cell_interactions>
+                <cell_transformations>
+                    <transformation_rates>
+                        <transformation_rate name="S.aurenus" units="1/min">0</transformation_rate>
+                        <transformation_rate name="sebocyte" units="1/min">0.0</transformation_rate>
+                        <transformation_rate name="S.epidermis" units="1/min">0</transformation_rate>
+                        <transformation_rate name="S.hominis" units="1/min">0</transformation_rate>
+                        <transformation_rate name="other commensals" units="1/min">0</transformation_rate>
+                        <transformation_rate name="engr_S.epidermis" units="1/min">0</transformation_rate>
+                    </transformation_rates>
+                </cell_transformations>
+                <cell_integrity>
+                    <damage_rate units="1/min">0.0</damage_rate>
+                    <damage_repair_rate units="1/min">0.0</damage_repair_rate>
+                </cell_integrity>
+            </phenotype>
+            <custom_data>
+                <sample conserved="false" units="dimensionless" description="">1.0</sample>
+            </custom_data>
+            <initial_parameter_distributions enabled="false">
+                <distribution enabled="false" type="Log10Normal" check_base="true">
+                    <behavior>Volume</behavior>
+                    <mu>4</mu>
+                    <sigma>2</sigma>
+                    <upper_bound>100000</upper_bound>
+                </distribution>
+                <distribution enabled="false" type="LogUniform" check_base="true">
+                    <behavior>apoptosis</behavior>
+                    <min>1e-6</min>
+                    <max>1e-2</max>
+                </distribution>
+            </initial_parameter_distributions>
+        </cell_definition>
+        <cell_definition name="engr_S.epidermis" ID="5">
+            <phenotype>
+                <cycle code="5" name="live">
+                    <phase_durations units="min">
+                        <duration index="0" fixed_duration="false">14925.373134</duration>
+                    </phase_durations>
+                    <standard_asymmetric_division enabled="False">
+                        <asymmetric_division_probability name="S.aurenus" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="sebocyte" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="S.epidermis" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="S.hominis" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="other commensals" units="dimensionless">0</asymmetric_division_probability>
+                        <asymmetric_division_probability name="engr_S.epidermis" units="dimensionless">1.0</asymmetric_division_probability>
+                    </standard_asymmetric_division>
+                </cycle>
+                <death>
+                    <model code="100" name="apoptosis">
+                        <death_rate units="1/min">0</death_rate>
+                        <phase_durations units="min">
+                            <duration index="0" fixed_duration="true">516</duration>
+                        </phase_durations>
+                        <parameters>
+                            <unlysed_fluid_change_rate units="1/min">0.05</unlysed_fluid_change_rate>
+                            <lysed_fluid_change_rate units="1/min">0</lysed_fluid_change_rate>
+                            <cytoplasmic_biomass_change_rate units="1/min">1.66667e-02</cytoplasmic_biomass_change_rate>
+                            <nuclear_biomass_change_rate units="1/min">5.83333e-03</nuclear_biomass_change_rate>
+                            <calcification_rate units="1/min">0</calcification_rate>
+                            <relative_rupture_volume units="dimensionless">2.0</relative_rupture_volume>
+                        </parameters>
+                    </model>
+                    <model code="101" name="necrosis">
+                        <death_rate units="1/min">1e-5</death_rate>
+                        <phase_durations units="min">
+                            <duration index="0" fixed_duration="true">0</duration>
+                            <duration index="1" fixed_duration="true">86400</duration>
+                        </phase_durations>
+                        <parameters>
+                            <unlysed_fluid_change_rate units="1/min">1.11667e-2</unlysed_fluid_change_rate>
+                            <lysed_fluid_change_rate units="1/min">8.33333e-4</lysed_fluid_change_rate>
+                            <cytoplasmic_biomass_change_rate units="1/min">5.33333e-3</cytoplasmic_biomass_change_rate>
+                            <nuclear_biomass_change_rate units="1/min">0</nuclear_biomass_change_rate>
+                            <calcification_rate units="1/min">0</calcification_rate>
+                            <relative_rupture_volume units="dimensionless">2.0</relative_rupture_volume>
+                        </parameters>
+                    </model>
+                </death>
+                <volume>
+                    <total units="micron^3">6</total>
+                    <fluid_fraction units="dimensionless">0.75</fluid_fraction>
+                    <nuclear units="micron^3">0.05</nuclear>
+                    <fluid_change_rate units="1/min">0.05</fluid_change_rate>
+                    <cytoplasmic_biomass_change_rate units="1/min">0.0045</cytoplasmic_biomass_change_rate>
+                    <nuclear_biomass_change_rate units="1/min">0</nuclear_biomass_change_rate>
+                    <calcified_fraction units="dimensionless">0</calcified_fraction>
+                    <calcification_rate units="1/min">0</calcification_rate>
+                    <relative_rupture_volume units="dimensionless">2.0</relative_rupture_volume>
+                </volume>
+                <mechanics>
+                    <cell_cell_adhesion_strength units="micron/min">0.15</cell_cell_adhesion_strength>
+                    <cell_cell_repulsion_strength units="micron/min">6</cell_cell_repulsion_strength>
+                    <relative_maximum_adhesion_distance units="dimensionless">1.5</relative_maximum_adhesion_distance>
+                    <cell_adhesion_affinities>
+                        <cell_adhesion_affinity name="S.aurenus">1</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="sebocyte">1.0</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="S.epidermis">1</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="S.hominis">1</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="other commensals">1</cell_adhesion_affinity>
+                        <cell_adhesion_affinity name="engr_S.epidermis">1</cell_adhesion_affinity>
+                    </cell_adhesion_affinities>
+                    <options>
+                        <set_relative_equilibrium_distance enabled="false" units="dimensionless">1.8</set_relative_equilibrium_distance>
+                        <set_absolute_equilibrium_distance enabled="false" units="micron">15.12</set_absolute_equilibrium_distance>
+                    </options>
+                    <attachment_elastic_constant units="1/min">0.01</attachment_elastic_constant>
+                    <attachment_rate units="1/min">0.0</attachment_rate>
+                    <detachment_rate units="1/min">0.0</detachment_rate>
+                    <maximum_number_of_attachments>12</maximum_number_of_attachments>
+                </mechanics>
+                <motility>
+                    <speed units="micron/min">1</speed>
+                    <persistence_time units="min">1</persistence_time>
+                    <migration_bias units="dimensionless">0.5</migration_bias>
+                    <options>
+                        <enabled>false</enabled>
+                        <use_2D>true</use_2D>
+                        <chemotaxis>
+                            <enabled>false</enabled>
+                            <substrate>sebum</substrate>
+                            <direction>1</direction>
+                        </chemotaxis>
+                        <advanced_chemotaxis>
+                            <enabled>false</enabled>
+                            <normalize_each_gradient>false</normalize_each_gradient>
+                            <chemotactic_sensitivities>
+                                <chemotactic_sensitivity substrate="sebum">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AMP">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="Th2_cytokine">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AIP_sa">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AIP_se">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="bacteriocin">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="EPS">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AMP_bound">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="bacteriocin_bound">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="toxin">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="AIP_C">0.0</chemotactic_sensitivity>
+                                <chemotactic_sensitivity substrate="vHH">0.0</chemotactic_sensitivity>
+                            </chemotactic_sensitivities>
+                        </advanced_chemotaxis>
+                    </options>
+                </motility>
+                <secretion>
+                    <substrate name="sebum">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">8e-4</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AMP">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="Th2_cytokine">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AIP_sa">
+                        <secretion_rate units="1/min">0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AIP_se">
+                        <secretion_rate units="1/min">0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="bacteriocin">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="EPS">
+                        <secretion_rate units="1/min">0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AMP_bound">
+                        <secretion_rate units="1/min" />
+                        <secretion_target units="substrate density">0.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="bacteriocin_bound">
+                        <secretion_rate units="1/min">0.0</secretion_rate>
+                        <secretion_target units="substrate density">0.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="toxin">
+                        <secretion_rate units="1/min">0</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="AIP_C">
+                        <secretion_rate units="1/min">0.02</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                    <substrate name="vHH">
+                        <secretion_rate units="1/min">2e-3</secretion_rate>
+                        <secretion_target units="substrate density">1.0</secretion_target>
+                        <uptake_rate units="1/min">0.0</uptake_rate>
+                        <net_export_rate units="total substrate/min">0.0</net_export_rate>
+                    </substrate>
+                </secretion>
+                <cell_interactions>
+                    <apoptotic_phagocytosis_rate units="1/min">0</apoptotic_phagocytosis_rate>
+                    <necrotic_phagocytosis_rate units="1/min">0</necrotic_phagocytosis_rate>
+                    <other_dead_phagocytosis_rate units="1/min">0</other_dead_phagocytosis_rate>
+                    <live_phagocytosis_rates>
+                        <phagocytosis_rate name="S.aurenus" units="1/min">0</phagocytosis_rate>
+                        <phagocytosis_rate name="sebocyte" units="1/min">0.0</phagocytosis_rate>
+                        <phagocytosis_rate name="S.epidermis" units="1/min">0</phagocytosis_rate>
+                        <phagocytosis_rate name="S.hominis" units="1/min">0</phagocytosis_rate>
+                        <phagocytosis_rate name="other commensals" units="1/min">0</phagocytosis_rate>
+                        <phagocytosis_rate name="engr_S.epidermis" units="1/min">0</phagocytosis_rate>
+                    </live_phagocytosis_rates>
+                    <attack_rates>
+                        <attack_rate name="S.aurenus" units="1/min">0</attack_rate>
+                        <attack_rate name="sebocyte" units="1/min">0.0</attack_rate>
+                        <attack_rate name="S.epidermis" units="1/min">0</attack_rate>
+                        <attack_rate name="S.hominis" units="1/min">0</attack_rate>
+                        <attack_rate name="other commensals" units="1/min">0</attack_rate>
+                        <attack_rate name="engr_S.epidermis" units="1/min">0</attack_rate>
+                    </attack_rates>
+                    <attack_damage_rate units="1/min">1</attack_damage_rate>
+                    <attack_duration units="min">0.1</attack_duration>
+                    <fusion_rates>
+                        <fusion_rate name="S.aurenus" units="1/min">0</fusion_rate>
+                        <fusion_rate name="sebocyte" units="1/min">0.0</fusion_rate>
+                        <fusion_rate name="S.epidermis" units="1/min">0</fusion_rate>
+                        <fusion_rate name="S.hominis" units="1/min">0</fusion_rate>
+                        <fusion_rate name="other commensals" units="1/min">0</fusion_rate>
+                        <fusion_rate name="engr_S.epidermis" units="1/min">0</fusion_rate>
+                    </fusion_rates>
+                </cell_interactions>
+                <cell_transformations>
+                    <transformation_rates>
+                        <transformation_rate name="S.aurenus" units="1/min">0</transformation_rate>
+                        <transformation_rate name="sebocyte" units="1/min">0.0</transformation_rate>
+                        <transformation_rate name="S.epidermis" units="1/min">0</transformation_rate>
+                        <transformation_rate name="S.hominis" units="1/min">0</transformation_rate>
+                        <transformation_rate name="other commensals" units="1/min">0</transformation_rate>
+                        <transformation_rate name="engr_S.epidermis" units="1/min">0</transformation_rate>
+                    </transformation_rates>
+                </cell_transformations>
+                <cell_integrity>
+                    <damage_rate units="1/min">0.0</damage_rate>
+                    <damage_repair_rate units="1/min">0.0</damage_repair_rate>
+                </cell_integrity>
+            </phenotype>
+            <custom_data>
+                <sample conserved="false" units="dimensionless" description="">1.0</sample>
+            </custom_data>
+            <initial_parameter_distributions enabled="false">
+                <distribution enabled="false" type="Log10Normal" check_base="true">
+                    <behavior>Volume</behavior>
+                    <mu>4</mu>
+                    <sigma>2</sigma>
+                    <upper_bound>100000</upper_bound>
+                </distribution>
+                <distribution enabled="false" type="LogUniform" check_base="true">
+                    <behavior>apoptosis</behavior>
+                    <min>1e-6</min>
+                    <max>1e-2</max>
+                </distribution>
+            </initial_parameter_distributions>
+        </cell_definition>
+    </cell_definitions>
+
+    <initial_conditions>
+        <cell_positions type="csv" enabled="true">
+            <folder>./config</folder>
+            <filename>cells.csv</filename>
+        </cell_positions>
+    </initial_conditions>
+
+    <cell_rules>
+        <rulesets>
+            <ruleset protocol="CBHG" version="3.0" format="csv" enabled="true">
+                <folder>./config</folder>
+                <filename>cell_rules.csv</filename>
+            </ruleset>
+        </rulesets>
+        <settings />
+    </cell_rules>
+</PhysiCell_settings>

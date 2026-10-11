@@ -1,0 +1,12 @@
+{
+  "run_id": 920,
+  "parameters": {
+    "vHH_to_cytokine_degradation_rate": 1.0,
+    "AIP_C_saturation": 1.0555555555555556,
+    "vHH_saturation": 0.01
+  },
+  "death_definition": "cycle_model >= 100 considered dead (Studio parity)",
+  "include_dead_counts": false,
+  "population_timeseries": "population_timeseries.csv",
+  "timestamp": "2025-10-03 03:40:01"
+}

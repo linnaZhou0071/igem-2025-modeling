@@ -1,0 +1,54 @@
+{
+  "scope": "Compilation and one-minute execution checks, not full-horizon scientific validation",
+  "physicell_version": "1.14.2",
+  "models": [
+    {
+      "model": "AD_trial1",
+      "compile_exit": 0,
+      "run_exit": 0,
+      "max_time_minutes": 1,
+      "threads": 2,
+      "elapsed_seconds": 4.93
+    },
+    {
+      "model": "AD_trial2",
+      "compile_exit": 0,
+      "run_exit": 0,
+      "max_time_minutes": 1,
+      "threads": 2,
+      "elapsed_seconds": 6.09
+    },
+    {
+      "model": "Recurrence",
+      "compile_exit": 0,
+      "run_exit": 0,
+      "max_time_minutes": 1,
+      "threads": 2
+    },
+    {
+      "model": "Treatment",
+      "compile_exit": 0,
+      "run_exit": 0,
+      "max_time_minutes": 1,
+      "threads": 2,
+      "elapsed_seconds": 7.52
+    },
+    {
+      "model": "AD_3D",
+      "compile_exit": 0,
+      "run_exit": 0,
+      "max_time_minutes": 1,
+      "threads": 2,
+      "elapsed_seconds": 5.42
+    },
+    {
+      "model": "Recurrence_3D",
+      "compile_exit": 0,
+      "run_exit": 0,
+      "max_time_minutes": 1,
+      "threads": 2,
+      "configuration": "PhysiCell_settings.xml",
+      "note": "Repeated using explicit active-settings mapping; stale settings file is excluded from execution."
+    }
+  ]
+}

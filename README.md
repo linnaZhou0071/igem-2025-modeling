@@ -36,15 +36,19 @@ PhysiCell, BioFVM, the cell behavior grammar framework and MATLAB SimBiology are
 
 ## Selected computational results
 
-![Recomputed parameter sweep scores](docs/figures/parameter-space.png)
+![Original 2025 wiki parameter-scan score space](docs/wiki/media/physicell4/media/image9.png)
 
-The archived sweep contains **1,000 parameter combinations, each with 25 time points over 24 simulated hours**. Every archived score was recomputed and matched exactly. Orange rings mark the top 5% under the original population objective.
+*Original 2025 wiki figure 41: the parameter-scan score space. This is an original project figure extracted from the supplied wiki draft.*
 
-![Population trajectories of the highest- and lowest-scoring archived runs](docs/figures/population-comparison.png)
+![Original 2025 recurrence population and substrate plots](docs/wiki/media/physicell4/media/image2.gif)
 
-The highest-scoring archived combination is **run 791**, with a score of **0.994872**. This is an optimum within the sampled grid and scoring definition. The objective penalizes *S. aureus* population increases and engineered-strain population losses; it does not directly score cytokines, toxicity, or clinical outcomes.
+*Original 2025 wiki figure 30: population and substrate plots for the Recurrence model, preserved in the embedded animation format.*
 
-The original wiki reports lower simulated toxin and cytokine fields in recurrence scenarios with the engineered strain, and localized 3D responses to nearby pathogenic colonies. These observations motivate further design work. They are computational results, and the full field-output datasets needed to independently reproduce those figures were not included in the supplied GitLab repository.
+The original wiki reports lower simulated toxin and cytokine fields in recurrence scenarios with the engineered strain, and localized 3D responses to nearby pathogenic colonies. These observations motivate further design work. They are computational results; full historical field-output datasets were not included in the supplied GitLab repository.
+
+The archived sweep contains **1,000 parameter combinations, each with 25 time points over 24 simulated hours**. During portfolio preparation, every archived population score was recomputed and matched exactly. The scoring objective penalizes pathogen population increases and engineered-strain population losses; it does not directly score clinical outcomes.
+
+The [verification appendix](docs/VERIFICATION.md) records these checks and contains clearly labeled plots newly generated from the archived CSVs in October 2026. Those plots are separate from the original 2025 figures displayed above.
 
 ## Quick start
 

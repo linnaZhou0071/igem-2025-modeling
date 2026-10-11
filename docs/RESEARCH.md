@@ -51,7 +51,9 @@ $$\mathrm{Score}=\frac{1}{1+P}.$$
 
 A high score means the two populations satisfy the chosen objective over the archived horizon. It does not measure inflammation directly, establish an experimentally validated optimum, or test long-term safety. The archived population series span 24 hours, while the active recurrence settings specify 48 hours; those horizons must not be conflated.
 
-![Mean score across AIP-C settings](figures/mean-score.png)
+![Verification plot generated in October 2026 from archived CSVs](figures/mean-score.png)
+
+*New verification plot generated during portfolio preparation in October 2026; this is not an original 2025 wiki figure. The 2025 original parameter-space figures are preserved in the [results draft](wiki/physicell4.md).*
 
 The highest-scoring archived combination is run 791: coefficient **0.8**, AIP-C saturation **3.0**, and VHH saturation **0.0644444**, with score **0.994872**. Its pathogen count changes from **1,350 to 1,308** and engineered-strain count from **3,000 to 3,076** over 24 hours. All 1,000 stored scores match recomputation exactly. The source supplies one trajectory for each parameter combination; biological robustness and stochastic uncertainty require additional validation.
 

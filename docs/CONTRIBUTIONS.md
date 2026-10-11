@@ -21,7 +21,7 @@ Wet-lab assays, the broader therapeutic concept and team project outcomes are co
 ## Original sources
 
 - [Public iGEM GitLab project](https://gitlab.igem.org/linnazhou/model-tools-for-2025-sjtu-biox-shanghai), source commit `6d03dda30d6ff2c6e825f2a66b8d3ef4b4a549f5`, dated 2025-10-08.
-- Local `wiki_description/`: six original Word documents, copied byte-for-byte to [originals](originals).
+- Local `wiki_description/`: six original Word documents, retained locally at the author’s request. Their Markdown conversions and extracted figures are published in [wiki](wiki).
 - Local PhysiCell 1.14.2: core, modules, BioFVM and license files, retained separately under `vendor/PhysiCell`.
 
 [source-manifest.json](source-manifest.json) records source locations and file hashes, plus excluded backups and runtime artifacts. The original GitLab repository remains the reference for historical commits. This curated repository is a documented portfolio export rather than a full GitLab history mirror.

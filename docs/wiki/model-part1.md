@@ -1,6 +1,6 @@
 # MODEL Part1 — original wiki draft
 
-> Converted from [MODEL Part1.docx](../originals/MODEL%20Part1.docx). Original draft wording, figures and equations are preserved; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
+> Converted from the locally retained source document `MODEL Part1.docx`. Original draft wording, figures and equations are preserved; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
 
 # Molecular-Level Validation with Gene Circuit Stimulation
 

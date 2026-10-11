@@ -14917,42 +14917,6 @@
       "source_path": "BioFVM/BioFVM_matlab.cpp",
       "path": "vendor/PhysiCell/BioFVM/BioFVM_matlab.cpp",
       "sha256": "ab5c8863153c188efcd43c571f1c16b8072526113b3f67938127ee9d838df790"
-    },
-    {
-      "source": "local wiki_description",
-      "source_path": "PhysiCell4.docx",
-      "path": "docs/originals/PhysiCell4.docx",
-      "sha256": "2d5cc8cd7e9444a60ab30efe269852488529385a914baf49e477cfc48d91c54c"
-    },
-    {
-      "source": "local wiki_description",
-      "source_path": "PhysiCell1.docx",
-      "path": "docs/originals/PhysiCell1.docx",
-      "sha256": "0e6dc028d1fe0583ba5ed94adbf8c8bfac4913189fdcdaee61f6798a1f881af7"
-    },
-    {
-      "source": "local wiki_description",
-      "source_path": "Overview.docx",
-      "path": "docs/originals/Overview.docx",
-      "sha256": "ac64658e4c673a216d117b6223f9f867aadf29791fe2fbc2478ee8454d7d5806"
-    },
-    {
-      "source": "local wiki_description",
-      "source_path": "PhysiCell3.docx",
-      "path": "docs/originals/PhysiCell3.docx",
-      "sha256": "d45e6dbb2aca184af74a6c78649b237c540b779614e9333a498be28557112509"
-    },
-    {
-      "source": "local wiki_description",
-      "source_path": "MODEL Part1.docx",
-      "path": "docs/originals/MODEL Part1.docx",
-      "sha256": "2e9bbc68d37e3ac7c8aac674035a22cedf5b770fd73866f72c12e9bd1b57f897"
-    },
-    {
-      "source": "local wiki_description",
-      "source_path": "PhysiCell2.docx",
-      "path": "docs/originals/PhysiCell2.docx",
-      "sha256": "048efc60f51dd5315831984210d2c255ea37cf0f54fe54930a2dfd0bb31dd5cf"
     }
   ],
   "excluded_gitlab_paths": [
@@ -14980,5 +14944,43 @@
     "Treatment/config/PhysiCell_settings-backup.xml",
     "Treatment/custom_modules/empty.txt"
   ],
-  "publication_notes": "Machine-specific absolute filesystem paths removed from exported configuration and metadata copies. Source hashes retained separately for transformed files; original GitLab source remains the historical reference."
+  "publication_notes": "Machine-specific absolute filesystem paths removed from exported configuration and metadata copies. Source hashes retained separately for transformed files; original GitLab source remains the historical reference.",
+  "local_only_sources": [
+    {
+      "source": "local wiki_description",
+      "source_path": "PhysiCell4.docx",
+      "sha256": "2d5cc8cd7e9444a60ab30efe269852488529385a914baf49e477cfc48d91c54c",
+      "publication": "Original Word retained locally; Markdown and extracted figures published."
+    },
+    {
+      "source": "local wiki_description",
+      "source_path": "PhysiCell1.docx",
+      "sha256": "0e6dc028d1fe0583ba5ed94adbf8c8bfac4913189fdcdaee61f6798a1f881af7",
+      "publication": "Original Word retained locally; Markdown and extracted figures published."
+    },
+    {
+      "source": "local wiki_description",
+      "source_path": "Overview.docx",
+      "sha256": "ac64658e4c673a216d117b6223f9f867aadf29791fe2fbc2478ee8454d7d5806",
+      "publication": "Original Word retained locally; Markdown and extracted figures published."
+    },
+    {
+      "source": "local wiki_description",
+      "source_path": "PhysiCell3.docx",
+      "sha256": "d45e6dbb2aca184af74a6c78649b237c540b779614e9333a498be28557112509",
+      "publication": "Original Word retained locally; Markdown and extracted figures published."
+    },
+    {
+      "source": "local wiki_description",
+      "source_path": "MODEL Part1.docx",
+      "sha256": "2e9bbc68d37e3ac7c8aac674035a22cedf5b770fd73866f72c12e9bd1b57f897",
+      "publication": "Original Word retained locally; Markdown and extracted figures published."
+    },
+    {
+      "source": "local wiki_description",
+      "source_path": "PhysiCell2.docx",
+      "sha256": "048efc60f51dd5315831984210d2c255ea37cf0f54fe54930a2dfd0bb31dd5cf",
+      "publication": "Original Word retained locally; Markdown and extracted figures published."
+    }
+  ]
 }

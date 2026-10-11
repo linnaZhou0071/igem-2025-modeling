@@ -1,6 +1,6 @@
 # PhysiCell4 — original wiki draft
 
-> Converted from [PhysiCell4.docx](../originals/PhysiCell4.docx). Original draft wording, figures and equations are preserved; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
+> Converted from the locally retained source document `PhysiCell4.docx`. Original draft wording, figures and equations are preserved; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
 
 ### Results-Validation of the Planting and Treatment Capacity
 

@@ -1,6 +1,6 @@
 # Overview — original wiki draft
 
-> Converted from [Overview.docx](../originals/Overview.docx). Original draft wording, figures and equations are preserved; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
+> Converted from the locally retained source document `Overview.docx`. Original draft wording, figures and equations are preserved; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
 
 Highlights
 

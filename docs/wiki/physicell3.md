@@ -1,6 +1,6 @@
 # PhysiCell3 — original wiki draft
 
-> Converted from [PhysiCell3.docx](../originals/PhysiCell3.docx). Original draft wording, figures and equations are preserved; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
+> Converted from the locally retained source document `PhysiCell3.docx`. Original draft wording, figures and equations are preserved; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
 
 ### Model Building-Recurrence and Treatment Model
 

@@ -85,11 +85,10 @@ scripts/                 Portable model runner and result verification/plotting
 results/                 Recomputed scores, verification report and offline HTML
 docs/                    Research narrative, contribution statement and run guide
 docs/wiki/               Searchable conversions with extracted original figures
-docs/originals/           All six original Word drafts, unchanged
 vendor/PhysiCell/         Upstream simulation engine, version 1.14.2, with licenses
 ```
 
-Original source files are tracked in a [SHA-256 manifest](docs/source-manifest.json). Backups, stale process files and compiled artifacts are excluded from the curated copy; their original locations remain documented. New packaging, documentation and verification scripts were added during portfolio preparation in October 2026.
+Published source files are tracked in a [SHA-256 manifest](docs/source-manifest.json). The six original Word drafts are retained locally; this public repository includes their Markdown conversions and extracted figures. Backups, stale process files and compiled artifacts are excluded from the curated copy; their original locations remain documented. New packaging, documentation and verification scripts were added during portfolio preparation in October 2026.
 
 ## Attribution
 

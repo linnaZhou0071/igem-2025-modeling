@@ -1,6 +1,6 @@
 # PhysiCell2 — original wiki draft
 
-> Converted from [PhysiCell2.docx](../originals/PhysiCell2.docx). Original draft wording, figures and equations are preserved; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
+> Converted from the locally retained source document `PhysiCell2.docx`. Original draft wording, figures and equations are preserved; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
 
 ### Model Building-Occurrence Model
 

@@ -1,6 +1,6 @@
 # Editorial and evidence notes
 
-The main README and research overview are curated portfolio descriptions. The Word files and their Markdown conversions preserve historical draft content, including editing notes and stronger claims that are not adopted by the portfolio narrative.
+The main README and research overview are curated portfolio descriptions. The locally retained Word files and their published Markdown conversions preserve historical draft content, including editing notes and stronger claims that are not adopted by the portfolio narrative.
 
 | Source issue | Treatment in the portfolio |
 | --- | --- |

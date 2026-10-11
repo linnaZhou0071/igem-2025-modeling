@@ -1,6 +1,6 @@
 # PhysiCell1 — original wiki draft
 
-> Converted from [PhysiCell1.docx](../originals/PhysiCell1.docx). Original draft wording, figures and equations are preserved; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
+> Converted from the locally retained source document `PhysiCell1.docx`. Original draft wording, figures and equations are preserved; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
 
 # 2D&3D Multicellular Behavior Simulation with PhysiCell Studio
 

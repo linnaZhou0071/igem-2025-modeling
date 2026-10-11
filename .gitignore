@@ -6,3 +6,6 @@ __pycache__/
 *.log
 *.pid
 .DS_Store
+
+# Original Word drafts are kept locally by the author.
+docs/originals/

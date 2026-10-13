@@ -4,7 +4,7 @@
 
 I developed the team's modeling workflow to investigate how engineered *Staphylococcus epidermidis* could respond to *S. aureus* quorum sensing, interfere with pathogenic signaling, and modulate an inflammatory skin microenvironment. The work connects molecular circuit analysis, spatial agent-based simulations, and quantitative parameter exploration.
 
-[Research overview](docs/RESEARCH.md) · [My contributions](docs/CONTRIBUTIONS.md) · [Run the models](docs/REPRODUCIBILITY.md) · [Original wiki drafts](docs/wiki/README.md) · [Original iGEM GitLab](https://gitlab.igem.org/linnazhou/model-tools-for-2025-sjtu-biox-shanghai)
+[Research overview](docs/RESEARCH.md) · [My contributions](docs/CONTRIBUTIONS.md) · [Run the models](docs/REPRODUCIBILITY.md) · [Original wiki drafts](docs/wiki/README.md) · [Original iGEM GitLab](https://gitlab.igem.org/linnazhou/model-tools-for-2025-sjtu-biox-shanghai) · [Published team wiki](https://2025.igem.wiki/sjtu-biox-shanghai/model)
 
 ## Research question
 
@@ -38,11 +38,11 @@ PhysiCell, BioFVM, the cell behavior grammar framework and MATLAB SimBiology are
 
 ![Original 2025 wiki parameter-scan score space](docs/wiki/media/physicell4/media/image9.png)
 
-*Original 2025 wiki figure 41: the parameter-scan score space. This is an original project figure extracted from the supplied wiki draft.*
+*Original project figure extracted from the supplied 2025 Word draft; corresponds to Figure 40 (parameter-scan score space) in the published team wiki.*
 
 ![Original 2025 recurrence population and substrate plots](docs/wiki/media/physicell4/media/image2.gif)
 
-*Original 2025 wiki figure 30: population and substrate plots for the Recurrence model, preserved in the embedded animation format.*
+*Original project figure extracted from the supplied 2025 Word draft; corresponds to Figure 29 (population and substrate plots for the Recurrence model) in the published team wiki. The draft’s embedded animation format is preserved.*
 
 The original wiki reports lower simulated toxin and cytokine fields in recurrence scenarios with the engineered strain, and localized 3D responses to nearby pathogenic colonies. These observations motivate further design work. They are computational results; full historical field-output datasets were not included in the supplied GitLab repository.
 

@@ -348,13 +348,17 @@
       "source": "gitlab",
       "source_path": "Recurrence/scatter3d_axes_offline.py",
       "path": "models/Recurrence/scatter3d_axes_offline.py",
-      "sha256": "20cadcb892a489a94261c61f6888be31a8c266ff0bb68f1c2b7f6f74521748b4"
+      "sha256": "768f620c6e0fe700490931a220efbf7e596b90b145e8e05011325df0949ab869",
+      "source_sha256": "20cadcb892a489a94261c61f6888be31a8c266ff0bb68f1c2b7f6f74521748b4",
+      "transformation": "Translate visible visualization instructions into English; numerical and rendering logic unchanged."
     },
     {
       "source": "gitlab",
       "source_path": "Recurrence/score_runs.py",
       "path": "models/Recurrence/score_runs.py",
-      "sha256": "d55e593022ab07c79f90250a418932f0b1517cf7d1ecab334a165516f38aa664"
+      "sha256": "042d63c896ed42f815337d6c285e6b0367959a83a4375368e98aa48f721f15fe",
+      "source_sha256": "d55e593022ab07c79f90250a418932f0b1517cf7d1ecab334a165516f38aa664",
+      "transformation": "Clarify assistant authorship under Y. Zhou's direction; scoring logic unchanged."
     },
     {
       "source": "gitlab",
@@ -14404,7 +14408,9 @@
       "source": "gitlab",
       "source_path": "Recurrence_3D/config/generate_engr_epidermis.py",
       "path": "models/Recurrence_3D/config/generate_engr_epidermis.py",
-      "sha256": "34fac6c9112d04926173b65f02abdc7fd058c8554a31ee73f9292b5d6b0d4e9f"
+      "sha256": "5290cb4dee77cc6efa217c736f25f72dc70e331a3a7aa7403db0d807bb541cf6",
+      "source_sha256": "34fac6c9112d04926173b65f02abdc7fd058c8554a31ee73f9292b5d6b0d4e9f",
+      "transformation": "Translate an inline geometry comment into English; geometry generation unchanged."
     },
     {
       "source": "gitlab",
@@ -14944,7 +14950,7 @@
     "Treatment/config/PhysiCell_settings-backup.xml",
     "Treatment/custom_modules/empty.txt"
   ],
-  "publication_notes": "Machine-specific absolute filesystem paths removed from exported configuration and metadata copies. Source hashes retained separately for transformed files; original GitLab source remains the historical reference.",
+  "publication_notes": "Machine-specific absolute filesystem paths removed from exported configuration and metadata copies. Source hashes retained separately for transformed files; original GitLab source remains the historical reference. Public wiki Markdown edited in October 2026 to remove internal notes, repair conversion artifacts and align figure labels with the published wiki; original Word documents remain local.",
   "local_only_sources": [
     {
       "source": "local wiki_description",

@@ -1,6 +1,6 @@
-# PhysiCell1 — original wiki draft
+# PhysiCell1 — wiki manuscript
 
-> Converted from the locally retained source document `PhysiCell1.docx`. Original draft wording, figures and equations are preserved; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
+> Converted from the locally retained source document `PhysiCell1.docx`. Edited for portfolio readability: internal layout notes and conversion artifacts have been removed. The [published team wiki](https://2025.igem.wiki/sjtu-biox-shanghai/model) presents the final results; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
 
 # 2D&3D Multicellular Behavior Simulation with PhysiCell Studio
 
@@ -21,7 +21,7 @@ Parameter sweep identified optimal regions for the relative functional contribut
 <figcaption><p><mark>fig.10 An illustration of agent-based cell grammar in our system</mark></p></figcaption>
 </figure>
 
-<span class="mark">两个dictionary的折叠（现在打不开）</span>
+[Signal dictionary](https://static.igem.wiki/teams/5615/wiki/model/signal-dictionary.pdf) · [Behavior dictionary](https://static.igem.wiki/teams/5615/wiki/model/behavior-dictionary.pdf)
 
 The core design of our system is the **interspecies interaction** between *S. aureus* and engineered *S. epidermidis*: AIP secreted by *S. aureus* activates the engineered *S. epidermidis* Agr system, inducing expression of AIP<sub>C</sub> (an antagonist of *S. aureus* quorum sensing) and secretion of an antibody to suppress inflammation.
 
@@ -63,7 +63,7 @@ Next, open your project from a Linux command line with the following Python scri
 
 *<span class="mark">python ./studio/bin/studio.py -c ./user_projects/NAME/config/PhysiCell_settings.xml -e ./bin/NAME</span>*
 
-Here, *-c* specifies the project executable and *-e* specifies the project configuration file. Add *-3* at the end of the command to open a 3D project.
+Here, *-c* specifies the project configuration file and *-e* specifies the project executable. Add *-3* at the end of the command to open a 3D project.
 
 After the GUI opens, import *cells.csv* and *cell_rules.csv* in their respective locations.
 

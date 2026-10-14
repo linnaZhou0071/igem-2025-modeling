@@ -1,6 +1,6 @@
-# Overview — original wiki draft
+# Overview — wiki manuscript
 
-> Converted from the locally retained source document `Overview.docx`. Original draft wording, figures and equations are preserved; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
+> Converted from the locally retained source document `Overview.docx`. Edited for portfolio readability: internal layout notes and conversion artifacts have been removed. The [published team wiki](https://2025.igem.wiki/sjtu-biox-shanghai/model) presents the final results; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
 
 Highlights
 

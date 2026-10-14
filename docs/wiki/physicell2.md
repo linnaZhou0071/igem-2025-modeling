@@ -1,6 +1,6 @@
-# PhysiCell2 — original wiki draft
+# PhysiCell2 — wiki manuscript
 
-> Converted from the locally retained source document `PhysiCell2.docx`. Original draft wording, figures and equations are preserved; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
+> Converted from the locally retained source document `PhysiCell2.docx`. Edited for portfolio readability: internal layout notes and conversion artifacts have been removed. The [published team wiki](https://2025.igem.wiki/sjtu-biox-shanghai/model) presents the final results; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
 
 ### Model Building-Occurrence Model
 
@@ -30,8 +30,6 @@ Next, we create a **rule library** for the project agents by producing *cell-rul
 | *S.aureus* | AIP-se | decrease | AIP_sa secretion | (Williams et al., 2023) |
 | Th2 cells | toxin | increase | Th2 cytokine secretion | (Yamada et al., 2023) |
 
-<img src="media/physicell2/media/image2.png" style="width:4.6519in;height:2.46325in" />（被换了）
-
 <figure>
 <img src="media/physicell2/media/image3.png" style="width:6in;height:3.46111in" />
 <figcaption><p>Fig.14 Rules Map for Occurrence_trial1</p></figcaption>
@@ -48,9 +46,7 @@ We then ran the simulation and obtained the following visualization:
 
 The colonies appeared as abnormal star-shaped structures with circular gaps around them. Examination of the simulation movie revealed the cause.
 
-<span class="mark">最开始上传的那个movie，caption不对</span>
-
-<span class="mark">Fig.16 Simulation Movie for Occurrence_trial1</span>
+[Movie 1: Occurrence_trial1 simulation](https://video.igem.org/videos/embed/kkWxTifyQ1WS5BF9Bc3tJp)
 
 **hints**
 
@@ -61,7 +57,7 @@ Because host cells and microbes were placed in the **same plane**, **virtual wal
 Based on the *Occurrence_trial1* results, we implemented **the following optimizations:**
 
 **1. Remove Th2 cells and keratinocytes; make cytokine and AMP globally secreted.\**
-To avoid spurious mechanical interactions the ideal solution is a <span class="mark">3D simulation(此处希望能跳到后面的3D部分)</span>. As an alternative here, we edited *custom.cpp* to convert cytokine and AMP into globally secreted fields, replacing the former agent-based rules with reaction equations for the substances as described below.
+To avoid spurious mechanical interactions the ideal solution is a [3D simulation](physicell3.md#model-building-3d-model). As an alternative here, we edited *custom.cpp* to convert cytokine and AMP into globally secreted fields, replacing the former agent-based rules with reaction equations for the substances as described below.
 
 <span class="mark">AMP += AMP_baseline_rate \* dt</span>
 
@@ -101,14 +97,12 @@ After these modifications, the initial cell morphology distribution and the rule
 
 <figure>
 <img src="media/physicell2/media/image5.png" style="width:3.5738in;height:2.16744in" />
-<figcaption><p>Fig.17 Initial Condition for Occurrence_trial2</p></figcaption>
+<figcaption><p>Fig.16 Initial Condition for Occurrence_trial2</p></figcaption>
 </figure>
-
-<img src="media/physicell2/media/image6.png" style="width:6in;height:3.09861in" />(被换了)
 
 <figure>
 <img src="media/physicell2/media/image7.png" style="width:5.99375in;height:3.45556in" />
-<figcaption><p>Fig.18 Rules Map for Occurrence_trial2</p></figcaption>
+<figcaption><p>Fig.17 Rules Map for Occurrence_trial2</p></figcaption>
 </figure>
 
 To verify that our core rules hold in this complex multicellular system, we used the **bivariate Moran’s I** (Wartenberg, 1985) to **test the spatial correlation between relevant substances**.
@@ -127,7 +121,7 @@ First, we validated whether the model successfully reproduces the ***S. aureus* 
 
 <figure>
 <img src="media/physicell2/media/image8.png" style="width:3.89565in;height:2.43343in" />
-<figcaption><p>Fig.19 Bivariate Moran’s I for Pathogenic Chain of Occurrence_trial2</p></figcaption>
+<figcaption><p>Fig.18 Bivariate Moran’s I for Pathogenic Chain of Occurrence_trial2</p></figcaption>
 </figure>
 
 The substances in *S. aureus*’s AD pathogenic circuit exhibit strong spatial correlation, and the strongest association occurs between molecules secreted by the same agent type (AIP_sa → toxin). This provides clear evidence that the model successfully reproduces the *S. aureus* AD pathogenic pathway.
@@ -136,7 +130,7 @@ Next, we tested whether **EPS effectively sequesters AMP and bacteriocin**, ther
 
 <figure>
 <img src="media/physicell2/media/image9.png" style="width:3.48715in;height:2.17826in" />
-<figcaption><p>Fig.20 Bivariate Moran’s I for Biofilm Simulation of Occurrence_trial2</p></figcaption>
+<figcaption><p>Fig.19 Bivariate Moran’s I for Biofilm Simulation of Occurrence_trial2</p></figcaption>
 </figure>
 
 The results show that EPS and the bound forms of AMP and bacteriocin (AMP_bound, bacteriocin_bound) all have spatial correlations above 0.75, indicating EPS effectively sequesters these molecules. The reduced spatial correlation of bacteriocin_bound may reflect changes in the spatial relationship between *S. hominis* and *S. aureus*.

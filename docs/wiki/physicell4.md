@@ -1,6 +1,6 @@
-# PhysiCell4 — original wiki draft
+# PhysiCell4 — wiki manuscript
 
-> Converted from the locally retained source document `PhysiCell4.docx`. Original draft wording, figures and equations are preserved; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
+> Converted from the locally retained source document `PhysiCell4.docx`. Edited for portfolio readability: internal layout notes and conversion artifacts have been removed. The [published team wiki](https://2025.igem.wiki/sjtu-biox-shanghai/model) presents the final results; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
 
 ### Results-Validation of the Planting and Treatment Capacity
 
@@ -8,9 +8,9 @@
 
 - First, by comparing the ***Occurrence* and *Recurrence* models**, we validated the engineered strain’s **therapeutic efficacy.**
 
-<span class="mark">Fig.27: Simulation Movie for Occurrence Model（此处放AD_trial2 movie）</span>
+[Fig.26: Occurrence model simulation](https://static.igem.wiki/teams/5615/wiki/model/2d-ad-trial2-1.webp)
 
-<span class="mark">Fig. 28: Simulation Movie for Recurrence Model（此处放Recurrence movie）</span>
+[Fig.27: Recurrence model simulation](https://static.igem.wiki/teams/5615/wiki/model/2d-recurrence-1.webp)
 
 In the ***Occurrence* model**, when no engineered *S. epidermidis* is present, ***S. aureus* microcolonies expand** continuously and show signs of **biofilm-mediated rupture and invasion**. **T-cell cytokine** concentrations also remain **high**, indicating an inflamed microenvironment.
 
@@ -18,12 +18,12 @@ In contrast, in the **recurrence model**, the **engineered *S. epidermidis* pers
 
 <figure>
 <img src="media/physicell4/media/image1.gif" style="width:3.72685in;height:3.72685in" />
-<figcaption><p>Fig. 29 Changes in population plot and substance concentration in the Occurrence Model</p></figcaption>
+<figcaption><p>Fig.28 Changes in population plot and substance concentration in the Occurrence Model</p></figcaption>
 </figure>
 
 <figure>
 <img src="media/physicell4/media/image2.gif" style="width:4.54938in;height:3.41204in" />
-<figcaption><p>Fig. 30 Changes in population plot and substance concentration in the Recurrence Model</p></figcaption>
+<figcaption><p>Fig.29 Changes in population plot and substance concentration in the Recurrence Model</p></figcaption>
 </figure>
 
 As shown, population plots of cell counts again confirm suppression by the engineered strain. **Field simulations** show that in ***Occurrence***, **toxin concentration rises** with increasing *S. aureus* abundance (visible after ~40 h); in ***Recurrence***, toxin remains below visible levels, **cytokine levels decline** overall, and show clear **spatial correlation with VHH**.
@@ -32,13 +32,13 @@ In the *Occurrence* spatial fields we also observe successful **biofilm modeling
 
 - Next, we used the ***Treatment* model** to test the engineered strain’s ability to **occupy the niche** and establish **long-term colonization**.
 
-<span class="mark">Fig.31: Simulation Movie for Treatment Model（此处放Treatment movie</span>）
+[Fig.30: Treatment model simulation](https://static.igem.wiki/teams/5615/wiki/model/2d-treatment-1.webp)
 
 The simulation movie shows that during an **AD flare** when ***S. aureus* dominates**, environmental resources are heavily consumed by *S. aureus* and **cytokine levels are high**. **Massive seeding of *S. epidermidis* instantly reduces cytokine** concentrations, but may **exceed** the system’s **carrying capacity**, causing large-scale microbial mortality and a transition to a new steady state. After stabilization, the **engineered strain persists**, although cytokine levels show some oscillation.
 
 <figure>
 <img src="media/physicell4/media/image3.gif" style="width:4.4147in;height:3.31255in" />
-<figcaption><p>Fig. 32 Changes in population plot and substance concentration in the Treatment Model</p></figcaption>
+<figcaption><p>Fig.31 Changes in population plot and substance concentration in the Treatment Model</p></figcaption>
 </figure>
 
 As shown, after colonization **engineered *S. epidermidis* secretes abundant VHH**, rapidly lowering T-cell cytokine and toxin concentrations and achieving successful establishment. However, **around ~60 h post-colonization cytokine levels rebound while VHH declines**, indicating that colonization alone may not sustain therapeutic control in severe AD. Therefore for **severe AD** we still recommend **subcutaneous antibody injection** combined with our **engineered strain as adjuvant therapy to prevent relapse**.
@@ -47,30 +47,30 @@ As shown, after colonization **engineered *S. epidermidis* secretes abundant VHH
 
 As the 2D results suggested that the engineered strain was **better suited to preventing relapse than treating severe AD**, we **only** used 3D simulations to study the strain’s role in **recurrence**.
 
-Fig.33(a)/(b) 3D Simulation Movie with Th2 cytokine; left, Occurrence 3D; right, Recurrence 3D<span class="mark">此处左右放AD_cytokine, Lesion_cytokine</span>
+Fig.32(a)/(b) 3D Simulation Movie with Th2 cytokine; left, Occurrence 3D; right, Recurrence 3D. [Paired simulation](https://static.igem.wiki/teams/5615/wiki/model/paired3d-ad-cytokine.webp) · [Companion panel](https://static.igem.wiki/teams/5615/wiki/model/33b-new.webp)
 
-Fig.34(a)/(b) 3D Simulation Movie with toxin; left, Occurrence 3D; right, Recurrence 3D<span class="mark">此处左右放AD_toxine, Lesion_toxin</span>
+Fig.33(a)/(b) 3D Simulation Movie with toxin; left, Occurrence 3D; right, Recurrence 3D. [Paired simulation](https://static.igem.wiki/teams/5615/wiki/model/paired3d-ad-toxin.webp) · [Companion panel](https://static.igem.wiki/teams/5615/wiki/model/34b-new.webp)
 
 In terms of concentration fields, **cytokine and toxin ranges** in the ***Recurrence*** 3D model (with engineered strain) are **lower** than in the *Occurrence* 3D model. Spatially, **T-cell cytokines** tend to **cluster in the dermis**, whereas **toxin** shows **localized bursts within *S. aureus*** populations at the **skin surface**; *S. aureus* colonies that are spatially distant from engineered *S. epidermidis* are more prone to such toxin outbreaks.
 
 <figure>
 <img src="media/physicell4/media/image4.png" style="width:3.7666in;height:1.97186in" />
-<figcaption><p>fig.35 A Snapshot for Th2 Cytokine in Recurrence 3D Model</p></figcaption>
+<figcaption><p>Fig.34 A Snapshot for Th2 Cytokine in Recurrence 3D Model</p></figcaption>
 </figure>
 
 <figure>
 <img src="media/physicell4/media/image5.png" style="width:3.69668in;height:1.93526in" />
-<figcaption><p>fig.36 A Snapshot for Toxin in Recurrence 3D Model</p></figcaption>
+<figcaption><p>Fig.35 A Snapshot for Toxin in Recurrence 3D Model</p></figcaption>
 </figure>
 
 Interestingly, **VHH** secretion also manifests as **localized bursts** from *S. epidermidis*, temporally and spatially **responding to nearby *S. aureus* toxin eruptions** — vividly demonstrating the switch’s responsive behavior.
 
 <figure>
 <img src="media/physicell4/media/image6.png" style="width:3.82035in;height:2in" />
-<figcaption><p>Fig.37 3D Simulation Movie with VHH in Recurrence 3D<mark>此处放Lesion_VHH</mark>_video</p></figcaption>
+<figcaption><p>Fig.36 VHH in Recurrence 3D. Draft still image; <a href="https://static.igem.wiki/teams/5615/wiki/model/3d-lesion-vhh.webp">published simulation animation</a>.</p></figcaption>
 </figure>
 
-fig.38 A Snapshot for VHH in Recurrence 3D Model at the same timepoint as fig.5.
+[Fig.37: VHH snapshot in the Recurrence 3D model](https://static.igem.wiki/teams/5615/wiki/model/snapshot3.webp).
 
 Note: The S.aureus colonies at the two right-side outbreak sites are mixed with S.epidermidis
 
@@ -84,12 +84,12 @@ Therefore, if **VHH** secretion or action is **too strong**, the engineered S. e
 
 <figure>
 <img src="media/physicell4/media/image7.png" style="width:4.68554in;height:2.94907in" />
-<figcaption><p>Fig.39 Pathways for <em>S.aureus</em> to Occupy Advantageous Ecological Niches</p></figcaption>
+<figcaption><p>Fig.38 Pathways for <em>S.aureus</em> to Occupy Advantageous Ecological Niches</p></figcaption>
 </figure>
 
 <figure>
 <img src="media/physicell4/media/image8.png" style="width:5.19766in;height:3.18056in" />
-<figcaption><p>Fig.40 Pathways for engineered <em>S.epidermis</em> to be introduced to unfavorable ecological niches</p></figcaption>
+<figcaption><p>Fig.39 Pathways for engineered <em>S.epidermis</em> to be introduced to unfavorable ecological niches</p></figcaption>
 </figure>
 
 Therefore, **both VHH and AIP-C require fine-tuning to find an optimal parameter regime.**
@@ -154,14 +154,14 @@ Scores were mapped to \[0,1\] by an inverse transform:
 
 <figure>
 <img src="media/physicell4/media/image9.png" style="width:5.11351in;height:2.8in" />
-<figcaption><p>Fig.41 Parameter Scan Score Space</p></figcaption>
+<figcaption><p>Fig.40 Parameter Scan Score Space</p></figcaption>
 </figure>
 
 As shown, we obtained a scored parameter space and highlighted the top 5% scoring points.
 
 <figure>
 <img src="media/physicell4/media/image10.png" style="width:4.79963in;height:2.62813in" />
-<figcaption><p>Fig.42 Top View of the Parameter Scan Score Space</p></figcaption>
+<figcaption><p>Fig.41 Top View of the Parameter Scan Score Space</p></figcaption>
 </figure>
 
 From the top view of the parameter space, **the optimal points are concentrated where the VHH-to-cytokine-degradation-rate and VHH-secretion-saturation are balanced**, while the effect of AIP-C-secretion-saturation is relatively smaller. A much larger score drop is caused by excessive VHH than by VHH insufficiency, indicating that **overly strong antibody activity perturbs the skin microbiome more severely and may induce immune drift**. (de Wijs et al., 2020).

@@ -6,7 +6,7 @@ The [original 2025 results figures](wiki/physicell4.md) remain the visual record
 
 ## Archived-data consistency
 
-All 1,000 archived runs were rescored using the original scoring function. Each contains 25 observations from 0 to 1,440 minutes. All six penalty components and final scores agree exactly with the archived score table. This is a data consistency check, not independent biological validation.
+All 1,000 archived runs were rescored using the original scoring function. Each contains 25 observations from 0 to 1,440 minutes. This is the 24-hour archived sweep, distinct from the current standalone `models/Recurrence/config/settings.xml` configuration (`max_time = 2,880` minutes, or 48 hours). Rescoring the archive does not rerun a 48-hour simulation. All six penalty components and final scores agree exactly with the archived score table. This is a data consistency check, not independent biological validation.
 
 ![2026 redraw of archived parameter scores](figures/parameter-space.png)
 

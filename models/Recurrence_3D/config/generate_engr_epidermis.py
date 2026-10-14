@@ -8,7 +8,7 @@ NUM_COLONIES = 10
 CELLS_PER_COLONY = 50
 COLONY_RADIUS = 30.0      # microns (approx lateral radius)
 FIX_TOP_Z = 260.0         # desired apex z
-BASE_OFFSET = 0.5         # small lift over keratinocyte top plane so edges不与顶层完全重合
+BASE_OFFSET = 0.5         # small lift above the keratinocyte top plane to keep colony edges from coinciding with it
 MIN_CENTER_SEPARATION = 0.6 * 2 * COLONY_RADIUS  # allow some overlap but avoid heavy collision
 RANDOM_SEED = 12345
 

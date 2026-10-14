@@ -28,7 +28,7 @@ Edge handling:
   - If initial count is 0, we fall back to using mean(series) for denominators to avoid zero-division inflation.
   - Missing run folders or CSV files are skipped with a warning.
 
-Author: automated assistant
+Author: automated assistant, under Y. Zhou's direction
 """
 from __future__ import annotations
 import argparse

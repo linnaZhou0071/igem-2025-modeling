@@ -1,8 +1,8 @@
-# MODEL Part1 — original wiki draft
+# MODEL Part1 — wiki manuscript
 
-> Converted from the locally retained source document `MODEL Part1.docx`. Original draft wording, figures and equations are preserved; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
+> Converted from the locally retained source document `MODEL Part1.docx`. Edited for portfolio readability: internal layout notes and conversion artifacts have been removed. The [published team wiki](https://2025.igem.wiki/sjtu-biox-shanghai/model) presents the final results; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
 
-# Molecular-Level Validation with Gene Circuit Stimulation
+# Molecular-Level Validation with Gene Circuit Simulation
 
 ## Model Highlight
 
@@ -63,12 +63,12 @@ In addition, we include AIP_C, a competing signal secreted by *S. epidermidis*, 
 
 ``` math
 \begin{array}{r}
-RNA\  = \ 3\ \backslash*\ ROMAN\ III{\overset{b_{3}}{\rightarrow}\varnothing}
+RNAIII{\overset{b_{3}}{\rightarrow}\varnothing}
 \end{array}
 ```
 
 ``` math
-SA.RNA\  = \ 2\ \backslash*\ ROMAN\ II\overset{b_{2}}{\rightarrow}\varnothing
+SA.RNAII\overset{b_{2}}{\rightarrow}\varnothing
 ```
 
 ``` math
@@ -102,27 +102,27 @@ SA.AgrA_{P}\overset{k_{dephos}}{\rightarrow}SA.AgrA
 **Ordinary Differential Equations**
 
 ``` math
-\frac{d\lbrack RNA\  = \ 3\ \backslash*\ ROMAN\ III\rbrack}{dt} = \frac{a_{3}}{{(\frac{{Kd}_{3}}{SA.AgrA_{P}})}^{n} + 1} + a_{30} - b_{3} \bullet \lbrack RNA\  = \ 3\ \backslash*\ ROMAN\ III\rbrack
+\frac{d\lbrack RNAIII\rbrack}{dt} = \frac{a_{3}}{{(\frac{{Kd}_{3}}{SA.AgrA_{P}})}^{n} + 1} + a_{30} - b_{3} \bullet \lbrack RNAIII\rbrack
 ```
 
 ``` math
-\frac{d\lbrack SA.RNA\  = \ 2\ \backslash*\ ROMAN\ II\rbrack}{dt} = \frac{a_{2}}{{(\frac{{Kd}_{2}}{SA.AgrA_{P}})}^{n} + 1} + a_{20} - b_{2} \bullet \lbrack SA.RNA\  = \ 2\ \backslash*\ ROMAN\ II\rbrack
+\frac{d\lbrack SA.RNAII\rbrack}{dt} = \frac{a_{2}}{{(\frac{{Kd}_{2}}{SA.AgrA_{P}})}^{n} + 1} + a_{20} - b_{2} \bullet \lbrack SA.RNAII\rbrack
 ```
 
 ``` math
-\frac{d\lbrack AgrB\rbrack}{dt} = k_{B} \bullet \lbrack SA.RNA\  = \ 2\ \backslash*\ ROMAN\ II\rbrack - b_{B} \bullet \lbrack AgrB\rbrack
+\frac{d\lbrack AgrB\rbrack}{dt} = k_{B} \bullet \lbrack SA.RNAII\rbrack - b_{B} \bullet \lbrack AgrB\rbrack
 ```
 
 ``` math
-\frac{d\lbrack AgrD\rbrack}{dt} = k_{D} \bullet \lbrack SA.RNA\  = \ 2\ \backslash*\ ROMAN\ II\rbrack - \frac{k_{cat_{1D}} \bullet \lbrack AgrB\rbrack \bullet \lbrack AgrD\rbrack}{{Kd}_{1D} + \lbrack AgrD\rbrack} - b_{D} \bullet \lbrack AgrD\rbrack
+\frac{d\lbrack AgrD\rbrack}{dt} = k_{D} \bullet \lbrack SA.RNAII\rbrack - \frac{k_{cat_{1D}} \bullet \lbrack AgrB\rbrack \bullet \lbrack AgrD\rbrack}{{Kd}_{1D} + \lbrack AgrD\rbrack} - b_{D} \bullet \lbrack AgrD\rbrack
 ```
 
 ``` math
-\frac{d\lbrack AgrC\rbrack}{dt} = - \frac{k_{cat_{1C}} \bullet \lbrack AIP\rbrack \bullet \lbrack AgrC\rbrack}{{Kd}_{1C} \bullet \left( 1 + \frac{\lbrack AIP_{C_{SA}}\rbrack}{Ki} \right) + \lbrack AgrC\rbrack} + k_{transp} \bullet \left\lbrack AgrC_{P} \right\rbrack \bullet \lbrack SA.AgrA\rbrack - b_{C} \bullet \lbrack AgrC\rbrack + k_{C} \bullet \lbrack SA.RNA\  = \ 2\ \backslash*\ ROMAN\ II\rbrack
+\frac{d\lbrack AgrC\rbrack}{dt} = - \frac{k_{cat_{1C}} \bullet \lbrack AIP\rbrack \bullet \lbrack AgrC\rbrack}{{Kd}_{1C} \bullet \left( 1 + \frac{\lbrack AIP_{C_{SA}}\rbrack}{Ki} \right) + \lbrack AgrC\rbrack} + k_{transp} \bullet \left\lbrack AgrC_{P} \right\rbrack \bullet \lbrack SA.AgrA\rbrack - b_{C} \bullet \lbrack AgrC\rbrack + k_{C} \bullet \lbrack SA.RNAII\rbrack
 ```
 
 ``` math
-\frac{d\lbrack SA.AgrA\rbrack}{dt} = - k_{transp} \bullet \left\lbrack AgrC_{P} \right\rbrack \bullet \lbrack SA.AgrA\rbrack + k_{dephos} \bullet \left\lbrack SA.AgrA_{P} \right\rbrack - b_{A} \bullet \lbrack SA.AgrA\rbrack + k_{A} \bullet \lbrack SA.RNA\  = \ 2\ \backslash*\ ROMAN\ II\rbrack
+\frac{d\lbrack SA.AgrA\rbrack}{dt} = - k_{transp} \bullet \left\lbrack AgrC_{P} \right\rbrack \bullet \lbrack SA.AgrA\rbrack + k_{dephos} \bullet \left\lbrack SA.AgrA_{P} \right\rbrack - b_{A} \bullet \lbrack SA.AgrA\rbrack + k_{A} \bullet \lbrack SA.RNAII\rbrack
 ```
 
 ``` math
@@ -141,7 +141,7 @@ SA.AgrA_{P}\overset{k_{dephos}}{\rightarrow}SA.AgrA
 
 <figure>
 <img src="media/model-part1/media/image4.png" style="width:5.99798in;height:1.97808in" />
-<figcaption><p>Figure 4 <em>S.aureus</em> Dynamics Diagram</p></figcaption>
+<figcaption><p>Figure 4 <em>S. epidermidis</em> Dynamics Diagram</p></figcaption>
 </figure>
 
 The following reactions and ordinary differential equations (ODEs) describe the engineered regulatory circuit of *S. epidermidis*.
@@ -167,7 +167,7 @@ scFv\_ ext\overset{b_{5}}{\rightarrow}\varnothing
 ```
 
 ``` math
-SE.RNA\  = \ 2\ \backslash*\ ROMAN\ II\overset{b_{2}}{\rightarrow}\varnothing
+SE.RNAII\overset{b_{2}}{\rightarrow}\varnothing
 ```
 
 ``` math
@@ -225,19 +225,19 @@ AgrC\_ mut\overset{b_{C}}{\rightarrow}\varnothing
 **Ordinary Differential Equations**
 
 ``` math
-\frac{d\lbrack SE.RNA\  = \ 2\ \backslash*\ ROMAN\ II\rbrack}{dt} = \frac{a_{2}}{{(\frac{{Kd}_{2}}{SA.AgrA_{P}})}^{n} + 1} + a_{20} - b_{2} \bullet \lbrack SE.RNA\  = \ 2\ \backslash*\ ROMAN\ II\rbrack
+\frac{d\lbrack SE.RNAII\rbrack}{dt} = \frac{a_{2}}{{(\frac{{Kd}_{2}}{SA.AgrA_{P}})}^{n} + 1} + a_{20} - b_{2} \bullet \lbrack SE.RNAII\rbrack
 ```
 
 ``` math
-\frac{d\lbrack AgrB\_ cap\rbrack}{dt} = k_{B\_ cap} \bullet \lbrack SE.RNA\  = \ 2\ \backslash*\ ROMAN\ II\rbrack - b_{B_{cap}} \bullet \lbrack AgrB\_ cap\rbrack
+\frac{d\lbrack AgrB\_ cap\rbrack}{dt} = k_{B\_ cap} \bullet \lbrack SE.RNAII\rbrack - b_{B_{cap}} \bullet \lbrack AgrB\_ cap\rbrack
 ```
 
 ``` math
-\frac{d\lbrack AgrD\_ cap\rbrack}{dt} = k_{D\_ cap} \bullet \lbrack SE.RNA\  = \ 2\ \backslash*\ ROMAN\ II\rbrack - \frac{k_{cat_{2D}} \bullet \lbrack AgrB\_ cap\rbrack \bullet \lbrack AgrD\_ cap\rbrack}{{Kd}_{2D} + \lbrack AgrD\_ cap\rbrack} - b_{D_{cap}} \bullet \lbrack AgrD\_ cap\rbrack
+\frac{d\lbrack AgrD\_ cap\rbrack}{dt} = k_{D\_ cap} \bullet \lbrack SE.RNAII\rbrack - \frac{k_{cat_{2D}} \bullet \lbrack AgrB\_ cap\rbrack \bullet \lbrack AgrD\_ cap\rbrack}{{Kd}_{2D} + \lbrack AgrD\_ cap\rbrack} - b_{D_{cap}} \bullet \lbrack AgrD\_ cap\rbrack
 ```
 
 ``` math
-\frac{d\lbrack AgrC\_ mut\rbrack}{dt} = - \frac{k_{cat_{2C}} \bullet \left\lbrack AIP_{SE} \right\rbrack \bullet \lbrack AgrC\_ mut\rbrack}{{Kd}_{2C} + \lbrack AgrC\_ mut\rbrack} - k_{phos} \bullet \lbrack AgrC\_ mut\rbrack + k_{transp} \bullet \left\lbrack {AgrC\_ mut}_{P} \right\rbrack \bullet \lbrack SE.AgrA\rbrack - b_{C} \bullet \lbrack AgrC\_ mut\rbrack + k_{C} \bullet \lbrack SE.RNA\  = \ 2\ \backslash*\ ROMAN\ II\rbrack
+\frac{d\lbrack AgrC\_ mut\rbrack}{dt} = - \frac{k_{cat_{2C}} \bullet \left\lbrack AIP_{SE} \right\rbrack \bullet \lbrack AgrC\_ mut\rbrack}{{Kd}_{2C} + \lbrack AgrC\_ mut\rbrack} - k_{phos} \bullet \lbrack AgrC\_ mut\rbrack + k_{transp} \bullet \left\lbrack {AgrC\_ mut}_{P} \right\rbrack \bullet \lbrack SE.AgrA\rbrack - b_{C} \bullet \lbrack AgrC\_ mut\rbrack + k_{C} \bullet \lbrack SE.RNAII\rbrack
 ```
 
 ``` math
@@ -245,7 +245,7 @@ AgrC\_ mut\overset{b_{C}}{\rightarrow}\varnothing
 ```
 
 ``` math
-\frac{d\lbrack SE.AgrA\rbrack}{dt} = - k_{transp} \bullet \left\lbrack Agr{C\_ mut}_{P} \right\rbrack \bullet \lbrack SE.AgrA\rbrack + k_{dephos} \bullet \left\lbrack SE.AgrA_{P} \right\rbrack - b_{A} \bullet \lbrack SE.AgrA\rbrack + k_{A} \bullet \lbrack SE.RNA\  = \ 2\ \backslash*\ ROMAN\ II\rbrack
+\frac{d\lbrack SE.AgrA\rbrack}{dt} = - k_{transp} \bullet \left\lbrack Agr{C\_ mut}_{P} \right\rbrack \bullet \lbrack SE.AgrA\rbrack + k_{dephos} \bullet \left\lbrack SE.AgrA_{P} \right\rbrack - b_{A} \bullet \lbrack SE.AgrA\rbrack + k_{A} \bullet \lbrack SE.RNAII\rbrack
 ```
 
 ``` math
@@ -276,174 +276,48 @@ To capture the interactions between *Staphylococcus aureus* and *Staphylococcus 
 
 | **Parameters** | **Description** | **Unit** | **Value** | **Reference** |
 |:--:|----|:--:|---:|:--:|
-| 
-``` math
-a_{3}
-``` | The maximum transcription rate of P3 when promoter leakage is not considered | μM/s | 0.00017 | Assumption |
-| 
-``` math
-{Kd}_{3}
-``` | AgrA_P concentration at which the translation rate of P3 is half its maximum value | μM | 1 | Rajasree, K., Fasim, A., & Gopal, B. (2016). Conformational features of the *Staphylococcus aureus* AgrA-promoter interactions rationalize quorum-sensing triggered gene expression. Biochemistry and biophysics reports, 6, 124–134. https://doi.org/10.1016/j.bbrep.2016.03.012 |
-| 
-``` math
-n
-``` | Hill coefficient |  | 2 | Assumption |
-| 
-``` math
-a_{30}
-``` | Leaky transcription rate for P3 | μM/s | 0.0000017 | Assumption |
-| 
-``` math
-b_{3}
-``` | Degradation rate constant for RNAIII | /s | 0.0023 | Geisinger, E., Adhikari, R.P., Jin, R., Ross, H.F. and Novick, R.P. (2006), Inhibition of rot translation by RNAIII, a key feature of agr function. Molecular Microbiology, 61: 1038-1048. https://doi.org/10.1111/j.1365-2958.2006.05292.x |
-| 
-``` math
-b_{1}
-``` | Degradation rate constant for AIP | /s | 0.0012 | Assumption |
-| 
-``` math
-a_{2}
-``` | The maximum transcription rate of P2 when promoter leakage is not considered | μM/s | 0.00033 | Assumption |
-| 
-``` math
-{Kd}_{2}
-``` | AgrA_P concentration at which the translation rate of P2 is half its maximum value | μM | 0.5 | Koenig, R. L., Ray, J. L., Maleki, S. J., Smeltzer, M. S., & Hurlburt, B. K. (2004). *Staphylococcus aureus* AgrA binding to the RNAIII-agr regulatory region. Journal of bacteriology, 186(22), 7549–7555. <https://doi.org/10.1128/JB.186.22.7549-7555.2004> |
-| 
-``` math
-a_{20}
-``` | Leaky transcription rate for P2 | μM/s | 0.0000033 | Assumption |
-| 
-``` math
-b_{2}
-``` | Degradation rate constant for RNAII | /s | 0.0039 | Assumption |
-| 
-``` math
-k_{B}
-``` | Translation rate constant for AgrB | /s | 0.079 | Assumption |
-| 
-``` math
-b_{B}
-``` | Degradation rate constant for AgrB | /s | 0.000085 | Assumption |
-| 
-``` math
-k_{D}
-``` | Translation rate constant for AgrD | /s | 0.33 | Assumption |
-| 
-``` math
-b_{D}
-``` | Degradation rate constant for AgrD | /s | 0.0023 | Assumption |
-| 
-``` math
-k_{C}
-``` | Translation rate constant for AgrC | /s | 0.035 | Assumption |
-| 
-``` math
-b_{C}
-``` | Degradation rate constant for AgrC | /s | 0.00008 | Assumption |
-| 
-``` math
-k_{A}
-``` | Translation rate constant for AgrA | /s | 0.063 | Assumption |
-| 
-``` math
-b_{A}
-``` | Degradation rate constant for AgrA | /s | 0.0004 | Assumption |
-| 
-``` math
-k_{cat_{1D}}
-``` | Maximum rate of AgrB‑catalyzed processing of AgrD into AIP | /s | 0.01 | Assumption |
-| 
-``` math
-{Kd}_{1D}
-``` | AgrD concentration at which the AgrB reaction rate is half its maximum value | μM | 100 | Assumption |
-| 
-``` math
-Ki
-``` | The concentration of AIP‑C at which it half‑maximally competes with AIP for AgrC binding | μM | 0.2 | Canovas, J., Baldry, M., Bojer, M. S., Andersen, P. S., Gless, B. H., Grzeskowiak, P. K., Stegger, M., Damborg, P., Olsen, C. A., & Ingmer, H. (2016). Cross-Talk between *Staphylococcus aureus* and Other Staphylococcal Species via the agr Quorum Sensing System. Frontiers in Microbiology, 7, Article 1733. https://doi.org/10.3389/fmicb.2016.01733 |
-| 
-``` math
-k_{cat_{1C}}
-``` | Maximum rate of AIPI‑induced processing of AgrC into AgrC_P | /s | 0.0018 | Assumption |
-| 
-``` math
-{Kd}_{1C}
-``` | AgrC concentration at which the AIPI-induced reaction rate is half its maximum value | μM | 0.3 | Cisar, E. A. G., Geisinger, E., Muir, T. W., & Novick, R. P. (2009). Symmetric signalling within asymmetric dimers of the *Staphylococcus aureus* receptor histidine kinase AgrC. Molecular Microbiology, 74(1), 44-57. https://doi.org/10.1111/j.1365-2958.2009.06849.x |
-| 
-``` math
-k_{transp}
-``` | AgrC to AgrA phosphotransfer rate constant | /(s\*μM) | 0.5 | Cisar, E. A. G., Geisinger, E., Muir, T. W., & Novick, R. P. (2009). Symmetric signalling within asymmetric dimers of the *Staphylococcus aureus* receptor histidine kinase AgrC. Molecular Microbiology, 74(1), 44–57. https://doi.org/10.1111/j.1365-2958.2009.06849.x |
-| 
-``` math
-k_{dephos}
-``` | Dephosphorylation rate constant of AgrA | /s | 0.003 | Wang, B. (2016). Regulation of virulence in *Staphylococcus aureus*. Chemistry & Biology, 23(3), 321–330. https://doi.org/10.1016/j.chembiol.2016.01.004 |
-| 
-``` math
-b_{4}
-``` | Degradation rate constant for scFv | /s | 0.0002 | Assumption |
-| 
-``` math
-b_{5}
-``` | Degradation rate constant for scFv_ext | /s | 0.0004 | Assumption |
-| 
-``` math
-Tat_{V_{\max}}
-``` | Maximum rate of Tat‐dependent scFv secretion | μM/s | 0.1 | Goosens, V. J., Monteferrante, C. G., & van Dijl, J. M. (2014). The Tat system of Gram-positive bacteria. Biochimica et Biophysica Acta (BBA) – Molecular Cell Research, 1843(8), 1698–1706. https://doi.org/10.1016/j.bbamcr.2013.10.008 |
-| 
-``` math
-{Kd}_{scFv}
-``` | scFv concentration at which the Tat-dependent secretion rate is half its maximum value | μM/s | 5 | Assumption |
-| 
-``` math
-k_{B\_ cap}
-``` | Translation rate constant for AgrB_cap | /s | 0.08 | Assumption |
-| 
-``` math
-b_{B_{cap}}
-``` | Degradation rate constant for AgrB_cap | /s | 0.000078 | Assumption |
-| 
-``` math
-k_{D\_ cap}
-``` | Translation rate constant for AgrD_cap | /s | 0.33 | Assumption |
-| 
-``` math
-b_{D_{cap}}
-``` | Degradation rate constant for AgrD_cap | /s | 0.0023 | Assumption |
-| 
-``` math
-b_{6}
-``` | Degradation rate constant for AIP_C | /s | 0.0004 | Assumption |
-| 
-``` math
-k_{cat_{2D}}
-``` | Maximum rate of AgrB_cap‑catalyzed processing of AgrD_cap into AIP_C | /s | 0.01 | Assumption |
-| 
-``` math
-{Kd}_{2D}
-``` | AgrD_cap concentration at which the AgrB_cap reaction rate is half its maximum value | μM | 100 | Assumption |
-| 
-``` math
-k_{phos}
-``` | The self-phosphorylation rate constant of AgrC_mut | /s | 0.15 | Assumption |
-| 
-``` math
-k_{cat_{2C}}
-``` | Maximum rate of AIPI‑induced processing of AgrC_mut into AgrC\_ mut_P | /s | 0.05 | Assumption |
-| 
-``` math
-{Kd}_{2C}
-``` | AgrC_mut concentration at which the AIPI-induced reaction rate is half its maximum value | μM | 0.1 | Assumption |
-| 
-``` math
-e
-``` | Attenuation coefficient |  | 0.3 | Assumption |
-| 
-``` math
-N_{SE}
-``` | Number of S. epidermidis cells |  | 1000 | Assumption |
-| 
-``` math
-N_{SA}
-``` | Number of S. aurenus cells |  | 1000 | Assumption |
+| $a_{3}$ | The maximum transcription rate of P3 when promoter leakage is not considered | μM/s | 0.00017 | Assumption |
+| ${Kd}_{3}$ | AgrA_P concentration at which the translation rate of P3 is half its maximum value | μM | 1 | Rajasree, K., Fasim, A., & Gopal, B. (2016). Conformational features of the *Staphylococcus aureus* AgrA-promoter interactions rationalize quorum-sensing triggered gene expression. Biochemistry and biophysics reports, 6, 124–134. https://doi.org/10.1016/j.bbrep.2016.03.012 |
+| $n$ | Hill coefficient |  | 2 | Assumption |
+| $a_{30}$ | Leaky transcription rate for P3 | μM/s | 0.0000017 | Assumption |
+| $b_{3}$ | Degradation rate constant for RNAIII | /s | 0.0023 | Geisinger, E., Adhikari, R.P., Jin, R., Ross, H.F. and Novick, R.P. (2006), Inhibition of rot translation by RNAIII, a key feature of agr function. Molecular Microbiology, 61: 1038-1048. https://doi.org/10.1111/j.1365-2958.2006.05292.x |
+| $b_{1}$ | Degradation rate constant for AIP | /s | 0.0012 | Assumption |
+| $a_{2}$ | The maximum transcription rate of P2 when promoter leakage is not considered | μM/s | 0.00033 | Assumption |
+| ${Kd}_{2}$ | AgrA_P concentration at which the translation rate of P2 is half its maximum value | μM | 0.5 | Koenig, R. L., Ray, J. L., Maleki, S. J., Smeltzer, M. S., & Hurlburt, B. K. (2004). *Staphylococcus aureus* AgrA binding to the RNAIII-agr regulatory region. Journal of bacteriology, 186(22), 7549–7555. <https://doi.org/10.1128/JB.186.22.7549-7555.2004> |
+| $a_{20}$ | Leaky transcription rate for P2 | μM/s | 0.0000033 | Assumption |
+| $b_{2}$ | Degradation rate constant for RNAII | /s | 0.0039 | Assumption |
+| $k_{B}$ | Translation rate constant for AgrB | /s | 0.079 | Assumption |
+| $b_{B}$ | Degradation rate constant for AgrB | /s | 0.000085 | Assumption |
+| $k_{D}$ | Translation rate constant for AgrD | /s | 0.33 | Assumption |
+| $b_{D}$ | Degradation rate constant for AgrD | /s | 0.0023 | Assumption |
+| $k_{C}$ | Translation rate constant for AgrC | /s | 0.035 | Assumption |
+| $b_{C}$ | Degradation rate constant for AgrC | /s | 0.00008 | Assumption |
+| $k_{A}$ | Translation rate constant for AgrA | /s | 0.063 | Assumption |
+| $b_{A}$ | Degradation rate constant for AgrA | /s | 0.0004 | Assumption |
+| $k_{cat_{1D}}$ | Maximum rate of AgrB‑catalyzed processing of AgrD into AIP | /s | 0.01 | Assumption |
+| ${Kd}_{1D}$ | AgrD concentration at which the AgrB reaction rate is half its maximum value | μM | 100 | Assumption |
+| $Ki$ | The concentration of AIP‑C at which it half‑maximally competes with AIP for AgrC binding | μM | 0.2 | Canovas, J., Baldry, M., Bojer, M. S., Andersen, P. S., Gless, B. H., Grzeskowiak, P. K., Stegger, M., Damborg, P., Olsen, C. A., & Ingmer, H. (2016). Cross-Talk between *Staphylococcus aureus* and Other Staphylococcal Species via the agr Quorum Sensing System. Frontiers in Microbiology, 7, Article 1733. https://doi.org/10.3389/fmicb.2016.01733 |
+| $k_{cat_{1C}}$ | Maximum rate of AIPI‑induced processing of AgrC into AgrC_P | /s | 0.0018 | Assumption |
+| ${Kd}_{1C}$ | AgrC concentration at which the AIPI-induced reaction rate is half its maximum value | μM | 0.3 | Cisar, E. A. G., Geisinger, E., Muir, T. W., & Novick, R. P. (2009). Symmetric signalling within asymmetric dimers of the *Staphylococcus aureus* receptor histidine kinase AgrC. Molecular Microbiology, 74(1), 44-57. https://doi.org/10.1111/j.1365-2958.2009.06849.x |
+| $k_{transp}$ | AgrC to AgrA phosphotransfer rate constant | /(s\*μM) | 0.5 | Cisar, E. A. G., Geisinger, E., Muir, T. W., & Novick, R. P. (2009). Symmetric signalling within asymmetric dimers of the *Staphylococcus aureus* receptor histidine kinase AgrC. Molecular Microbiology, 74(1), 44–57. https://doi.org/10.1111/j.1365-2958.2009.06849.x |
+| $k_{dephos}$ | Dephosphorylation rate constant of AgrA | /s | 0.003 | Wang, B. (2016). Regulation of virulence in *Staphylococcus aureus*. Chemistry & Biology, 23(3), 321–330. https://doi.org/10.1016/j.chembiol.2016.01.004 |
+| $b_{4}$ | Degradation rate constant for scFv | /s | 0.0002 | Assumption |
+| $b_{5}$ | Degradation rate constant for scFv_ext | /s | 0.0004 | Assumption |
+| $Tat_{V_{\max}}$ | Maximum rate of Tat‐dependent scFv secretion | μM/s | 0.1 | Goosens, V. J., Monteferrante, C. G., & van Dijl, J. M. (2014). The Tat system of Gram-positive bacteria. Biochimica et Biophysica Acta (BBA) – Molecular Cell Research, 1843(8), 1698–1706. https://doi.org/10.1016/j.bbamcr.2013.10.008 |
+| ${Kd}_{scFv}$ | scFv concentration at which the Tat-dependent secretion rate is half its maximum value | μM/s | 5 | Assumption |
+| $k_{B\_ cap}$ | Translation rate constant for AgrB_cap | /s | 0.08 | Assumption |
+| $b_{B_{cap}}$ | Degradation rate constant for AgrB_cap | /s | 0.000078 | Assumption |
+| $k_{D\_ cap}$ | Translation rate constant for AgrD_cap | /s | 0.33 | Assumption |
+| $b_{D_{cap}}$ | Degradation rate constant for AgrD_cap | /s | 0.0023 | Assumption |
+| $b_{6}$ | Degradation rate constant for AIP_C | /s | 0.0004 | Assumption |
+| $k_{cat_{2D}}$ | Maximum rate of AgrB_cap‑catalyzed processing of AgrD_cap into AIP_C | /s | 0.01 | Assumption |
+| ${Kd}_{2D}$ | AgrD_cap concentration at which the AgrB_cap reaction rate is half its maximum value | μM | 100 | Assumption |
+| $k_{phos}$ | The self-phosphorylation rate constant of AgrC_mut | /s | 0.15 | Assumption |
+| $k_{cat_{2C}}$ | Maximum rate of AIPI‑induced processing of AgrC_mut into AgrC\_ mut_P | /s | 0.05 | Assumption |
+| ${Kd}_{2C}$ | AgrC_mut concentration at which the AIPI-induced reaction rate is half its maximum value | μM | 0.1 | Assumption |
+| $e$ | Attenuation coefficient |  | 0.3 | Assumption |
+| $N_{SE}$ | Number of S. epidermidis cells |  | 1000 | Assumption |
+| $N_{SA}$ | Number of S. aurenus cells |  | 1000 | Assumption |
 
 Table 1 Parameter Mentioned in ODEs
 
@@ -482,7 +356,7 @@ The initial settings table summarizes the key baseline parameters used in our mo
 **Key Molecules concentration stimulation**
 
 <figure>
-<img src="media/model-part1/media/image5.png" style="width:5.76806in;height:2.45139in" alt="A screen shot of a video game AI-generated content may be incorrect." />
+<img src="media/model-part1/media/image5.png" style="width:5.76806in;height:2.45139in" alt="Time-course plot of bacterial RNAII concentrations" />
 <figcaption><p>Figure 5 Time-course plot of SA. RNAII and SA. RNAII concentration</p></figcaption>
 </figure>
 
@@ -493,7 +367,7 @@ Similarly, intracellular ***Staphylococcus epidermidis* RNAII** also falls quick
 Together, these findings support that our design both suppresses *S. aureus* virulence and maintains a responsive, self-limiting sensing switch.
 
 <figure>
-<img src="media/model-part1/media/image6.png" style="width:5.76806in;height:2.5in" alt="A graph with lines and numbers AI-generated content may be incorrect." />
+<img src="media/model-part1/media/image6.png" style="width:5.76806in;height:2.5in" alt="Time-course plot of AIP-C and AIP concentrations" />
 <figcaption><p>Figure 6 Time-course plot of AIP-C and AIP (represented by AIPI) concentration</p></figcaption>
 </figure>
 
@@ -504,12 +378,12 @@ Overall, this mutually sensing and controlling switch-like mechanism functions s
 **Therapeutic Analysis**
 
 <figure>
-<img src="media/model-part1/media/image7.png" style="width:5.76806in;height:2.45139in" alt="A screenshot of a computer AI-generated content may be incorrect." />
+<img src="media/model-part1/media/image7.png" style="width:5.76806in;height:2.45139in" alt="Time-course plot of extracellular scFv concentration" />
 <figcaption><p>Figure 7 Time-course plot of scFv<sub>ext</sub> concentration</p></figcaption>
 </figure>
 
 <figure>
-<img src="media/model-part1/media/image8.png" style="width:5.76806in;height:2.47014in" alt="A screenshot of a video game AI-generated content may be incorrect." />
+<img src="media/model-part1/media/image8.png" style="width:5.76806in;height:2.47014in" alt="Time-course plot of S. aureus RNAIII concentration" />
 <figcaption><p>Figure 8 Time-course plot of SA. RNAIII concentration</p></figcaption>
 </figure>
 
@@ -523,19 +397,19 @@ For comparison, Baylet et al. (2021) reported that only **200 nM** of anti-IL-4 
 
 <figure>
 <img src="media/model-part1/media/image9.jpeg" style="width:2.75591in;height:2.70583in" />
-<figcaption><p>Figure 9 Sensitivity analysis of scFv<sub>ext</sub></p></figcaption>
+<figcaption><p>Figure 9(a) Sensitivity analysis of scFv<sub>ext</sub></p></figcaption>
 </figure>
 
 <figure>
 <img src="media/model-part1/media/image10.jpeg" style="width:2.75591in;height:2.70583in" />
-<figcaption><p>Figure 10 Sensitivity analysis of SA. RNAIII</p></figcaption>
+<figcaption><p>Figure 9(b) Sensitivity analysis of SA. RNAIII</p></figcaption>
 </figure>
 
 In the model, we analyzed the effects of key parameters on system behavior. For *Staphylococcus aureus* RNAIII, sensitivity analysis revealed that **a₃ (the maximum transcription rate of promoter P₃ without considering leakage) and b₃ (the degradation rate constant of RNAIII)** had the greatest impact. However, these two parameters are intrinsic to the system and cannot be adjusted in experimental design.
 
 For the scFv secreted by *Staphylococcus epidermidis*, sensitivity analysis showed that **a₃ and b₅ (the degradation rate constant of extracellular scFv)** were the most influential parameters. Literature indicates that the half-life of scFv is typically short, around 0.5–2 hours, which may limit its duration in vivo and reduce its ability to sustain the expected anti-inflammatory effect (Wu et al., 2010).
 
-In an interview with <span class="mark">\[School\]\[Professor\]</span>, it was suggested not to use conventional cytokine antibodies but instead employ cytokine receptor antagonists, such as IL-4Rα antibody VHH. Based on this advice, we adjusted our project design to use IL-4Rα antibody VHH as the new anti-inflammatory molecule.
+In an interview with Prof. Lai, it was suggested not to use conventional cytokine antibodies but instead employ cytokine receptor antagonists, such as IL-4Rα antibody VHH. Based on this advice, we adjusted our project design to use IL-4Rα antibody VHH as the new anti-inflammatory molecule.
 
 **Through modeling analysis, we identified the insufficient duration of scFv in the original design and made timely adjustments to ensure that the system can operate stably and achieve its intended function under simulation conditions, providing valuable guidance for our project design.**
 

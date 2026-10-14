@@ -1,50 +1,46 @@
-# PhysiCell3 — original wiki draft
+# PhysiCell3 — wiki manuscript
 
-> Converted from the locally retained source document `PhysiCell3.docx`. Original draft wording, figures and equations are preserved; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
+> Converted from the locally retained source document `PhysiCell3.docx`. Edited for portfolio readability: internal layout notes and conversion artifacts have been removed. The [published team wiki](https://2025.igem.wiki/sjtu-biox-shanghai/model) presents the final results; see [editorial notes](../EDITORIAL_NOTES.md) before interpreting its claims.
 
 ### Model Building-Recurrence and Treatment Model
 
 Next, we will establish models **featuring engineered *S.epidermidis*** to verify whether it can exert therapeutic effects.
 
-For this section we constructed **two distinct models** depending on **disease status**.<span class="mark">图，就是最后发的那个有细胞数量的那个图</span>
+For this section we constructed **two distinct models** depending on **disease status**.
 
 <figure>
 <img src="media/physicell3/media/image1.jpeg" style="width:5.99375in;height:3.75972in" />
-<figcaption><p><mark>Caption: fig.21 Correspondence between the model and disease stages as well as changes in microbial counts</mark></p></figcaption>
+<figcaption><p><mark>Caption: Fig.20 Correspondence between the model and disease stages as well as changes in microbial counts</mark></p></figcaption>
 </figure>
 
-- **<span class="mark">前面有符号</span>The *Recurrence* model** simulates **disease relapse** when ***S. aureus* abundance is low** and the cell initial conditions match those in the *Occurrence* model. The *Recurrence* model is intended for comparison with *Occurrence* to test **whether a long-term resident engineered strain can suppress disease development at early AD reactivation**.
+- **The *Recurrence* model** simulates **disease relapse** when ***S. aureus* abundance is low** and the cell initial conditions match those in the *Occurrence* model. The *Recurrence* model is intended for comparison with *Occurrence* to test **whether a long-term resident engineered strain can suppress disease development at early AD reactivation**.
 
-- **<span class="mark">前面有符号</span>The *Treatment* model** focuses on a **more severe disease state** with **higher initial *S. aureus* counts**; it tests **whether the engineered strain can occupy the epidermal niche on AD skin**.
+- **The *Treatment* model** focuses on a **more severe disease state** with **higher initial *S. aureus* counts**; it tests **whether the engineered strain can occupy the epidermal niche on AD skin**.
 
 Accordingly, the **initial cell distributions** for the two models are shown in the figure below.
 
 <figure>
 <img src="media/physicell3/media/image2.png" style="width:4.45964in;height:2.90186in" />
-<figcaption><p>Fig.22(a) Initial Condition for Recurrence</p></figcaption>
+<figcaption><p>Fig.21(a) Initial Condition for Recurrence</p></figcaption>
 </figure>
 
 <figure>
 <img src="media/physicell3/media/image3.png" style="width:3.88484in;height:2.6425in" />
-<figcaption><p>Fig. 22(b) Initial Condition for Treatment</p></figcaption>
+<figcaption><p>Fig.21(b) Initial Condition for Treatment</p></figcaption>
 </figure>
-
-<span class="mark">（可以的话上面两个并排放作对比）</span>
 
 In addition, because the post-colonization spatial arrangement of the engineered *S. epidermidis* is uncertain, we also tested an **alternative scenario** where the same number of engineered S.epidermis is **uniformly dispersed** across the domain to evaluate whether spatial distribution affects colonization and therapeutic outcome
 
 <figure>
 <img src="media/physicell3/media/image4.png" style="width:4.15027in;height:2.40706in" />
-<figcaption><p>Fig. 23 Initial Condition for Recurrence_sparsed</p></figcaption>
+<figcaption><p>Fig.22 Initial Condition for Recurrence_sparsed</p></figcaption>
 </figure>
 
 For both models’ ***cell_rules.**csv,* we added an agent type *engr_S.epidermis* (green in the figure). This **engineered agent** responds to AIP_sa by secreting vHH and AIP_C. AIP_C reduces secretion of AIP_sa and toxin by *S. aureus*, while vHH suppresses T-cell cytokine secretion via feedback regulation (Kim et al., 2019).
 
-<img src="media/physicell3/media/image5.png" style="width:4.75217in;height:2.92281in" />（被换了）
-
 <figure>
-<img src="media/physicell3/media/image6.png" style="width:6in;height:3.46111in" />
-<figcaption><p>Fig. 24 Rules Map for Recurrence and Treatment Model</p></figcaption>
+<img src="https://static.igem.wiki/teams/5615/wiki/model/ds3.avif" alt="Final recurrence and treatment rule map from the official 2025 iGEM wiki" style="width:6in;height:3.46111in" />
+<figcaption><p>Fig.23 Rules Map for Recurrence and Treatment Model</p></figcaption>
 </figure>
 
 Notably, **for the rule “AIP_C inhibits *S. aureus* toxin secretion,” the Hill equation half-max was informed by wet-lab data** (see hemolysis assay of AIP-C potency). The experiment showed that the IC₅₀ in the presence of *S. aureus* culture supernatant was 1.5× that of the control, from which we infer that AIP-C reduces hemolysin concentration to roughly two-thirds of its original level. Accordingly, the Hill half-max for AIP_C inhibition of *S. aureus* toxin secretion was set to 0.667 (unitless).
@@ -71,19 +67,19 @@ To construct the 3D model, we consulted a review (Weidinger et al., 2018) and ch
 
 <figure>
 <img src="media/physicell3/media/image7.png" style="width:3.42279in;height:1.79208in" />
-<figcaption><p>Fig. 25(a) Top View of the 3D Model</p></figcaption>
+<figcaption><p>Fig.24(a) Top View of the 3D Model</p></figcaption>
 </figure>
 
 <figure>
 <img src="media/physicell3/media/image8.png" style="width:3.66863in;height:1.92079in" />
-<figcaption><p>Fig.25(b) Side View of the 3D Model</p></figcaption>
+<figcaption><p>Fig.24(b) Side View of the 3D Model</p></figcaption>
 </figure>
 
 Additionally, to model the **barrier properties** of the epidermal and dermal tissues we adopted an approach analogous to our EPS/biofilm treatment (<span class="mark">see *Occurrence_trial2*)</span>. We filled the three keratinocyte layers with **ECM_epidermis** and the dermis with **ECM_dermis**, and used a similar “capture” mechanism to suppress transport of diffusing substances within these regions.
 
 <img src="media/physicell3/media/image9.png" style="width:2.93097in;height:1.53458in" /><img src="media/physicell3/media/image10.png" style="width:2.95553in;height:1.54744in" />
 
-Fig.26(a)/(b) Barrier Field of the 3D Model; Left, ECM_epidermis; Right, ECM_dermis.（可以的话wiki里这里可以并排）<span class="mark">这里需要改成（a,b）</span>
+Fig.25(a,b) Barrier Field of the 3D Model; Left, ECM_epidermis; Right, ECM_dermis.
 
 Ghaffarizadeh, A., Friedman, S. H., & Macklin, P. (2016). BioFVM: an efficient, parallelized diffusive transport solver for 3-D biological simulations. *Bioinformatics*, *32*(8), 1256-1258. <https://doi.org/10.1093/bioinformatics/btv730>
 

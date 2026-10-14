@@ -2,9 +2,12 @@
 
 **Yuling Zhou · Sole modeling member, SJTU-BioX-Shanghai (2025 iGEM)**
 
+> **[Explore the final 2025 iGEM modeling results on the official team wiki →](https://2025.igem.wiki/sjtu-biox-shanghai/model)**
+> The published page brings together the final model descriptions, figures and simulation animations.
+
 I developed the team's modeling workflow to investigate how engineered *Staphylococcus epidermidis* could respond to *S. aureus* quorum sensing, interfere with pathogenic signaling, and modulate an inflammatory skin microenvironment. The work connects molecular circuit analysis, spatial agent-based simulations, and quantitative parameter exploration.
 
-[Research overview](docs/RESEARCH.md) · [My contributions](docs/CONTRIBUTIONS.md) · [Run the models](docs/REPRODUCIBILITY.md) · [Original wiki drafts](docs/wiki/README.md) · [Original iGEM GitLab](https://gitlab.igem.org/linnazhou/model-tools-for-2025-sjtu-biox-shanghai) · [Published team wiki](https://2025.igem.wiki/sjtu-biox-shanghai/model)
+[Research overview](docs/RESEARCH.md) · [My contributions](docs/CONTRIBUTIONS.md) · [Run the models](docs/REPRODUCIBILITY.md) · [Wiki manuscripts](docs/wiki/README.md) · [Original iGEM GitLab](https://gitlab.igem.org/linnazhou/model-tools-for-2025-sjtu-biox-shanghai) · [Published team wiki](https://2025.igem.wiki/sjtu-biox-shanghai/model)
 
 ## Research question
 
@@ -46,7 +49,7 @@ PhysiCell, BioFVM, the cell behavior grammar framework and MATLAB SimBiology are
 
 The original wiki reports lower simulated toxin and cytokine fields in recurrence scenarios with the engineered strain, and localized 3D responses to nearby pathogenic colonies. These observations motivate further design work. They are computational results; full historical field-output datasets were not included in the supplied GitLab repository.
 
-The archived sweep contains **1,000 parameter combinations, each with 25 time points over 24 simulated hours**. During portfolio preparation, every archived population score was recomputed and matched exactly. The scoring objective penalizes pathogen population increases and engineered-strain population losses; it does not directly score clinical outcomes.
+The archived sweep contains **1,000 parameter combinations, each with 25 time points over 24 simulated hours** (0–1,440 minutes, sampled hourly). This archived sweep has a different time horizon from the current standalone Recurrence configuration, which specifies 48 hours (2,880 minutes). During portfolio preparation, every archived population score was recomputed and matched exactly. The scoring objective penalizes pathogen population increases and engineered-strain population losses; it does not directly score clinical outcomes.
 
 The [verification appendix](docs/VERIFICATION.md) records these checks and contains clearly labeled plots newly generated from the archived CSVs in October 2026. Those plots are separate from the original 2025 figures displayed above.
 
@@ -58,7 +61,8 @@ Linux, Python 3.10+, GNU Make and a C++ compiler with OpenMP are needed. The inc
 # Build and run a short 2D initialization/dynamics check.
 python3 scripts/run_model.py Recurrence --threads 2 --max-time 1
 
-# Run the configured recurrence simulation (48 simulated hours).
+# Run the current standalone recurrence configuration (2,880 min = 48 h).
+# The archived parameter sweep contains 0–1,440 min = 24 h per run.
 python3 scripts/run_model.py Recurrence --threads 4
 
 # Recompute all 1,000 archived scores using only the Python standard library.
@@ -88,11 +92,11 @@ models/                  Six original modeling projects and archived sweep data
 scripts/                 Portable model runner and result verification/plotting
 results/                 Recomputed scores, verification report and offline HTML
 docs/                    Research narrative, contribution statement and run guide
-docs/wiki/               Searchable conversions with extracted original figures
+docs/wiki/               Edited wiki manuscripts with extracted original figures
 vendor/PhysiCell/         Upstream simulation engine, version 1.14.2, with licenses
 ```
 
-Published source files are tracked in a [SHA-256 manifest](docs/source-manifest.json). The six original Word drafts are retained locally; this public repository includes their Markdown conversions and extracted figures. Backups, stale process files and compiled artifacts are excluded from the curated copy; their original locations remain documented. New packaging, documentation and verification scripts were added during portfolio preparation in October 2026.
+Published source files are tracked in a [SHA-256 manifest](docs/source-manifest.json). The six original Word drafts are retained locally; this public repository includes edited Markdown versions and extracted figures. Backups, stale process files and compiled artifacts are excluded from the curated copy; their original locations remain documented. New packaging, documentation and verification scripts were added during portfolio preparation in October 2026.
 
 ## Attribution
 

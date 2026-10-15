@@ -16,10 +16,9 @@ Parameter sweep identified optimal regions for the relative functional contribut
 
 ### Agent-Based Cell Behavior Hypothesis Grammar
 
-<figure>
-<img src="media/physicell1/media/image1.png" style="width:5.99444in;height:4.52014in" />
-<figcaption><p><mark>fig.10 An illustration of agent-based cell grammar in our system</mark></p></figcaption>
-</figure>
+![fig.10 An illustration of agent-based cell grammar in our system](media/physicell1/media/image1.png)
+
+fig.10 An illustration of agent-based cell grammar in our system
 
 [Signal dictionary](https://static.igem.wiki/teams/5615/wiki/model/signal-dictionary.pdf) · [Behavior dictionary](https://static.igem.wiki/teams/5615/wiki/model/behavior-dictionary.pdf)
 
@@ -33,10 +32,9 @@ Therefore, we adopted an **agent-based model (ABM)**, drawing on the **latest *C
 
 To implement the modeling above, we utilized **PhysiCell Studio**, a graphical modeling tool designed to help users rapidly customize and extend simulations. However, several custom file types and the inadequacy of built-in visualization utilities create obstacles for new users. We therefore provide **a clear explanation** of PhysiCell Studio’s file structure, basic usage, and our extended visualization, to help other **iGEMers get started quickly**.
 
-<figure>
-<img src="media/physicell1/media/image2.png" style="width:4.95701in;height:2.00575in" />
-<figcaption><p>Fig.11 Four modules required for a PhysiCell Studio project</p></figcaption>
-</figure>
+![Fig.11 Four modules required for a PhysiCell Studio project](media/physicell1/media/image2.png)
+
+Fig.11 Four modules required for a PhysiCell Studio project
 
 As shown, defining a PhysiCell Studio project requires **four modules**, each responsible for different functions. To create your own project, the first step is to generate its **executable**. After implementing custom modules (cell colors, substance secretion, interactions, etc.) in *custom.cpp*, please:
 
@@ -52,10 +50,9 @@ As shown, defining a PhysiCell Studio project requires **four modules**, each re
 
 Next, you can open a template and modify the relevant parameters in the graphical interface of PhysiCell Studio.
 
-<figure>
-<img src="media/physicell1/media/image3.png" style="width:4.04983in;height:2.72784in" />
-<figcaption><p>Fig.12 An example of the PhysiCell Studio GUI (Graphic User Interface)</p></figcaption>
-</figure>
+![Fig.12 An example of the PhysiCell Studio GUI (Graphic User Interface)](media/physicell1/media/image3.png)
+
+Fig.12 An example of the PhysiCell Studio GUI (Graphic User Interface)
 
 Please note the different saving procedures for the various files. For *PhysiCell_settings.xml* use File → Save As; for *cells.csv* and *cell_rules.csv* simply set the correct path in the respective interface and click Save.
 

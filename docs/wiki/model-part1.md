@@ -24,17 +24,15 @@ Our framework is organized into **three interconnected modules** that together c
 
 3.  **Extracellular environment** – stimulate the diffusion of AIPs and AIP-C, as well as the therapeutic molecule VHH.
 
-<figure>
-<img src="media/model-part1/media/image1.png" style="width:6in;height:4.50139in" />
-<figcaption><p>Molecules Interaction Diagram</p></figcaption>
-</figure>
+![Molecules Interaction Diagram](media/model-part1/media/image1.png)
+
+Molecules Interaction Diagram
 
 For the first part of our modeling, we employed **MATLAB SimBiology**, a specialized toolbox for constructing, simulating, and analyzing biological systems. SimBiology allows us to represent our experimental design as a set of biochemical reactions and differential equations, providing a framework to explore system dynamics in a reproducible way. By abstracting our gene circuit into interactions between molecular species, we can test the feasibility of our design in silico before proceeding to experiments.
 
-<figure>
-<img src="media/model-part1/media/image2.png" style="width:6in;height:2.97708in" />
-<figcaption><p>Simbiology representation derived from the molecular interaction diagram</p></figcaption>
-</figure>
+![Simbiology representation derived from the molecular interaction diagram](media/model-part1/media/image2.png)
+
+Simbiology representation derived from the molecular interaction diagram
 
 The resulting system captures dynamics of molecular species and enables simulations of signal accumulation, interspecies interference, and regulatory outcomes. By analyzing steady states, time courses, and parameter sensitivities, we evaluate whether the engineered gene circuit stimulation can suppress pathogenic quorum sensing while promoting commensal resilience under realistic conditions.
 
@@ -44,14 +42,13 @@ Through a review of the literature (Moormeier et al., 2017), our model assumes t
 
 For ligand–receptor binding, we adopted the **Hill equation** to describe the process. The Hill function is widely used in biological modeling because it captures both cooperative binding effects and the saturable nature of receptor–ligand interactions. This enables the model to approximate nonlinear signal amplification and threshold-like responses observed in quorum sensing and gene regulation systems.
 
-## Finally, for the extracellular environment, we assume that the diffusion of signaling and therapeutic molecules is homogeneous. In addition, the spatial distribution of bacterial microcolonies is considered relatively uniform, and proteins secreted by both species are assumed to follow the same diffusion and degradation dynamics. These simplifications reduce spatial complexity and allow us to focus on the temporal evolution of molecular concentrations that mediate the interactions between the two bacterial species.
+Finally, for the extracellular environment, we assume that the diffusion of signaling and therapeutic molecules is homogeneous. In addition, the spatial distribution of bacterial microcolonies is considered relatively uniform, and proteins secreted by both species are assumed to follow the same diffusion and degradation dynamics. These simplifications reduce spatial complexity and allow us to focus on the temporal evolution of molecular concentrations that mediate the interactions between the two bacterial species.
 
 ## *S. aureus* Dynamics
 
-<figure>
-<img src="media/model-part1/media/image3.png" style="width:5.99848in;height:1.5239in" />
-<figcaption><p><em>S.aureus</em> Dynamics Diagram</p></figcaption>
-</figure>
+![S.aureus Dynamics Diagram](media/published/figure-03.webp)
+
+*S.aureus* Dynamics Diagram
 
 The following reactions and ordinary differential equations (ODEs) describe the molecular circuitry of *S. aureus* (the Agr quorum-sensing system and its effectors).
 
@@ -61,88 +58,87 @@ In addition, we include AIP_C, a competing signal secreted by *S. epidermidis*, 
 
 **Reaction formula**
 
-``` math
+```math
 \begin{array}{r}
 RNAIII{\overset{b_{3}}{\rightarrow}\varnothing}
 \end{array}
 ```
 
-``` math
+```math
 SA.RNAII\overset{b_{2}}{\rightarrow}\varnothing
 ```
 
-``` math
+```math
 AgrB\overset{b_{B}}{\rightarrow}\varnothing
 ```
 
-``` math
+```math
 AgrD\overset{AgrB}{\rightarrow}AIP
 ```
 
-``` math
+```math
 AgrC + AIP\overset{k_{cat_{1C}}}{\rightarrow}AgrC_{P} \bullet AIP
 ```
 
-``` math
+```math
 AgrC + AIP_{C}\overset{Ki}{\rightarrow}AgrC \bullet AIP_{C}
 ```
 
-``` math
+```math
 AIP\overset{b_{1}}{\rightarrow}\varnothing
 ```
 
-``` math
+```math
 AgrC_{P} + SA.AgrA\overset{k_{transp}}{\rightarrow}AgrC + SA.AgrA_{P}
 ```
 
-``` math
+```math
 SA.AgrA_{P}\overset{k_{dephos}}{\rightarrow}SA.AgrA
 ```
 
 **Ordinary Differential Equations**
 
-``` math
+```math
 \frac{d\lbrack RNAIII\rbrack}{dt} = \frac{a_{3}}{{(\frac{{Kd}_{3}}{SA.AgrA_{P}})}^{n} + 1} + a_{30} - b_{3} \bullet \lbrack RNAIII\rbrack
 ```
 
-``` math
+```math
 \frac{d\lbrack SA.RNAII\rbrack}{dt} = \frac{a_{2}}{{(\frac{{Kd}_{2}}{SA.AgrA_{P}})}^{n} + 1} + a_{20} - b_{2} \bullet \lbrack SA.RNAII\rbrack
 ```
 
-``` math
+```math
 \frac{d\lbrack AgrB\rbrack}{dt} = k_{B} \bullet \lbrack SA.RNAII\rbrack - b_{B} \bullet \lbrack AgrB\rbrack
 ```
 
-``` math
+```math
 \frac{d\lbrack AgrD\rbrack}{dt} = k_{D} \bullet \lbrack SA.RNAII\rbrack - \frac{k_{cat_{1D}} \bullet \lbrack AgrB\rbrack \bullet \lbrack AgrD\rbrack}{{Kd}_{1D} + \lbrack AgrD\rbrack} - b_{D} \bullet \lbrack AgrD\rbrack
 ```
 
-``` math
+```math
 \frac{d\lbrack AgrC\rbrack}{dt} = - \frac{k_{cat_{1C}} \bullet \lbrack AIP\rbrack \bullet \lbrack AgrC\rbrack}{{Kd}_{1C} \bullet \left( 1 + \frac{\lbrack AIP_{C_{SA}}\rbrack}{Ki} \right) + \lbrack AgrC\rbrack} + k_{transp} \bullet \left\lbrack AgrC_{P} \right\rbrack \bullet \lbrack SA.AgrA\rbrack - b_{C} \bullet \lbrack AgrC\rbrack + k_{C} \bullet \lbrack SA.RNAII\rbrack
 ```
 
-``` math
+```math
 \frac{d\lbrack SA.AgrA\rbrack}{dt} = - k_{transp} \bullet \left\lbrack AgrC_{P} \right\rbrack \bullet \lbrack SA.AgrA\rbrack + k_{dephos} \bullet \left\lbrack SA.AgrA_{P} \right\rbrack - b_{A} \bullet \lbrack SA.AgrA\rbrack + k_{A} \bullet \lbrack SA.RNAII\rbrack
 ```
 
-``` math
+```math
 \frac{d\lbrack SA.AgrA_{P}\rbrack}{dt} = k_{transp} \bullet \left\lbrack AgrC_{P} \right\rbrack \bullet \lbrack SA.AgrA\rbrack - k_{dephos} \bullet \lbrack SA.AgrA_{P}\rbrack
 ```
 
-``` math
+```math
 \frac{d\lbrack AgrC_{P}\rbrack}{dt} = \frac{k_{cat_{1C}} \bullet \lbrack AIP\rbrack \bullet \lbrack AgrC\rbrack}{{Kd}_{1C} \bullet \left( 1 + \frac{\left\lbrack AIP_{C_{SA}} \right\rbrack}{Ki} \right) + \lbrack AgrC\rbrack} - k_{transp} \bullet \left\lbrack AgrC_{P} \right\rbrack \bullet \lbrack SA.AgrA\rbrack
 ```
 
-``` math
+```math
 \frac{d\lbrack AIP\rbrack}{dt} = \frac{k_{cat_{1D}} \bullet \lbrack AgrB\rbrack \bullet \lbrack AgrD\rbrack}{{Kd}_{1D} + \lbrack AgrD\rbrack} - b_{1} \bullet \lbrack AIP\rbrack
 ```
 
 ## *S. epidermidis* Dynamics
 
-<figure>
-<img src="media/model-part1/media/image4.png" style="width:5.99798in;height:1.97808in" />
-<figcaption><p>Figure 4 <em>S. epidermidis</em> Dynamics Diagram</p></figcaption>
-</figure>
+![Figure 4 S. epidermidis Dynamics Diagram](media/published/figure-04.webp)
+
+Figure 4 *S. epidermidis* Dynamics Diagram
 
 The following reactions and ordinary differential equations (ODEs) describe the engineered regulatory circuit of *S. epidermidis*.
 
@@ -154,109 +150,109 @@ All molecules—including RNAII, Agr proteins, AIP<sub>C</sub>, and scFv—are m
 
 **Reaction formula**
 
-``` math
+```math
 scFv\overset{b_{4}}{\rightarrow}\varnothing
 ```
 
-``` math
+```math
 scFv\overset{Tat}{\rightarrow}scFv\_ ext
 ```
 
-``` math
+```math
 scFv\_ ext\overset{b_{5}}{\rightarrow}\varnothing
 ```
 
-``` math
+```math
 SE.RNAII\overset{b_{2}}{\rightarrow}\varnothing
 ```
 
-``` math
+```math
 AgrB\_ cap\overset{b_{B_{cap}}}{\rightarrow}\varnothing
 ```
 
-``` math
+```math
 AgrD\_ cap\overset{b_{D_{cap}}}{\rightarrow}\varnothing
 ```
 
-``` math
+```math
 AgrD\overset{b_{D}}{\rightarrow}\varnothing
 ```
 
-``` math
+```math
 AgrC\overset{b_{C}}{\rightarrow}\varnothing
 ```
 
-``` math
+```math
 SA.AgrA\overset{b_{A}}{\rightarrow}\varnothing
 ```
 
-``` math
+```math
 AgrD\_ cap\overset{AgrB\_ cap}{\rightarrow}{AIP}_{C}
 ```
 
-``` math
+```math
 {AIP}_{C}\overset{b_{6}}{\rightarrow}\varnothing
 ```
 
-``` math
+```math
 AgrC\_ mut + AIP\overset{k_{cat_{2C}}}{\rightarrow}{AgrC\_ mut}_{P} \bullet AIP
 ```
 
-``` math
+```math
 AgrC\_ mut\overset{k_{phos}}{\rightarrow}{AgrC\_ mut}_{P}
 ```
 
-``` math
+```math
 {AgrC\_ mut}_{P} + SE.AgrA\overset{k_{transp}}{\rightarrow}AgrC\_ mut + SE.AgrA_{P}
 ```
 
-``` math
+```math
 SE.AgrA_{P}\overset{k_{dephos}}{\rightarrow}SE.AgrA
 ```
 
-``` math
+```math
 SE.AgrA\overset{b_{A}}{\rightarrow}\varnothing
 ```
 
-``` math
+```math
 AgrC\_ mut\overset{b_{C}}{\rightarrow}\varnothing
 ```
 
 **Ordinary Differential Equations**
 
-``` math
+```math
 \frac{d\lbrack SE.RNAII\rbrack}{dt} = \frac{a_{2}}{{(\frac{{Kd}_{2}}{SA.AgrA_{P}})}^{n} + 1} + a_{20} - b_{2} \bullet \lbrack SE.RNAII\rbrack
 ```
 
-``` math
+```math
 \frac{d\lbrack AgrB\_ cap\rbrack}{dt} = k_{B\_ cap} \bullet \lbrack SE.RNAII\rbrack - b_{B_{cap}} \bullet \lbrack AgrB\_ cap\rbrack
 ```
 
-``` math
+```math
 \frac{d\lbrack AgrD\_ cap\rbrack}{dt} = k_{D\_ cap} \bullet \lbrack SE.RNAII\rbrack - \frac{k_{cat_{2D}} \bullet \lbrack AgrB\_ cap\rbrack \bullet \lbrack AgrD\_ cap\rbrack}{{Kd}_{2D} + \lbrack AgrD\_ cap\rbrack} - b_{D_{cap}} \bullet \lbrack AgrD\_ cap\rbrack
 ```
 
-``` math
+```math
 \frac{d\lbrack AgrC\_ mut\rbrack}{dt} = - \frac{k_{cat_{2C}} \bullet \left\lbrack AIP_{SE} \right\rbrack \bullet \lbrack AgrC\_ mut\rbrack}{{Kd}_{2C} + \lbrack AgrC\_ mut\rbrack} - k_{phos} \bullet \lbrack AgrC\_ mut\rbrack + k_{transp} \bullet \left\lbrack {AgrC\_ mut}_{P} \right\rbrack \bullet \lbrack SE.AgrA\rbrack - b_{C} \bullet \lbrack AgrC\_ mut\rbrack + k_{C} \bullet \lbrack SE.RNAII\rbrack
 ```
 
-``` math
+```math
 \frac{d\left\lbrack {AgrC\_ mut}_{P} \right\rbrack}{dt} = \frac{k_{cat_{2C}} \bullet \left\lbrack AIP_{SE} \right\rbrack \bullet \lbrack AgrC\_ mut\rbrack}{{Kd}_{2C} + \lbrack AgrC\_ mut\rbrack} + k_{phos} \bullet \left\lbrack AgrC_{mut} \right\rbrack - k_{transp} \bullet \left\lbrack {AgrC_{mut}}_{P} \right\rbrack \bullet \lbrack SE.AgrA\rbrack
 ```
 
-``` math
+```math
 \frac{d\lbrack SE.AgrA\rbrack}{dt} = - k_{transp} \bullet \left\lbrack Agr{C\_ mut}_{P} \right\rbrack \bullet \lbrack SE.AgrA\rbrack + k_{dephos} \bullet \left\lbrack SE.AgrA_{P} \right\rbrack - b_{A} \bullet \lbrack SE.AgrA\rbrack + k_{A} \bullet \lbrack SE.RNAII\rbrack
 ```
 
-``` math
+```math
 \frac{d\lbrack SE.AgrA_{P}\rbrack}{dt} = k_{transp} \bullet \left\lbrack Agr{C\_ mut}_{P} \right\rbrack \bullet \lbrack SE.AgrA\rbrack - k_{dephos} \bullet \lbrack SE.AgrA_{P}
 ```
 
-``` math
+```math
 \frac{d\lbrack scFv\rbrack}{dt} = \frac{a_{3}}{{(\frac{{Kd}_{3}}{\lbrack SE.AgrA_{P}\rbrack})}^{n} + 1} + a_{30} - b_{4} \bullet \lbrack scFv\rbrack - \frac{Tat_{V_{\max}} \bullet \lbrack scFv\rbrack}{{Kd}_{scFv} + \lbrack scFv\rbrack}
 ```
 
-``` math
+```math
 \frac{d\lbrack AIP_{C}\rbrack}{dt} = \frac{k_{cat_{2D}} \bullet \lbrack AgrB\_ cap\rbrack \bullet \lbrack AgrD\_ cap\rbrack}{{Kd}_{2D} + \lbrack AgrD\_ cap\rbrack} - b_{6} \bullet \lbrack AIP_{C}\rbrack
 ```
 
@@ -266,11 +262,11 @@ To capture the interactions between *Staphylococcus aureus* and *Staphylococcus 
 
 **Equations**
 
-``` math
+```math
 \left\lbrack AIP_{SE} \right\rbrack = e \bullet \frac{N_{SA}}{N_{SE}} \bullet \lbrack AIP\rbrack
 ```
 
-``` math
+```math
 \left\lbrack AIP_{C_{SA}} \right\rbrack = e \bullet \frac{N_{SE}}{N_{SA}} \bullet \lbrack AIP_{C}\rbrack
 ```
 
@@ -355,10 +351,9 @@ The initial settings table summarizes the key baseline parameters used in our mo
 
 **Key Molecules concentration stimulation**
 
-<figure>
-<img src="media/model-part1/media/image5.png" style="width:5.76806in;height:2.45139in" alt="Time-course plot of bacterial RNAII concentrations" />
-<figcaption><p>Figure 5 Time-course plot of SA. RNAII and SA. RNAII concentration</p></figcaption>
-</figure>
+![Time-course plot of bacterial RNAII concentrations](media/model-part1/media/image5.png)
+
+Figure 5 Time-course plot of SA. RNAII and SA. RNAII concentration
 
 Simulation results show that intracellular ***Staphylococcus aureus* RNAII** (encoding key components of the Agr quorum-sensing system) rapidly declines and reaches a steady state within approximately **0.5 hours**, indicating that our system effectively suppresses the Agr-mediated quorum sensing in *S. aureus*.
 
@@ -366,10 +361,9 @@ Similarly, intracellular ***Staphylococcus epidermidis* RNAII** also falls quick
 
 Together, these findings support that our design both suppresses *S. aureus* virulence and maintains a responsive, self-limiting sensing switch.
 
-<figure>
-<img src="media/model-part1/media/image6.png" style="width:5.76806in;height:2.5in" alt="Time-course plot of AIP-C and AIP concentrations" />
-<figcaption><p>Figure 6 Time-course plot of AIP-C and AIP (represented by AIPI) concentration</p></figcaption>
-</figure>
+![Time-course plot of AIP-C and AIP concentrations](media/model-part1/media/image6.png)
+
+Figure 6 Time-course plot of AIP-C and AIP (represented by AIPI) concentration
 
 The concentration of AIPI, the quorum-sensing molecule secreted by *Staphylococcus aureus* that reflects its population activity, gradually decreases and reaches a stable level over time. In contrast, AIP-C, the inhibitory signaling molecule secreted by *Staphylococcus epidermidis* in response to AIPI, shows a steady increase before reaching equilibrium. Both molecules **reach a stable state at approximately 8 hours**, indicating that the interspecies quorum-sensing system achieves dynamic balance within this period.
 
@@ -377,15 +371,13 @@ Overall, this mutually sensing and controlling switch-like mechanism functions s
 
 **Therapeutic Analysis**
 
-<figure>
-<img src="media/model-part1/media/image7.png" style="width:5.76806in;height:2.45139in" alt="Time-course plot of extracellular scFv concentration" />
-<figcaption><p>Figure 7 Time-course plot of scFv<sub>ext</sub> concentration</p></figcaption>
-</figure>
+![Time-course plot of extracellular scFv concentration](media/model-part1/media/image7.png)
 
-<figure>
-<img src="media/model-part1/media/image8.png" style="width:5.76806in;height:2.47014in" alt="Time-course plot of S. aureus RNAIII concentration" />
-<figcaption><p>Figure 8 Time-course plot of SA. RNAIII concentration</p></figcaption>
-</figure>
+Figure 7 Time-course plot of scFvext concentration
+
+![Time-course plot of S. aureus RNAIII concentration](media/model-part1/media/image8.png)
+
+Figure 8 Time-course plot of SA. RNAIII concentration
 
 In this section, we analyzed the therapeutic performance of our system by monitoring the extracellular concentration of scFv secreted by *Staphylococcus epidermidis* and the intracellular RNAIII level of *Staphylococcus aureus*.
 
@@ -395,15 +387,13 @@ Meanwhile, the intracellular *S. aureus* RNAIII, which directly correlates with 
 
 For comparison, Baylet et al. (2021) reported that only **200 nM** of anti-IL-4 scFv was sufficient to penetrate the skin and neutralize IL-4 in a porcine model of atopic dermatitis. In our design, scFv maintains a steady concentration of 0.42mM, suggesting a substantially stronger and sustained anti-inflammatory potential.
 
-<figure>
-<img src="media/model-part1/media/image9.jpeg" style="width:2.75591in;height:2.70583in" />
-<figcaption><p>Figure 9(a) Sensitivity analysis of scFv<sub>ext</sub></p></figcaption>
-</figure>
+![Figure 9(a) Sensitivity analysis of scFvext](media/model-part1/media/image9.jpeg)
 
-<figure>
-<img src="media/model-part1/media/image10.jpeg" style="width:2.75591in;height:2.70583in" />
-<figcaption><p>Figure 9(b) Sensitivity analysis of SA. RNAIII</p></figcaption>
-</figure>
+Figure 9(a) Sensitivity analysis of scFvext
+
+![Figure 9(b) Sensitivity analysis of SA. RNAIII](media/model-part1/media/image10.jpeg)
+
+Figure 9(b) Sensitivity analysis of SA. RNAIII
 
 In the model, we analyzed the effects of key parameters on system behavior. For *Staphylococcus aureus* RNAIII, sensitivity analysis revealed that **a₃ (the maximum transcription rate of promoter P₃ without considering leakage) and b₃ (the degradation rate constant of RNAIII)** had the greatest impact. However, these two parameters are intrinsic to the system and cannot be adjusted in experimental design.
 

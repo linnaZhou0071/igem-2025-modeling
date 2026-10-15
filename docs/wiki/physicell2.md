@@ -16,10 +16,9 @@ To **define the microenvironment and cell-type information in *PhysiCell_setting
 
 To determine **initial cell counts and spatial distributions (i.e., *cells.csv*)**, we performed a detailed literature review. Agent-based models of the skin microbiome remain scarce (Ceylan et al., 2025). One study (Montgomery et al., 2024) adapted the GutLogo approach by gridding the skin surface and allowing bacteria to move between grid cells as independent agents (Lin et al., 2018); however, that architecture better suits the gastrointestinal tract with continuous fluid flow. Conversely, **observations in 3D skin organoid models** show **staphylococci tending to colonize as microcolonies** (Popov et al., 2014; Wang et al., 2025). Accordingly, we randomly generate several bacterial microcolonies on the skin surface and intentionally increase *S. aureus* counts to emulate early-stage AD expansion. Because our model is 2D, host cells and microbes are placed on the same plane.
 
-<figure>
-<img src="media/physicell2/media/image1.png" style="width:4.1685in;height:2.64102in" />
-<figcaption><p>Fig.13 Initial Condition for <mark>Occurrence_trial1</mark></p></figcaption>
-</figure>
+![Fig.13 Initial Condition for Occurrence_trial1](media/physicell2/media/image1.png)
+
+Fig.13 Initial Condition for Occurrence_trial1
 
 Next, we create a **rule library** for the project agents by producing *cell-rules.csv*. Based on the previously described rule dictionary and the network relationships encoded in this model, we generated the rules map below. Key rules and literature references are listed in the accompanying table：
 
@@ -30,19 +29,17 @@ Next, we create a **rule library** for the project agents by producing *cell-rul
 | *S.aureus* | AIP-se | decrease | AIP_sa secretion | (Williams et al., 2023) |
 | Th2 cells | toxin | increase | Th2 cytokine secretion | (Yamada et al., 2023) |
 
-<figure>
-<img src="media/physicell2/media/image3.png" style="width:6in;height:3.46111in" />
-<figcaption><p>Fig.14 Rules Map for Occurrence_trial1</p></figcaption>
-</figure>
+![Fig.14 Rules Map for Occurrence_trial1](media/physicell2/media/image3.png)
+
+Fig.14 Rules Map for Occurrence_trial1
 
 For *Occurrence_trial1* we did not add any custom modules to *custom.cpp*.
 
 We then ran the simulation and obtained the following visualization:
 
-<figure>
-<img src="media/physicell2/media/image4.png" style="width:2.96827in;height:2.1in" />
-<figcaption><p>Fig.15 A Simulation Snapshot for Occurrence_trial1</p></figcaption>
-</figure>
+![Fig.15 A Simulation Snapshot for Occurrence_trial1](media/published/figure-15.avif)
+
+Fig.15 A Simulation Snapshot for Occurrence_trial1
 
 The colonies appeared as abnormal star-shaped structures with circular gaps around them. Examination of the simulation movie revealed the cause.
 
@@ -95,21 +92,21 @@ Once AMP and bacteriocin are sequestered by EPS they can no longer move and thei
 
 After these modifications, the initial cell morphology distribution and the rule map are as follows:
 
-<figure>
-<img src="media/physicell2/media/image5.png" style="width:3.5738in;height:2.16744in" />
-<figcaption><p>Fig.16 Initial Condition for Occurrence_trial2</p></figcaption>
-</figure>
+![Fig.16 Initial Condition for Occurrence_trial2](media/physicell2/media/image5.png)
 
-<figure>
-<img src="media/physicell2/media/image7.png" style="width:5.99375in;height:3.45556in" />
-<figcaption><p>Fig.17 Rules Map for Occurrence_trial2</p></figcaption>
-</figure>
+Fig.16 Initial Condition for Occurrence_trial2
+
+![Fig.17 Rules Map for Occurrence_trial2](media/physicell2/media/image7.png)
+
+Fig.17 Rules Map for Occurrence_trial2
 
 To verify that our core rules hold in this complex multicellular system, we used the **bivariate Moran’s I** (Wartenberg, 1985) to **test the spatial correlation between relevant substances**.
 
 The bivariate Moran coefficient measures the spatial association between one variable at a location and another variable in that location’s neighborhood — i.e., whether “high/low values of x at a site are accompanied by high/low values of y in neighboring sites.” The statistic ranges in \[−1,1\]: positive values indicate positive association (high–high or low–low across variables and neighbors), while negative values indicate negative association (high–low or low–high). The bivariate Moran’s I is computed as follows:
 
-I\_{xy} = \frac{n}{\mathcal{S}\_{0}} \cdot \frac{\sum\_{i} \sum\_{j} w\_{ij} (x\_{i} - \bar{x}) (y\_{j} - \bar{y})}{\sum\_{i} (x\_{i} - \bar{x})^{2}}
+```math
+I_{xy} = \frac{n}{\mathcal{S}_{0}} \cdot \frac{\sum_{i} \sum_{j} w_{ij} (x_{i} - \bar{x}) (y_{j} - \bar{y})}{\sum_{i} (x_{i} - \bar{x})^{2}}
+```
 
 where n is the number of observation locations; x=(x1,…,xn)′and y=(y1,…,yn)′are the observed values of the two variables (they need not be the same type). Wij denotes an element of the spatial weight matrix W. S<sub>0</sub>​ is the sum of the weights. It is straightforward to see that Ixy​ measures the covariance between xxx and Wy.
 
@@ -119,19 +116,17 @@ We implemented this calculation in a Python script for convenient reuse.
 
 First, we validated whether the model successfully reproduces the ***S. aureus* AD pathogenic chain — AIP_sa (4) → toxin (10) → cytokine (3) → AMP (2)**. We then computed the bivariate Moran’s I for the substances along this logical chain.
 
-<figure>
-<img src="media/physicell2/media/image8.png" style="width:3.89565in;height:2.43343in" />
-<figcaption><p>Fig.18 Bivariate Moran’s I for Pathogenic Chain of Occurrence_trial2</p></figcaption>
-</figure>
+![Fig.18 Bivariate Moran’s I for Pathogenic Chain of Occurrence_trial2](media/physicell2/media/image8.png)
+
+Fig.18 Bivariate Moran’s I for Pathogenic Chain of Occurrence_trial2
 
 The substances in *S. aureus*’s AD pathogenic circuit exhibit strong spatial correlation, and the strongest association occurs between molecules secreted by the same agent type (AIP_sa → toxin). This provides clear evidence that the model successfully reproduces the *S. aureus* AD pathogenic pathway.
 
 Next, we tested whether **EPS effectively sequesters AMP and bacteriocin**, thereby recapitulating biofilm functionality. We computed the bivariate Moran’s I for **EPS (7) → AMP_bound (8) and EPS (7) → bacteriocin_bound (9)** as follows:
 
-<figure>
-<img src="media/physicell2/media/image9.png" style="width:3.48715in;height:2.17826in" />
-<figcaption><p>Fig.19 Bivariate Moran’s I for Biofilm Simulation of Occurrence_trial2</p></figcaption>
-</figure>
+![Fig.19 Bivariate Moran’s I for Biofilm Simulation of Occurrence_trial2](media/physicell2/media/image9.png)
+
+Fig.19 Bivariate Moran’s I for Biofilm Simulation of Occurrence_trial2
 
 The results show that EPS and the bound forms of AMP and bacteriocin (AMP_bound, bacteriocin_bound) all have spatial correlations above 0.75, indicating EPS effectively sequesters these molecules. The reduced spatial correlation of bacteriocin_bound may reflect changes in the spatial relationship between *S. hominis* and *S. aureus*.
 

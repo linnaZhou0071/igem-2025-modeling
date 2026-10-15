@@ -14923,6 +14923,27 @@
       "source_path": "BioFVM/BioFVM_matlab.cpp",
       "path": "vendor/PhysiCell/BioFVM/BioFVM_matlab.cpp",
       "sha256": "ab5c8863153c188efcd43c571f1c16b8072526113b3f67938127ee9d838df790"
+    },
+    {
+      "source": "published iGEM wiki",
+      "source_path": "https://static.igem.wiki/teams/5615/wiki/model/fig3-new.webp",
+      "path": "docs/wiki/media/published/figure-03.webp",
+      "sha256": "d461bff864b73278a82a89cede2be0b560451c64f4bf66904581aa7a649fa7d5",
+      "publication": "Unmodified published image used to restore a crop lost in Word-to-Markdown conversion; original embedded Word media retained."
+    },
+    {
+      "source": "published iGEM wiki",
+      "source_path": "https://static.igem.wiki/teams/5615/wiki/model/fig4-new.webp",
+      "path": "docs/wiki/media/published/figure-04.webp",
+      "sha256": "2f7aa4cbf683c968bae35b7b56ad86a0b8a796f40f847c1fc98892d2e01128ec",
+      "publication": "Unmodified published image used to restore a crop lost in Word-to-Markdown conversion; original embedded Word media retained."
+    },
+    {
+      "source": "published iGEM wiki",
+      "source_path": "https://static.igem.wiki/teams/5615/wiki/model/14-new.avif",
+      "path": "docs/wiki/media/published/figure-15.avif",
+      "sha256": "243111a78be3f39a47cb01c7fada920e5486f3925331ac842bd21f1a6afc28d8",
+      "publication": "Unmodified published image used to restore a crop lost in Word-to-Markdown conversion; original embedded Word media retained."
     }
   ],
   "excluded_gitlab_paths": [
@@ -14950,7 +14971,7 @@
     "Treatment/config/PhysiCell_settings-backup.xml",
     "Treatment/custom_modules/empty.txt"
   ],
-  "publication_notes": "Machine-specific absolute filesystem paths removed from exported configuration and metadata copies. Source hashes retained separately for transformed files; original GitLab source remains the historical reference. Public wiki Markdown edited in October 2026 to remove internal notes, repair conversion artifacts and align figure labels with the published wiki; original Word documents remain local.",
+  "publication_notes": "Machine-specific absolute filesystem paths removed from exported configuration and metadata copies. Source hashes retained separately for transformed files; original GitLab source remains the historical reference. Public wiki Markdown edited in October 2026 to remove internal notes, repair conversion artifacts and align figure labels with the published wiki; original Word documents remain local. October 2026 display fixes preserve original media and add three unmodified published-wiki images for lost Word crops; Markdown images preserve native aspect ratios and display equations use math fences.",
   "local_only_sources": [
     {
       "source": "local wiki_description",

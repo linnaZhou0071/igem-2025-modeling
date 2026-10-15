@@ -53,7 +53,7 @@ A high score means the two populations satisfy the chosen objective over the arc
 
 ![Verification plot generated in October 2026 from archived CSVs](figures/mean-score.png)
 
-*New verification plot generated during portfolio preparation in October 2026; this is not an original 2025 wiki figure. The 2025 original parameter-space figures are preserved in the [results draft](wiki/physicell4.md).*
+*New verification plot generated during portfolio preparation in October 2026; this is not an original 2025 wiki figure. Each cell averages the ten AIP-C settings at a fixed VHH parameter pair. All 100 cells were independently checked against the archived trajectories; see the [numerical grid](../results/mean-score-grid.csv) and [verification method](VERIFICATION.md#independent-heatmap-verification--15-october-2026). The 2025 original parameter-space figures are preserved in the [results manuscript](wiki/physicell4.md).*
 
 The highest-scoring archived combination is run 791: coefficient **0.8**, AIP-C saturation **3.0**, and VHH saturation **0.0644444**, with score **0.994872**. Its pathogen count changes from **1,350 to 1,308** and engineered-strain count from **3,000 to 3,076** over 24 hours. All 1,000 stored scores match recomputation exactly. The source supplies one trajectory for each parameter combination; biological robustness and stochastic uncertainty require additional validation.
 

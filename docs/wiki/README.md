@@ -16,3 +16,7 @@ The original Word files remain local at the author’s request and are not inclu
 | Simulation results and parameter sweep | [PhysiCell 4](physicell4.md) | `PhysiCell4.docx` |
 
 Initially converted with Pandoc through `pypandoc_binary`; editorial cleanup and checks against the published wiki were completed in October 2026. Official molecular-model tables: [parameters](https://static.igem.wiki/teams/5615/wiki/model/table-1.pdf) and [initial concentrations](https://static.igem.wiki/teams/5615/wiki/model/table-2.pdf). Portfolio figures regenerated from archived CSVs are separately located in `docs/figures/`.
+
+## Figure display and equations
+
+Images use their native aspect ratios. Three figures whose Word crop settings were lost during conversion now use the corresponding unmodified published wiki assets: molecular Figures 3 and 4 and the Occurrence_trial1 snapshot (Figure 15). The extracted Word media remain available in their original folders. Equations use GitHub-supported math blocks.

@@ -16,15 +16,13 @@ In the ***Occurrence* model**, when no engineered *S. epidermidis* is present, *
 
 In contrast, in the **recurrence model**, the **engineered *S. epidermidis* persistently suppresses *S. aureus* growth**, resulting in both populations remaining near steady state. Consequently, **T-cell cytokine levels stay low**, indicating effective disease control.
 
-<figure>
-<img src="media/physicell4/media/image1.gif" style="width:3.72685in;height:3.72685in" />
-<figcaption><p>Fig.28 Changes in population plot and substance concentration in the Occurrence Model</p></figcaption>
-</figure>
+![Fig.28 Changes in population plot and substance concentration in the Occurrence Model](media/physicell4/media/image1.gif)
 
-<figure>
-<img src="media/physicell4/media/image2.gif" style="width:4.54938in;height:3.41204in" />
-<figcaption><p>Fig.29 Changes in population plot and substance concentration in the Recurrence Model</p></figcaption>
-</figure>
+Fig.28 Changes in population plot and substance concentration in the Occurrence Model
+
+![Fig.29 Changes in population plot and substance concentration in the Recurrence Model](media/physicell4/media/image2.gif)
+
+Fig.29 Changes in population plot and substance concentration in the Recurrence Model
 
 As shown, population plots of cell counts again confirm suppression by the engineered strain. **Field simulations** show that in ***Occurrence***, **toxin concentration rises** with increasing *S. aureus* abundance (visible after ~40 h); in ***Recurrence***, toxin remains below visible levels, **cytokine levels decline** overall, and show clear **spatial correlation with VHH**.
 
@@ -36,10 +34,9 @@ In the *Occurrence* spatial fields we also observe successful **biofilm modeling
 
 The simulation movie shows that during an **AD flare** when ***S. aureus* dominates**, environmental resources are heavily consumed by *S. aureus* and **cytokine levels are high**. **Massive seeding of *S. epidermidis* instantly reduces cytokine** concentrations, but may **exceed** the system’s **carrying capacity**, causing large-scale microbial mortality and a transition to a new steady state. After stabilization, the **engineered strain persists**, although cytokine levels show some oscillation.
 
-<figure>
-<img src="media/physicell4/media/image3.gif" style="width:4.4147in;height:3.31255in" />
-<figcaption><p>Fig.31 Changes in population plot and substance concentration in the Treatment Model</p></figcaption>
-</figure>
+![Fig.31 Changes in population plot and substance concentration in the Treatment Model](media/physicell4/media/image3.gif)
+
+Fig.31 Changes in population plot and substance concentration in the Treatment Model
 
 As shown, after colonization **engineered *S. epidermidis* secretes abundant VHH**, rapidly lowering T-cell cytokine and toxin concentrations and achieving successful establishment. However, **around ~60 h post-colonization cytokine levels rebound while VHH declines**, indicating that colonization alone may not sustain therapeutic control in severe AD. Therefore for **severe AD** we still recommend **subcutaneous antibody injection** combined with our **engineered strain as adjuvant therapy to prevent relapse**.
 
@@ -53,22 +50,19 @@ Fig.33(a)/(b) 3D Simulation Movie with toxin; left, Occurrence 3D; right, Recurr
 
 In terms of concentration fields, **cytokine and toxin ranges** in the ***Recurrence*** 3D model (with engineered strain) are **lower** than in the *Occurrence* 3D model. Spatially, **T-cell cytokines** tend to **cluster in the dermis**, whereas **toxin** shows **localized bursts within *S. aureus*** populations at the **skin surface**; *S. aureus* colonies that are spatially distant from engineered *S. epidermidis* are more prone to such toxin outbreaks.
 
-<figure>
-<img src="media/physicell4/media/image4.png" style="width:3.7666in;height:1.97186in" />
-<figcaption><p>Fig.34 A Snapshot for Th2 Cytokine in Recurrence 3D Model</p></figcaption>
-</figure>
+![Fig.34 A Snapshot for Th2 Cytokine in Recurrence 3D Model](media/physicell4/media/image4.png)
 
-<figure>
-<img src="media/physicell4/media/image5.png" style="width:3.69668in;height:1.93526in" />
-<figcaption><p>Fig.35 A Snapshot for Toxin in Recurrence 3D Model</p></figcaption>
-</figure>
+Fig.34 A Snapshot for Th2 Cytokine in Recurrence 3D Model
+
+![Fig.35 A Snapshot for Toxin in Recurrence 3D Model](media/physicell4/media/image5.png)
+
+Fig.35 A Snapshot for Toxin in Recurrence 3D Model
 
 Interestingly, **VHH** secretion also manifests as **localized bursts** from *S. epidermidis*, temporally and spatially **responding to nearby *S. aureus* toxin eruptions** — vividly demonstrating the switch’s responsive behavior.
 
-<figure>
-<img src="media/physicell4/media/image6.png" style="width:3.82035in;height:2in" />
-<figcaption><p>Fig.36 VHH in Recurrence 3D. Draft still image; <a href="https://static.igem.wiki/teams/5615/wiki/model/3d-lesion-vhh.webp">published simulation animation</a>.</p></figcaption>
-</figure>
+![Fig.36 VHH in Recurrence 3D. Draft still image; published simulation animation(https://static.igem.wiki/teams/5615/wiki/model/3d-lesion-vhh.webp).](media/physicell4/media/image6.png)
+
+Fig.36 VHH in Recurrence 3D. Draft still image; [published simulation animation](https://static.igem.wiki/teams/5615/wiki/model/3d-lesion-vhh.webp).
 
 [Fig.37: VHH snapshot in the Recurrence 3D model](https://static.igem.wiki/teams/5615/wiki/model/snapshot3.webp).
 
@@ -82,15 +76,13 @@ Reviewing the recurrence rule set shows that ***S. aureus*** secretes a **toxin*
 
 Therefore, if **VHH** secretion or action is **too strong**, the engineered S. epidermidis strain can be rapidly **killed by the resulting AMP surge**. Conversely, if VHH secretion or action is **too weak**, the strain **cannot achieve a therapeutic effect**. Similarly, **AIP-C secretion requires precise adjustment**: increasing AIP-C reduces S. aureus invasion and toxin secretion (which is beneficial for the survival of the engineered strain), but excessive AIP-C can reduce the effectiveness of AIP_sa and limit its ability to promote AMP production.
 
-<figure>
-<img src="media/physicell4/media/image7.png" style="width:4.68554in;height:2.94907in" />
-<figcaption><p>Fig.38 Pathways for <em>S.aureus</em> to Occupy Advantageous Ecological Niches</p></figcaption>
-</figure>
+![Fig.38 Pathways for S.aureus to Occupy Advantageous Ecological Niches](media/physicell4/media/image7.png)
 
-<figure>
-<img src="media/physicell4/media/image8.png" style="width:5.19766in;height:3.18056in" />
-<figcaption><p>Fig.39 Pathways for engineered <em>S.epidermis</em> to be introduced to unfavorable ecological niches</p></figcaption>
-</figure>
+Fig.38 Pathways for *S.aureus* to Occupy Advantageous Ecological Niches
+
+![Fig.39 Pathways for engineered S.epidermis to be introduced to unfavorable ecological niches](media/physicell4/media/image8.png)
+
+Fig.39 Pathways for engineered *S.epidermis* to be introduced to unfavorable ecological niches
 
 Therefore, **both VHH and AIP-C require fine-tuning to find an optimal parameter regime.**
 
@@ -104,7 +96,7 @@ After preliminary calibration, we performed a uniform scan over **three key para
 
 Next, we built a 10×10×10 parameter space. To map the optimal surface, we defined a **scoring metric** for each simulation. The ideal target state is as follows: **S. aureus** **(A)** s**hould remain constant** (Ai ≈ Ao) with only minor fluctuations; sustained increases or large spikes are undesirable. **Engineered S. epidermidis** **(E) should not decrease** — it should preferably remain constant or increase slightly (Ei ≥ Eo); sustained decline or large drops are undesirable.
 
-Let the time series have N points: t_0 \< t_1 \< … \< t\_{N-1}. Define Ai = *S. aureus* count at ti and Ei = *S. epidermidis* count at ti; total span T = t\_{N-1} − t_0. To avoid division by zero, set a tiny ε = 1e−9.
+Let the time series have $N$ points, $t_0 < t_1 < \cdots < t_{N-1}$. Define $A_i$ as the *S. aureus* count and $E_i$ as the engineered *S. epidermidis* count at $t_i$; the total span is $T = t_{N-1} - t_0$. To avoid division by zero, set $\varepsilon = 10^{-9}$.
 
 We combined three components into a composite penalty score to measure deviation from the ideal:
 
@@ -112,57 +104,75 @@ We combined three components into a composite penalty score to measure deviation
 
 For A (only upward deviations):
 
-D\_{A} = \frac{1}{N} \sum\_{i=0}^{N-1} \mathrm{max} \left( 0, \frac{A\_{i} - A\_{0}}{A\_{0} + \varepsilon} \right)
+```math
+D_{A} = \frac{1}{N} \sum_{i=0}^{N-1} \max \left( 0, \frac{A_{i} - A_{0}}{A_{0} + \varepsilon} \right)
+```
 
 For E (only downward deviations):
 
-D\_{E} = \frac{1}{N} \sum\_{i=0}^{N-1} \max \left(0, \frac{E_0 - E_i}{E_0 + \varepsilon} \right)
+```math
+D_{E} = \frac{1}{N} \sum_{i=0}^{N-1} \max \left(0, \frac{E_0 - E_i}{E_0 + \varepsilon} \right)
+```
 
 **2. Net trend** (endpoint vs. start; captures overall direction)
 
 For A (penalize final \> initial):
 
-T\_{A} = \mathrm{max} \left( 0, \frac{A\_{N-1} - A\_{0}}{A\_{0} + \varepsilon} \right)
+```math
+T_{A} = \max \left( 0, \frac{A_{N-1} - A_{0}}{A_{0} + \varepsilon} \right)
+```
 
 For E (penalize final \< initial):
 
-T\_{E} = \max \left(0, \frac{E_0 - E\_{N-1}}{E_0 + \varepsilon} \right)
+```math
+T_{E} = \max \left(0, \frac{E_0 - E_{N-1}}{E_0 + \varepsilon} \right)
+```
 
 **3. Cumulative single-step direction violations** (local directionality)
 
 For A (sum of all positive single-step increases):
 
-V\_{A} = \frac{\sum\_{i=1}^{N-1} \max(0, A_i - A\_{i-1})}{A_0(N - 1) + \varepsilon}
+```math
+V_{A} = \frac{\sum_{i=1}^{N-1} \max(0, A_i - A_{i-1})}{A_0(N - 1) + \varepsilon}
+```
 
 For E (sum of all negative single-step decreases):
 
-V\_{E} = \frac{\sum\_{i=1}^{N-1} \max(0, E\_{i-1} - E_i)}{E_0(N - 1) + \varepsilon}
+```math
+V_{E} = \frac{\sum_{i=1}^{N-1} \max(0, E_{i-1} - E_i)}{E_0(N - 1) + \varepsilon}
+```
 
 **Overall penalty:**
 
-P = w\_{A}^{D} D\_{A} + w\_{A}^{T} T\_{A} + w\_{A}^{V} V\_{A} + w\_{E}^{D} D\_{E} + w\_{E}^{T} T\_{E} + w\_{E}^{V} V\_{E}
+```math
+P = w_{A}^{D} D_{A} + w_{A}^{T} T_{A} + w_{A}^{V} V_{A} + w_{E}^{D} D_{E} + w_{E}^{T} T_{E} + w_{E}^{V} V_{E}
+```
 
 We set trend (T) and average deviation (D) with similar importance and direction violations (V) slightly lower:
 
+```math
 w_A^D = 1, w_A^T = 1, w_A^V = 0.5
+```
 
+```math
 w_E^D = 1, w_E^T = 1, w_E^V = 0.5
+```
 
 Scores were mapped to \[0,1\] by an inverse transform:
 
+```math
 \mathrm{Score} = \frac{1}{1 + P'}
+```
 
-<figure>
-<img src="media/physicell4/media/image9.png" style="width:5.11351in;height:2.8in" />
-<figcaption><p>Fig.40 Parameter Scan Score Space</p></figcaption>
-</figure>
+![Fig.40 Parameter Scan Score Space](media/physicell4/media/image9.png)
+
+Fig.40 Parameter Scan Score Space
 
 As shown, we obtained a scored parameter space and highlighted the top 5% scoring points.
 
-<figure>
-<img src="media/physicell4/media/image10.png" style="width:4.79963in;height:2.62813in" />
-<figcaption><p>Fig.41 Top View of the Parameter Scan Score Space</p></figcaption>
-</figure>
+![Fig.41 Top View of the Parameter Scan Score Space](media/physicell4/media/image10.png)
+
+Fig.41 Top View of the Parameter Scan Score Space
 
 From the top view of the parameter space, **the optimal points are concentrated where the VHH-to-cytokine-degradation-rate and VHH-secretion-saturation are balanced**, while the effect of AIP-C-secretion-saturation is relatively smaller. A much larger score drop is caused by excessive VHH than by VHH insufficiency, indicating that **overly strong antibody activity perturbs the skin microbiome more severely and may induce immune drift**. (de Wijs et al., 2020).
 

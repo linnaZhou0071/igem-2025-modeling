@@ -8,10 +8,9 @@ Next, we will establish models **featuring engineered *S.epidermidis*** to verif
 
 For this section we constructed **two distinct models** depending on **disease status**.
 
-<figure>
-<img src="media/physicell3/media/image1.jpeg" style="width:5.99375in;height:3.75972in" />
-<figcaption><p><mark>Caption: Fig.20 Correspondence between the model and disease stages as well as changes in microbial counts</mark></p></figcaption>
-</figure>
+![Caption: Fig.20 Correspondence between the model and disease stages as well as changes in microbial counts](media/physicell3/media/image1.jpeg)
+
+Caption: Fig.20 Correspondence between the model and disease stages as well as changes in microbial counts
 
 - **The *Recurrence* model** simulates **disease relapse** when ***S. aureus* abundance is low** and the cell initial conditions match those in the *Occurrence* model. The *Recurrence* model is intended for comparison with *Occurrence* to test **whether a long-term resident engineered strain can suppress disease development at early AD reactivation**.
 
@@ -19,29 +18,25 @@ For this section we constructed **two distinct models** depending on **disease s
 
 Accordingly, the **initial cell distributions** for the two models are shown in the figure below.
 
-<figure>
-<img src="media/physicell3/media/image2.png" style="width:4.45964in;height:2.90186in" />
-<figcaption><p>Fig.21(a) Initial Condition for Recurrence</p></figcaption>
-</figure>
+![Fig.21(a) Initial Condition for Recurrence](media/physicell3/media/image2.png)
 
-<figure>
-<img src="media/physicell3/media/image3.png" style="width:3.88484in;height:2.6425in" />
-<figcaption><p>Fig.21(b) Initial Condition for Treatment</p></figcaption>
-</figure>
+Fig.21(a) Initial Condition for Recurrence
+
+![Fig.21(b) Initial Condition for Treatment](media/physicell3/media/image3.png)
+
+Fig.21(b) Initial Condition for Treatment
 
 In addition, because the post-colonization spatial arrangement of the engineered *S. epidermidis* is uncertain, we also tested an **alternative scenario** where the same number of engineered S.epidermis is **uniformly dispersed** across the domain to evaluate whether spatial distribution affects colonization and therapeutic outcome
 
-<figure>
-<img src="media/physicell3/media/image4.png" style="width:4.15027in;height:2.40706in" />
-<figcaption><p>Fig.22 Initial Condition for Recurrence_sparsed</p></figcaption>
-</figure>
+![Fig.22 Initial Condition for Recurrence_sparsed](media/physicell3/media/image4.png)
+
+Fig.22 Initial Condition for Recurrence_sparsed
 
 For both models’ ***cell_rules.**csv,* we added an agent type *engr_S.epidermis* (green in the figure). This **engineered agent** responds to AIP_sa by secreting vHH and AIP_C. AIP_C reduces secretion of AIP_sa and toxin by *S. aureus*, while vHH suppresses T-cell cytokine secretion via feedback regulation (Kim et al., 2019).
 
-<figure>
-<img src="https://static.igem.wiki/teams/5615/wiki/model/ds3.avif" alt="Final recurrence and treatment rule map from the official 2025 iGEM wiki" style="width:6in;height:3.46111in" />
-<figcaption><p>Fig.23 Rules Map for Recurrence and Treatment Model</p></figcaption>
-</figure>
+![Final recurrence and treatment rule map from the official 2025 iGEM wiki](https://static.igem.wiki/teams/5615/wiki/model/ds3.avif)
+
+Fig.23 Rules Map for Recurrence and Treatment Model
 
 Notably, **for the rule “AIP_C inhibits *S. aureus* toxin secretion,” the Hill equation half-max was informed by wet-lab data** (see hemolysis assay of AIP-C potency). The experiment showed that the IC₅₀ in the presence of *S. aureus* culture supernatant was 1.5× that of the control, from which we infer that AIP-C reduces hemolysin concentration to roughly two-thirds of its original level. Accordingly, the Hill half-max for AIP_C inhibition of *S. aureus* toxin secretion was set to 0.667 (unitless).
 
@@ -51,7 +46,9 @@ During model development we found that **microcolony spatial relationships stron
 
 **BioFVM** (Ghaffarizadeh et al., 2016) is an open-source **3D multi-substrate transport solver** designed for tissue and cell simulations and integrated into PhysiCell to update the biochemical microenvironment. For each diffusing substrate c(x,t), BioFVM solves the standard **reaction–diffusion–decay PDE** with bulk and cellular sources or sinks.
 
-\frac{\partial c(\mathbf{x}, t)}{\partial t} = \nabla \cdot (D(\mathbf{x}) \nabla c(\mathbf{x}, t)) - \lambda(\mathbf{x}) c(\mathbf{x}, t) + S\_{\mathrm{bulk}}(\mathbf{x}, t) + S\_{\mathrm{cells}}(\mathbf{x}, t)
+```math
+\frac{\partial c(\mathbf{x}, t)}{\partial t} = \nabla \cdot (D(\mathbf{x}) \nabla c(\mathbf{x}, t)) - \lambda(\mathbf{x}) c(\mathbf{x}, t) + S_{\mathrm{bulk}}(\mathbf{x}, t) + S_{\mathrm{cells}}(\mathbf{x}, t)
+```
 
 In that formulation, D(x) is the diffusion coefficient, λ(x) is the first-order decay rate, S<sub>bulk</sub> ​represents bulk sources or sinks, and S<sub>cells</sub> represents cell-level production or uptake.
 
@@ -65,19 +62,19 @@ To construct the 3D model, we consulted a review (Weidinger et al., 2018) and ch
 |  keratinocyte   |    (Sun & Green, 1976)     |
 |     T cells     |    (Wang et al., 2014)     |
 
-<figure>
-<img src="media/physicell3/media/image7.png" style="width:3.42279in;height:1.79208in" />
-<figcaption><p>Fig.24(a) Top View of the 3D Model</p></figcaption>
-</figure>
+![Fig.24(a) Top View of the 3D Model](media/physicell3/media/image7.png)
 
-<figure>
-<img src="media/physicell3/media/image8.png" style="width:3.66863in;height:1.92079in" />
-<figcaption><p>Fig.24(b) Side View of the 3D Model</p></figcaption>
-</figure>
+Fig.24(a) Top View of the 3D Model
+
+![Fig.24(b) Side View of the 3D Model](media/physicell3/media/image8.png)
+
+Fig.24(b) Side View of the 3D Model
 
 Additionally, to model the **barrier properties** of the epidermal and dermal tissues we adopted an approach analogous to our EPS/biofilm treatment (<span class="mark">see *Occurrence_trial2*)</span>. We filled the three keratinocyte layers with **ECM_epidermis** and the dermis with **ECM_dermis**, and used a similar “capture” mechanism to suppress transport of diffusing substances within these regions.
 
-<img src="media/physicell3/media/image9.png" style="width:2.93097in;height:1.53458in" /><img src="media/physicell3/media/image10.png" style="width:2.95553in;height:1.54744in" />
+![Epidermal barrier field](media/physicell3/media/image9.png)
+
+![Dermal barrier field](media/physicell3/media/image10.png)
 
 Fig.25(a,b) Barrier Field of the 3D Model; Left, ECM_epidermis; Right, ECM_dermis.
 

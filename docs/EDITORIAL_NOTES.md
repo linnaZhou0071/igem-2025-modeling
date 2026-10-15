@@ -21,3 +21,5 @@ The main README and research overview are curated portfolio descriptions. The lo
 | Recurrence_3D description refers to direct VHH suppression of cytokines; no direct VHH-to-cytokine rule was located in its supplied active rules or custom reaction implementation | Full historical 3D mechanism remains unverified from the supplied source; indirect toxin-mediated effects are possible |
 
 The reference lists in historical drafts are preserved as supplied. This packaging work does not constitute a bibliographic audit of every biological parameter source. The provenance manifest and upstream license notices allow readers to distinguish original materials from the 2026 portfolio additions.
+
+The October 2026 rendering check recovered three lost Word crop settings. The public manuscripts now reference unmodified published wiki images for Figures 3, 4 and 15, while retaining the original embedded media. Raw HTML image dimensions were replaced with Markdown image references; standalone LaTeX equations were given math blocks.
